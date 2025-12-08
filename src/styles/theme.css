@@ -1,0 +1,140 @@
+
+/* Theme color properties */
+@property --back-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #FAF8F6;
+}
+@property --texture-overlay {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #FFFFFF33;
+}
+@property --back-overlay {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #F6F2EE;
+}
+@property --code-back {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #F3F0EC;
+}
+
+@property --primary-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #2D2D2D;
+}
+@property --secondary-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #555555;
+}
+@property --muted-text {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #777777;
+}
+
+@property --stroke-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #00000020;
+}
+
+@property --current-stroke {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #CA2E2E66;
+}
+
+:root {
+    /* Accent Colors */
+    --accent-color: #CA2E2E;
+    --hover-accent: #D44A4A;
+    --hover-active: #8E1F1F;
+
+    /* Dark Theme Background Colors */
+    --back-color-dark: #1A1A1A;
+    --back-overlay-dark: #222;
+    --texture-overlay-dark: #000000CC;
+    --code-back-dark: #202020;
+    /* Dark Theme Text Colors */
+    --primary-text-dark: #EAEAEA;
+    --secondary-text-dark: #CCC;
+    --muted-text-dark: #999;
+    /* Dark Theme Section Colors */
+    --stroke-color-dark: #FFFFFF15;
+    --current-stroke-dark: #CA2E2E99;
+}
+
+body {
+    background: 
+        linear-gradient(var(--texture-overlay)),
+        url(/washi.png);
+    background-blend-mode: overlay;
+
+    font-family: "Inter", sans-serif;
+    transition:
+        --back-color 0.25s ease,
+        --primary-text 0.25s ease,
+        --secondary-text 0.25s ease,
+        --muted-text 0.25s ease,
+        --code-back 0.25s ease,
+        --stroke-color 0.25s ease,
+        --current-stroke 0.25s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        /* Background Colors */
+        --back-color: var(--back-color-dark);
+        --back-overlay: var(--back-overlay-dark);
+        --texture-overlay: var(--texture-overlay-dark);
+        --code-back: var(--code-back-dark);
+        /* Text Colors */
+        --primary-text: var(--primary-text-dark);
+        --secondary-text: var(--secondary-text-dark);
+        --muted-text: var(--muted-text-dark);
+        /* Section Colors */
+        --stroke-color: var(--stroke-color-dark);
+        --current-stroke: var(--current-stroke-dark);
+
+        background-blend-mode: multiply;
+    }
+}
+
+body[data-theme="light"] {
+    /* Background Colors */
+    --back-color: revert;
+    --back-overlay: revert;
+    --texture-overlay: revert;
+    --code-back: revert;
+    /* Text Colors */
+    --primary-text: revert;
+    --secondary-text: revert;
+    --muted-text: revert;
+    /* Section Colors */
+    --stroke-color: revert;
+    --current-stroke: revert;
+
+    background-blend-mode: overlay;
+}
+
+body[data-theme="dark"] {
+    /* Background Colors */
+    --back-color: var(--back-color-dark);
+    --back-overlay: var(--back-overlay-dark);
+    --texture-overlay: var(--texture-overlay-dark);
+    --code-back: var(--code-back-dark);
+    /* Text Colors */
+    --primary-text: var(--primary-text-dark);
+    --secondary-text: var(--secondary-text-dark);
+    --muted-text: var(--muted-text-dark);
+    /* Section Colors */
+    --stroke-color: var(--stroke-color-dark);
+    --current-stroke: var(--current-stroke-dark);
+
+    background-blend-mode: multiply;
+}
