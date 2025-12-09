@@ -12,7 +12,8 @@ import "./components/counter.enso";
 import Styles from "./app.css?inline";
 import "./styles/main.css";
 
-const code = `
+
+const counterCode = `
 Enso.component("tiny-counter", &#123
     watched: &#123 value: attr(0) &#125;,
     styles: css\`:host&#123
@@ -33,7 +34,9 @@ Enso.component("enso-app", {
     styles: css(Styles),
     template: html`
         <enso-header class="section">
-            <enso-nav></enso-nav>
+            <enso-nav>
+                <a href="#why-enso">Why Enso?</a>
+            </enso-nav>
             <enso-icon></enso-icon>
             <h1>Enso</h1>
         </enso-header>
@@ -48,15 +51,15 @@ Enso.component("enso-app", {
                 components with modern simplicity.
             </p>
             <code-pane>
-                <code slot="code">
-                    ${  code  }
-                </code>
+                <pre slot="code" class="code" data-lang="javascript">${ counterCode }</pre>
+                <pre slot="code" class="code" data-lang="markup">&lt;tiny-counter value="5"&gt;&lt;/tiny-counter&gt;</pre>
+                
                 <div id="component-example" slot="live">
-                    <tiny-counter></tiny-counter>
+                    <tiny-counter value="5"></tiny-counter>
                 </div>
             </code-pane>
         </enso-section>
-        <enso-section>
+        <enso-section id="why-enso">
             <h3>Why Enso?</h3>
             <ul>
                 <li>Built to disappear</li>

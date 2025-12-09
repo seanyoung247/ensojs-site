@@ -8,3 +8,8 @@ html, body {
     height: 100lvh;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
