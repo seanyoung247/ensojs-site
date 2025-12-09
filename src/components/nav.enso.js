@@ -15,7 +15,7 @@ Enso.component('enso-nav', {
             z-index: 1000;
         }
         .spacer {
-            height: 3em;
+            height: calc(40px + 1em);
         }
     `],
     template: html`
@@ -23,6 +23,7 @@ Enso.component('enso-nav', {
             <nav-btn width="40" height="40"
                 @nav-toggle="()=>console.log('nav changed')"
             ></nav-btn>
+            <slot></slot>
         </nav>
         <div class="spacer"></div>
     `,

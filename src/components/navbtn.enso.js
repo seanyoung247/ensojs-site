@@ -56,24 +56,19 @@ Enso.component('nav-btn', {
             stroke-dashoffset: 10;
             transition: stroke-dashoffset 0.5s ease 0.2s;
         }
+        :host([open]) .line.bottom { --f: -1; }
         :host([open]) .line.top, :host([open]) .line.bottom {
-            --tY: 12.5%;
-            --tR: 45deg;
             opacity: 0.85;
             stroke: var(--accent-color);
             transform:
-                translateY(var(--tY))
+                translateY(calc(12.5% * var(--f, 1)))
                 translateX(-10%)
-                rotate(var(--tR))
+                rotate(calc(45deg * var(--f, 1)))
                 scale(0.8);
             transition: 
                 transform 0.5s ease 0.1s,
                 stroke 0.5s ease,
                 opacity 0.5s ease;
-        }
-        :host([open]) .line.bottom {
-            --tY: -12.5%;
-            --tR: -45deg;
         }
         :host([open]) .line.middle {
             stroke-dashoffset: -65;
