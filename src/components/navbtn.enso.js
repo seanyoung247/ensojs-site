@@ -1,73 +1,81 @@
 
-import Enso, { attr, css, html } from 'ensojs';
+import Enso, { attr, css, html, watches } from 'ensojs';
 import Reset from "../styles/reset.css?inline";
 
 
 Enso.component('nav-btn', {
     watched: { open: attr(false) },
-    styles: [css(Reset),
-        css`
-            :host {
-                display: block;
-                position: fixed;
-                top: 0; right: 0;
-            }
-            button {
-                width: 40px;
-                height: 40px;
-                background: transparent;
-                border: none;
-            }
-            .line {
-                stroke: var(--primary-text);
-                stroke-linecap: round;
-                stroke-width: 6;
-            }
-            .enso {
-                fill: none;
-                stroke: var(--primary-text);
-                stroke-width: 8;
-                stroke-linecap: round;
-                stroke-dasharray: 200 220;
-                stroke-dashoffset: 200;
-                transition: stroke-dashoffset 0.5s ease;
-            }
-            .line.top, .line.bottom {
-                transform-origin: 50% 50%;
-                transition: transform 0.5s ease;
-            }
-            .line.middle {
-                stroke-dasharray: 65 65;
-                stroke-dashoffset: 0;
-                transition: stroke-dashoffset 0.5s ease 0.2s;
-            }
+    styles: [css(Reset), css`
+        :host {
+            display: block;
+            position: fixed;
+            top: 0.5em; right: 0.5em;
+        }
+        button {
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            border: none;
+        }
+        .line {
+            stroke: var(--primary-text);
+            stroke-linecap: round;
+            stroke-width: 6;
+        }
+        .enso {
+            fill: none;
+            stroke: var(--primary-text);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 200 220;
+            stroke-dashoffset: 200;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .line.top, .line.bottom {
+            transform-origin: 50% 50%;
+            transition:
+                transform 0.5s ease 0.1s,
+                stroke 0.5s ease,
+                opacity 0.5s ease;
+        }
+        .line.middle {
+            stroke-dasharray: 65 65;
+            stroke-dashoffset: 0;
+            transition: stroke-dashoffset 0.5s ease 0.2s;
+        }
+        svg * {
+            pointer-events: none;
+        }
 
-            :host([open]) { outline: none; }
-            :host([open]) .enso {
-                stroke-dashoffset: 10;
-                transition: stroke-dashoffset 0.5s ease 0.2s;
-            }
-            :host([open]) .line.top, :host([open]) .line.bottom {
-                --tY: 12.5%;
-                --tR: 45deg;
-                transform:
-                    translateY(var(--tY))
-                    translateX(-10%)
-                    rotate(var(--tR))
-                    scale(0.8);
-                transition: transform 0.5s ease 0.1s;
-            }
-            :host([open]) .line.bottom {
-                --tY: -12.5%;
-                --tR: -45deg;
-            }
-            :host([open]) .line.middle {
-                stroke-dashoffset: -65;
-                transition: stroke-dashoffset 0.5s ease;
-            }
-
-        `
-    ],
+        :host([open]) { outline: none; }
+        :host([open]) .enso {
+            stroke-dashoffset: 10;
+            transition: stroke-dashoffset 0.5s ease 0.2s;
+        }
+        :host([open]) .line.top, :host([open]) .line.bottom {
+            --tY: 12.5%;
+            --tR: 45deg;
+            opacity: 0.85;
+            stroke: var(--accent-color);
+            transform:
+                translateY(var(--tY))
+                translateX(-10%)
+                rotate(var(--tR))
+                scale(0.8);
+            transition: 
+                transform 0.5s ease 0.1s,
+                stroke 0.5s ease,
+                opacity 0.5s ease;
+        }
+        :host([open]) .line.bottom {
+            --tY: -12.5%;
+            --tR: -45deg;
+        }
+        :host([open]) .line.middle {
+            stroke-dashoffset: -65;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+    `],
     template: html`
         <button @click="() => @:open = !@:open" aria-label="Toggle Navigation Menu">
             <svg viewBox="0 0 100 100">
@@ -78,6 +86,16 @@ Enso.component('nav-btn', {
                 <circle class="enso" cx="50" cy="50" r="35" />
             </svg>
         </button>
-    `
+    `,
+    script: {
+        notify: watches(function() {
+            const event = new CustomEvent("nav-toggle", {
+                detail: { open: this.watched.open },
+                bubbles: true,
+                composed: true
+            });
+            this.dispatchEvent(event);
+        }, ['open'])
+    }
 });
 
