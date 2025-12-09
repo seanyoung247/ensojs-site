@@ -4,7 +4,11 @@ import Reset from "../styles/reset.css?inline";
 
 
 Enso.component('nav-btn', {
-    watched: { open: attr(false) },
+    watched: {
+        open: attr(false),
+        width: attr(40),
+        height: attr(40)
+    },
     styles: [css(Reset), css`
         :host {
             display: block;
@@ -12,8 +16,8 @@ Enso.component('nav-btn', {
             top: 0.5em; right: 0.5em;
         }
         button {
-            width: 40px;
-            height: 40px;
+            width: var(--w, 40px);
+            height: var(--h, 40px);
             background: transparent;
             border: none;
         }
@@ -77,7 +81,11 @@ Enso.component('nav-btn', {
         }
     `],
     template: html`
-        <button @click="() => @:open = !@:open" aria-label="Toggle Navigation Menu">
+        <button 
+            @click="() => @:open = !@:open" 
+            aria-label="Toggle Navigation Menu"
+            :style="--width: {{ @:w }}px; --h: {{ @:height }}px;"
+        >
             <svg viewBox="0 0 100 100">
                 <line class="line top"    x1="20" y1="30" x2="80" y2="30" />
                 <line class="line middle" x1="20" y1="50" x2="80" y2="50" />
