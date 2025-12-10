@@ -1,6 +1,7 @@
 
 @import "./styles/reset.css";
 
+enso-app,
 :host {
     display: block;
     position: relative;
@@ -9,6 +10,15 @@
     max-width: 1024px;
     padding: 0 2em !important;
     color: var(--primary-text); 
+}
+
+.nav-item {
+    margin: 0.5em 0;
+    color: var(--primary-text);
+}
+.nav-item a {
+    text-decoration: none;
+    color: inherit;
 }
 
 enso-icon {

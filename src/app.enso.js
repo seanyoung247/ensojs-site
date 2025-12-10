@@ -32,12 +32,18 @@ const counterHTML = `&lt;tiny-counter value="5"&gt;&lt;/tiny-counter&gt;`;
 
 console.log(Enso.version);
 
+
 Enso.component("enso-app", {
+    settings: { useShadow: false },
     styles: css(Styles),
     template: html`
         <enso-header class="section">
             <enso-nav>
                 <li class="nav-item"><a href="#why-enso">Why Enso?</a></li>
+                <li class="nav-item">Dummy Link</li>
+                <li class="nav-item">Dummy Link</li>
+                <li class="nav-item">Dummy Link</li>
+                <li class="nav-item">Dummy Link</li>
                 <li class="nav-item"><theme-switch #ref="themer"></theme-switch></li>
             </enso-nav>
             <enso-icon></enso-icon>
@@ -76,7 +82,7 @@ Enso.component("enso-app", {
     `,
     script: { 
         setup: watches(function() {
-            this.refs.themer.watched.themes = ['light', 'dark', 'system'];
+            this.refs.themer.watched.themes = ['light', 'dark', 'auto'];
         }, [lifecycle.mount])
     }
 });
