@@ -4,19 +4,17 @@ import Enso, { prop, css, html, attr, watches, lifecycle } from 'ensojs';
 import Reset from "../styles/reset.css?inline";
 import Tooltips from "../styles/tooltip.css?inline";
 
-import Icons from "/theme_icons.svg";
-
 
 Enso.component('theme-switch', {
     watched: {
-        themes: prop(['system'], true),
-        theme: attr('system'),
-        icons: attr(Icons),
+        themes: prop(['none'], true),
+        theme: attr('none'),
+        auto: attr(false, Boolean)
     },
     styles: [css(Reset), css(Tooltips), css`
         :host {
             display: block;
-            --size: 32px;
+            --size: 24px;
         }
         fieldset {
             display: flex;
@@ -54,6 +52,7 @@ Enso.component('theme-switch', {
             width: calc(var(--size) - 8px);
             height: calc(var(--size) - 8px);
             stroke: white;
+            stroke-width: 1.5px;
             margin: 4px;
             mix-blend-mode: exclusion;
             pointer-events: none;
@@ -81,12 +80,14 @@ Enso.component('theme-switch', {
         </fieldset>
     `,
     script: {
+
         onMount: watches(function() {
             const saved = localStorage.getItem('enso-theme');
             if (saved && this.watched.themes.includes(saved)) {
                 this.setTheme(saved);
             }
         }, [lifecycle.mount]),
+
         setTheme(theme) {
             document.body.setAttribute('data-theme', theme);
             localStorage.setItem('enso-theme', theme);
@@ -97,5 +98,6 @@ Enso.component('theme-switch', {
                 new CustomEvent('theme-changed', { detail: { theme } })
             );
         },
+
     }
 });

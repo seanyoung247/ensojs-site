@@ -9,6 +9,8 @@ Enso.component('enso-nav', {
         css(Reset),
         css`
         nav {
+            display: flex;
+            flex-direction: column;
             list-style: none;
             z-index: 1000;
             border: 1px solid red;
