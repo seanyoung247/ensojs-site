@@ -9,10 +9,9 @@ Enso.component('enso-nav', {
         css(Reset),
         css`
         nav {
-            position: fixed;
-            top: 0;
-            right: 0;
+            list-style: none;
             z-index: 1000;
+            border: 1px solid red;
         }
         .spacer {
             height: calc(40px + 1em);

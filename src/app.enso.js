@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, watches, lifecycle } from 'ensojs';
 // Components
 import "./components/nav.enso";
 import "./components/icon.enso";
@@ -7,6 +7,7 @@ import "./components/header.enso";
 import "./components/section.enso";
 import "./components/codepane.enso";
 import "./components/counter.enso";
+import "./components/themeSwitch.enso";
 
 // Styles
 import Styles from "./app.css?inline";
@@ -26,6 +27,7 @@ Enso.component("tiny-counter", &#123
         &lt;button @click="()=>@:value++"&gt;+&lt;/button&gt;
     \`
 &#125;);`;
+const counterHTML = `&lt;tiny-counter value="5"&gt;&lt;/tiny-counter&gt;`;
 
 
 console.log(Enso.version);
@@ -35,7 +37,8 @@ Enso.component("enso-app", {
     template: html`
         <enso-header class="section">
             <enso-nav>
-                <a href="#why-enso">Why Enso?</a>
+                <li class="nav-item"><a href="#why-enso">Why Enso?</a></li>
+                <li class="nav-item"><theme-switch #ref="themer"></theme-switch></li>
             </enso-nav>
             <enso-icon></enso-icon>
             <h1>Enso</h1>
@@ -52,7 +55,7 @@ Enso.component("enso-app", {
             </p>
             <code-pane>
                 <pre slot="code" class="code" data-lang="javascript">${ counterCode }</pre>
-                <pre slot="code" class="code" data-lang="markup">&lt;tiny-counter value="5"&gt;&lt;/tiny-counter&gt;</pre>
+                <pre slot="code" class="code" data-lang="markup">${ counterHTML }</pre>
                 
                 <div id="component-example" slot="live">
                     <tiny-counter value="5"></tiny-counter>
@@ -70,5 +73,10 @@ Enso.component("enso-app", {
                 <li>Truly encapsulated styles and markup</li>
             </ul>
         </enso-section>
-    `
+    `,
+    script: { 
+        setup: watches(function() {
+            this.refs.themer.watched.themes = ['light', 'dark', 'system'];
+        }, [lifecycle.mount])
+    }
 });
