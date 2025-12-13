@@ -81,6 +81,12 @@
     initial-value: #8a8a8a;
 }
 
+@property --contrast-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #FFF;
+}
+
 :root {
     /* Accent Colors */
     --accent-color: #CA2E2E;
@@ -99,6 +105,7 @@
     /* Dark Theme Section Colors */
     --stroke-color-dark: #FFFFFF15;
     --current-stroke-dark: #CA2E2E99;
+    --contrast-color-dark: #000;
 
     /* Code Highlights */
     --keyword-color-dark: #d26a5c;
@@ -140,6 +147,7 @@ body {
         /* Section Colors */
         --stroke-color: var(--stroke-color-dark);
         --current-stroke: var(--current-stroke-dark);
+        --contrast-color: var(--contrast-color-dark);
 
         background-blend-mode: multiply;
 
@@ -165,6 +173,7 @@ body[data-theme="light"] {
     /* Section Colors */
     --stroke-color: revert;
     --current-stroke: revert;
+    --contrast-color: revert;
 
     background-blend-mode: overlay;
 
@@ -189,6 +198,7 @@ body[data-theme="dark"] {
     /* Section Colors */
     --stroke-color: var(--stroke-color-dark);
     --current-stroke: var(--current-stroke-dark);
+    --contrast-color: var(--contrast-color-dark);
 
     background-blend-mode: multiply;
 

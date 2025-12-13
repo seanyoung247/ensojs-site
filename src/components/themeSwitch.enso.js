@@ -5,16 +5,23 @@ import Reset from "../styles/reset.css?inline";
 import Tooltips from "../styles/tooltip.css?inline";
 
 
+const themeIndex = (themes, theme) => {
+    const idx = themes.findIndex(t => t.name === theme);
+    return idx === -1 ? 0 : idx;
+};
+
 Enso.component('theme-switch', {
     watched: {
-        themes: prop(['none'], true),
-        theme: attr('none'),
-        auto: attr(false, Boolean)
+        themes: prop([], true),
+        theme: attr(localStorage.getItem('enso-theme')),
     },
+    expose: { themeIndex },
     styles: [css(Reset), css(Tooltips), css`
         :host {
-            display: block;
+            display: inline-block;
             --size: 24px;
+            background: var(--muted-text);
+            border-radius: calc(var(--size) / 2);
         }
         fieldset {
             display: flex;
@@ -25,7 +32,6 @@ Enso.component('theme-switch', {
         }
         label {
             display: block;
-            position: relative;
             text-align: center;
             cursor: pointer;
             width: var(--size);
@@ -40,64 +46,82 @@ Enso.component('theme-switch', {
         }
         #toggle {
             position: absolute;
-            top: 3px; left: calc(3px + ( var(--size) * var(--i, 1)));
-            width: calc(var(--size) - 6px); height: calc(var(--size) - 6px);
+            top: 2px; left: calc(2px + ( var(--size) * var(--i, 1)));
+            width: calc(var(--size) - 4px); height: calc(var(--size) - 4px);
             background: var(--primary-text);
+            box-shadow: 0 0 2px #000000AA;
             border-radius: calc(var(--size) / 2);
-            z-index: -1;
-        
-            transition: left 0.4s cubic-bezier(0.25, 1.4, 0.35, 1);*/
+            transition: none;
+        }
+        #toggle[data-animate] {
+            transition: left 0.4s cubic-bezier(0.25, 1.4, 0.35, 1);
         }
         svg {
             width: calc(var(--size) - 8px);
             height: calc(var(--size) - 8px);
-            stroke: white;
+            stroke: var(--contrast-color);
             stroke-width: 1.5px;
+            fill: var(--contrast-color);
             margin: 4px;
-            mix-blend-mode: exclusion;
             pointer-events: none;
         }
         label:hover svg {
-            filter: drop-shadow(0 0 1px white);
+            filter: drop-shadow(0 0 1px var(--contrast-color));
         }
     `],
     template: html`
         <fieldset>
-            <span id="toggle" :style="--i:{{ @:themes.indexOf(@:theme) }}"></span>
+            <span id="toggle" #ref="toggle" 
+                :style="--i:{{ themeIndex(@:themes, @:theme) }}">
+            </span>
             <enso-fragment *for="theme of @:themes">    
-                <label :for="{{ theme }}" :data-tooltip="{{ theme }} theme">
+                <label :for="{{ theme.name }}" :data-tooltip="{{ theme.name }} theme">
                     <input type="radio" name="theme"
-                        :id="{{ theme }}"
-                        :value="{{ theme }}"
-                        @change="()=>this.setTheme(theme)"
-                        :checked="{{ theme === @:theme }}"
+                        :id="{{ theme.name }}"
+                        :value="{{ theme.name }}"
+                        @change="()=>this.onChange(theme.name)"
+                        :checked="{{ theme.name === @:theme }}"
                     />
-                    <svg viewBox="0 0 24 24">
-                        <use :href="{{ @:icons }}#{{ theme }}"></use>
+                    <svg *if="theme.icon" viewBox="0 0 24 24">
+                        <use :href="{{ theme.icon }}"></use>
                     </svg>
                 </label>
-            </enso-fragment>
+            </enso-fragment>     
         </fieldset>
     `,
     script: {
+        onThemesChange: watches(function () {
+            this.applyTheme(this.watched.theme);
+        }, ['themes']),
 
-        onMount: watches(function() {
-            const saved = localStorage.getItem('enso-theme');
-            if (saved && this.watched.themes.includes(saved)) {
-                this.setTheme(saved);
+        applyTheme(theme) {
+            const themes = this.watched.themes;
+            // normalise
+            const valid =
+                themes.some(t => t.name === theme)
+                    ? theme
+                    : themes[0]?.name ?? null;
+            if (!valid) return;
+            
+            // update state if needed
+            if (this.watched.theme !== valid) {
+                this.watched.theme = valid;
             }
-        }, [lifecycle.mount]),
 
-        setTheme(theme) {
-            document.body.setAttribute('data-theme', theme);
-            localStorage.setItem('enso-theme', theme);
-
-            this.watched.theme = theme;
+            // side effects
+            document.body.setAttribute('data-theme', valid);
+            localStorage.setItem('enso-theme', valid);
 
             this.dispatchEvent(
-                new CustomEvent('theme-changed', { detail: { theme } })
+                new CustomEvent('theme-changed', {
+                    detail: { theme: valid }
+                })
             );
         },
 
+        onChange(theme) {
+            this.refs.toggle.setAttribute('data-animate', true);
+            this.applyTheme(theme);
+        }
     }
 });
