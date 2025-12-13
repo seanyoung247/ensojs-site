@@ -1,8 +1,7 @@
 
 @import "./styles/reset.css";
 
-enso-app,
-:host {
+enso-app {
     display: block;
     position: relative;
     width: 100%;
@@ -53,47 +52,19 @@ h3 {
     text-align: center;
 }
 
-.code {
-    margin: 0.5em;
-    padding: 1em;
-    font-size: 0.8rem;
-    overflow-x: auto;
-    background: var(--code-back);
-    border-radius: 0.5em;
-}
-
-.token.string, .token.attr-value{
-  color: var(--string-color);
-}
-
-.token.keyword, .token.function, .token.attr-name {
-  color: var(--keyword-color);
-  font-weight: 550;
-}
-
-.token.property, .token.tag {
-  color: var(--property-color);
-}   
-
-.token.number {
-  color: var(--number-color);
-}
-
-.token.comment {
-  color: var(--comment-color);
-  font-style: italic;
-}
-
-.token.punctuation {
-  color: var(--punctuation-color);
-}
-
-#component-example {
+#live-example {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     padding-top: 0.5em;
+    & > code-pane {
+      flex: 1 1 fit-content;
+    }
+    & > tiny-counter {
+      flex: 1 1 25%;
+      min-width: 100px;
+      margin: 0 0.5em;
+    }
 }
 
-tiny-counter {
-    width: 150px;
-}

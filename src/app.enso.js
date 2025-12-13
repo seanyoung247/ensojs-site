@@ -1,11 +1,11 @@
 
-import Enso, { css, html, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
 // Components
 import "./components/nav.enso";
 import "./components/icon.enso";
 import "./components/header.enso";
 import "./components/section.enso";
-import "./components/codepane.enso";
+import { escapeCode } from "./components/codepane.enso";
 import "./components/counter.enso";
 import "./components/themeSwitch.enso";
 
@@ -13,21 +13,25 @@ import "./components/themeSwitch.enso";
 import Styles from "./app.css?inline";
 import "./styles/main.css";
 
+// Images
+import ThemeIcons from "/theme_icons.svg";
 
-const counterCode = `
-Enso.component("tiny-counter", &#123
-    watched: &#123 value: attr(0) &#125;,
-    styles: css\`:host&#123
+
+const counterCode = escapeCode(`
+Enso.component("tiny-counter", {
+    watched: { value: attr(0) },
+    styles: css\`:host {
         display:flex;
         justify-content:space-between;
-    &#125;\`,
+    }\`,
     template: html\`
-        &lt;button @click="()=>@:value--"&gt;-&lt;/button&gt;
-        &#123;&#123; @:value &#125;&#125;
-        &lt;button @click="()=>@:value++"&gt;+&lt;/button&gt;
+        <button @click="()=>@:value--">-</button>
+        {{ @:value }}
+        <button @click="()=>@:value++">+</button>
     \`
-&#125;);`;
-const counterHTML = `&lt;tiny-counter value="5"&gt;&lt;/tiny-counter&gt;`;
+});`
+);
+const counterHTML = escapeCode(`<tiny-counter value="5"></tiny-counter>`);
 
 
 console.log(Enso.version);
@@ -35,6 +39,7 @@ console.log(Enso.version);
 
 Enso.component("enso-app", {
     settings: { useShadow: false },
+    watched: { counter: prop(5) },
     styles: css(Styles),
     template: html`
         <enso-header class="section">
@@ -44,7 +49,10 @@ Enso.component("enso-app", {
                 <li class="nav-item">Dummy Link</li>
                 <li class="nav-item">Dummy Link</li>
                 <li class="nav-item">Dummy Link</li>
-                <li class="nav-item"><theme-switch #ref="themer"></theme-switch></li>
+                <li class="nav-item">
+                    <span>Theme: </span>
+                    <theme-switch #ref="themer"></theme-switch>
+                </li>
             </enso-nav>
             <enso-icon></enso-icon>
             <h1>Enso</h1>
@@ -59,14 +67,15 @@ Enso.component("enso-app", {
                 A micro framework for writing declarative
                 components with modern simplicity.
             </p>
-            <code-pane>
-                <pre slot="code" class="code" data-lang="javascript">${ counterCode }</pre>
-                <pre slot="code" class="code" data-lang="markup">${ counterHTML }</pre>
-                
-                <div id="component-example" slot="live">
-                    <tiny-counter value="5"></tiny-counter>
-                </div>
+            <code-pane lang="js" enso:ignore>
+               ${counterCode}
             </code-pane>
+            <div id="live-example">
+                <code-pane lang="html" enso:ignore>
+                    ${counterHTML}
+                </code-pane>
+                <tiny-counter value="5"></tiny-counter>
+            </div>
         </enso-section>
         <enso-section id="why-enso">
             <h3>Why Enso?</h3>
@@ -82,7 +91,11 @@ Enso.component("enso-app", {
     `,
     script: { 
         setup: watches(function() {
-            this.refs.themer.watched.themes = ['light', 'dark', 'auto'];
+            this.refs.themer.watched.themes = [
+                {name: 'light', icon:`${ThemeIcons}#light`}, 
+                {name: 'dark', icon:`${ThemeIcons}#dark`},
+                {name: 'auto', icon:`${ThemeIcons}#auto`}
+            ];
         }, [lifecycle.mount])
     }
 });
