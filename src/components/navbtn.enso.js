@@ -12,12 +12,12 @@ Enso.component('nav-btn', {
     styles: [css(Reset), css`
         :host {
             display: block;
-            position: fixed;
-            top: 0.5em; right: 0.5em;
-        }
-        button {
             width: var(--w, 40px);
             height: var(--h, 40px);
+        }
+        button {
+            width: 100%;
+            height: 100%;
             background: transparent;
             border: none;
         }
@@ -79,7 +79,7 @@ Enso.component('nav-btn', {
         <button 
             @click="() => @:open = !@:open" 
             aria-label="Toggle Navigation Menu"
-            :style="--width: {{ @:w }}px; --h: {{ @:height }}px;"
+            :style="--w: {{ @:width }}px; --h: {{ @:height }}px;"
         >
             <svg viewBox="0 0 100 100">
                 <line class="line top"    x1="20" y1="30" x2="80" y2="30" />

@@ -117,9 +117,12 @@
 }
 
 body {
-    background: 
+    --background: 
         linear-gradient(var(--texture-overlay)),
-        url(/washi.png);
+            url(/washi.png);
+    
+    background: var(--background);
+        
     background-blend-mode: overlay;
 
     font-family: "Inter", sans-serif;

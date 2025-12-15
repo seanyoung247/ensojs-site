@@ -6,7 +6,14 @@ import Reset from "../styles/reset.css?inline";
 Enso.component('enso-section', {
     styles: [css(Reset),
     css`
+        :host {
+            --direction: column;
+            --align: center;
+        }
         section {
+            display: flex;
+            flex-direction: var(--direction);
+            align-items: var(--align);
             padding: 1em;
             border-bottom: 2px solid var(--stroke-color);
         }
