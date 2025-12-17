@@ -59,9 +59,18 @@ Enso.component('site-nav', {
     template: html`
         <nav>
             <nav-btn width="40" height="40"
-                @nav-toggle="()=>@:open = !@:open"
+                @nav-toggle="(e)=>@:open = e.detail.open"
+                :open="{{ @:open }}"
             ></nav-btn>
             <ul id="menu"><slot></slot></ul>
         </nav>
     `,
+    script: {
+        open() {
+            this.watched.open = true;
+        },
+        close() {
+            this.watched.open = false;
+        }
+    }
 });

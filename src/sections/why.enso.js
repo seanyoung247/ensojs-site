@@ -1,6 +1,9 @@
-import Enso, { css, html } from 'ensojs';
 
-Enso.component("why-enso", {
+import Enso, { css, html } from 'ensojs';
+import "../components/section.enso";
+
+
+export default Enso.component("why-enso", {
     settings: { useShadow: false },
     styles: css`
         .why-enso-grid {
