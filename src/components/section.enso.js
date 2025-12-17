@@ -3,7 +3,7 @@ import Enso, { css, html } from 'ensojs';
 import Reset from "../styles/reset.css?inline";
 
 
-Enso.component('enso-section', {
+Enso.component('site-section', {
     styles: [css(Reset),
     css`
         :host {

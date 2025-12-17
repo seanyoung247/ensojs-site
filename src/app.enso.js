@@ -1,5 +1,5 @@
 
-import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, watches, lifecycle } from 'ensojs';
 // Components
 import "./components/nav.enso";
 import "./components/icon.enso";
@@ -25,9 +25,13 @@ Enso.component("tiny-counter", {
         justify-content:space-between;
     }\`,
     template: html\`
-        <button @click="()=>@:value--">-</button>
+        <button 
+            @click="()=>@:value--"
+        >-</button>
         {{ @:value }}
-        <button @click="()=>@:value++">+</button>
+        <button
+            @click="()=>@:value++"
+        >+</button>
     \`
 });`
 );
@@ -42,22 +46,37 @@ Enso.component("enso-app", {
     watched: { counter: prop(5) },
     styles: css(Styles),
     template: html`
-        <enso-header class="section">
-            <enso-nav>
-                <li class="nav-item"><a href="#why-enso">Why Enso?</a></li>
-                <li class="nav-item">Dummy Link</li>
-                <li class="nav-item">Dummy Link</li>
-                <li class="nav-item">Dummy Link</li>
-                <li class="nav-item">Dummy Link</li>
-                <li class="nav-item">
-                    <span>Theme: </span>
-                    <theme-switch #ref="themer"></theme-switch>
-                </li>
-            </enso-nav>
+        <site-nav>
+            <li class="nav-section">
+                <h2>On this page</h2>
+                <ul>
+                    <li class="nav-item"><a href="#why-enso">Why Enso?</a></li>
+                    <li class="nav-item"><a href="#overview">Overview</a></li>
+                </ul>
+            </li>
+            <li class="nav-section">
+                <h2>Explore</h2>
+                <ul>
+                    <li class="nav-item">Dummy Link</li>
+                    <li class="nav-item">Dummy Link</li>
+                    <li class="nav-item">Dummy Link</li>
+                </ul>
+            </li>
+            <li class="nav-section">
+                <h2>Settings</h2>
+                <ul>
+                    <li class="nav-item theme">
+                        <span>Theme: </span>
+                        <theme-switch #ref="themer"></theme-switch>
+                    </li>
+                </ul>
+            </li>
+        </site-nav>
+        <site-header>
             <enso-icon></enso-icon>
             <h1>Enso</h1>
-        </enso-header>
-        <enso-section>
+        </site-header>
+        <site-section>
             <h2 id="tag-line">
                 <span>Minimal</span>
                 <span>Fast</span>

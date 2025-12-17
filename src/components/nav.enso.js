@@ -1,31 +1,67 @@
 
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, attr } from 'ensojs';
 import './navbtn.enso';
 
 import Reset from "../styles/reset.css?inline";
 
-Enso.component('enso-nav', {
+Enso.component('site-nav', {
+    watched: { open: attr(false, Boolean) },
     styles: [
         css(Reset),
         css`
+        :host {
+            --height: 40px;
+            width: 100%;
+        }
         nav {
             display: flex;
             flex-direction: column;
-            list-style: none;
-            z-index: 1000;
-            border: 1px solid red;
+            align-items: center;
+            min-height: var(--height);
+            background: none;
+            width: 100%;
         }
-        .spacer {
-            height: calc(40px + 1em);
+        nav-btn {
+            position: absolute;
+            align-self: flex-end;
+            z-index: 99;
+            border-radius: 10px;
+        }
+        #menu {
+            width: 100%;
+            max-width: 768px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            overflow-y: hidden;
+
+            list-style: none;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.05),
+                    var(--texture-overlay)
+                );
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid var(--stroke-color);
+            scrollbar-width: none;
+
+            height: 0;
+            transition: height 0.5s ease, scrollbar-width 1s;
+        }
+        :host([open]) #menu {
+            height: 100dvh;
+            overflow-y: auto;
         }
     `],
     template: html`
         <nav>
             <nav-btn width="40" height="40"
-                @nav-toggle="()=>console.log('nav changed')"
+                @nav-toggle="()=>@:open = !@:open"
             ></nav-btn>
-            <slot></slot>
+            <ul id="menu"><slot></slot></ul>
         </nav>
-        <div class="spacer"></div>
     `,
 });
