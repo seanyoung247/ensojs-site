@@ -8,6 +8,8 @@ import "./components/section.enso";
 import { escapeCode } from "./components/codepane.enso";
 import "./components/counter.enso";
 import "./components/themeSwitch.enso";
+// Sections
+import "./sections/why.enso"
 
 // Styles
 import Styles from "./app.css?inline";
@@ -96,54 +98,7 @@ Enso.component("enso-app", {
                 </div>
             </div>
         </site-section>
-        <site-section id="why-enso">
-            <h3>Why Enso?</h3>
-
-            <ul class="why-enso-grid">
-                <li class="why-card">
-                    <h4>Minimal</h4>
-                    <p class="lede">~7kb gzipped.</p>
-                    <p>
-                        Write components directly, no required build step,
-                        no compilation pipeline, no framework ceremony.
-                    </p>
-                </li>
-
-                <li class="why-card">
-                    <h4>Fast</h4>
-                    <p class="lede">
-                        Updates are scheduled efficiently and applied directly to the DOM.
-                    </p>
-                    <p>
-                        No virtual DOM, no diffing abstractions,
-                        just precise updates, when they're needed.
-                    </p>
-                </li>
-
-                <li class="why-card">
-                    <h4>Reactive</h4>
-                    <p class="lede">
-                        Reactive state updates templates automatically.
-                    </p>
-                    <p>
-                        Data drives rendering, rendering drives lifecycle,
-                        with predictable timing.
-                    </p>
-                </li>
-
-                <li class="why-card">
-                    <h4>Native</h4>
-                    <p class="lede">
-                        Built on Web Components and the platform itself.
-                    </p>
-                    <p>
-                        Encapsulated styles, real custom elements,
-                        no runtime illusion.
-                    </p>
-                </li>
-            </ul>
-        </site-section>
-
+        <why-enso></why-enso>
     `,
     script: { 
         setup: watches(function() {
