@@ -43,7 +43,6 @@ console.log(Enso.version);
 
 Enso.component("enso-app", {
     settings: { useShadow: false },
-    watched: { counter: prop(5) },
     styles: css(Styles),
     template: html`
         <site-nav>
@@ -83,30 +82,68 @@ Enso.component("enso-app", {
                 <span>Reactive</span>
             </h2>
             <p class="body-text">
-                A micro framework for writing declarative
-                components with modern simplicity.
+                A native-first microframework for building declarative Web Components.
             </p>
-            <code-pane lang="js" enso:ignore>
-               ${counterCode}
-            </code-pane>
-            <div id="live-example">
-                <code-pane lang="html" enso:ignore>
-                    ${counterHTML}
+            <div class="code-example">
+                <code-pane lang="js" enso:ignore>
+                    ${counterCode}
                 </code-pane>
-                <tiny-counter value="5"></tiny-counter>
+                <div class="live-example">
+                    <code-pane lang="html" enso:ignore>
+                        ${counterHTML}
+                    </code-pane>
+                    <tiny-counter value="5"></tiny-counter>
+                </div>
             </div>
-        </enso-section>
-        <enso-section id="why-enso">
+        </site-section>
+        <site-section id="why-enso">
             <h3>Why Enso?</h3>
-            <ul>
-                <li>Built to disappear</li>
-                <li>Write components the way they should feel</li>
-                <li>No build required</li>
-                <li>Small, 7kb gzipped</li>
-                <li>Reactive data binding</li>
-                <li>Truly encapsulated styles and markup</li>
+
+            <ul class="why-enso-grid">
+                <li class="why-card">
+                    <h4>Minimal</h4>
+                    <p class="lede">~7kb gzipped.</p>
+                    <p>
+                        Write components directly, no required build step,
+                        no compilation pipeline, no framework ceremony.
+                    </p>
+                </li>
+
+                <li class="why-card">
+                    <h4>Fast</h4>
+                    <p class="lede">
+                        Updates are scheduled efficiently and applied directly to the DOM.
+                    </p>
+                    <p>
+                        No virtual DOM, no diffing abstractions,
+                        just precise updates, when they're needed.
+                    </p>
+                </li>
+
+                <li class="why-card">
+                    <h4>Reactive</h4>
+                    <p class="lede">
+                        Reactive state updates templates automatically.
+                    </p>
+                    <p>
+                        Data drives rendering, rendering drives lifecycle,
+                        with predictable timing.
+                    </p>
+                </li>
+
+                <li class="why-card">
+                    <h4>Native</h4>
+                    <p class="lede">
+                        Built on Web Components and the platform itself.
+                    </p>
+                    <p>
+                        Encapsulated styles, real custom elements,
+                        no runtime illusion.
+                    </p>
+                </li>
             </ul>
-        </enso-section>
+        </site-section>
+
     `,
     script: { 
         setup: watches(function() {
