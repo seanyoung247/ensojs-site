@@ -124,12 +124,7 @@ body[data-theme="dark"] {
 .token.css-prop     { color: var(--keyword-color); }
 .token.css-value    { color: var(--string-color); }
 
-.highlight {
-    cursor: help;
-    &:hover {
-        background-color: red;
-    }
-}
+.highlight { cursor: help; }
 
 .code-line {
     display: flex;

@@ -168,7 +168,7 @@ export const templateEx = `
 
     <span class="code-line">
         <span class="space">    </span>
-        <span class="highlight"
+        <span class="highlight brush"
             data-title="HTML tagged templates"
             data-description="Templates are defined using the html tagged template literal. This enables declarative HTML with embedded JavaScript expressions, evaluated in component context."
         >
@@ -186,7 +186,7 @@ export const templateEx = `
         <span class="token property">div</span>
         <span class="space"> </span>
 
-        <span class="highlight"
+        <span class="highlight brush"
             data-title="Refs (#ref)"
             data-description="The #ref directive creates a live reference to a DOM node. Refs are available via this.refs in script, and can also be accessed from within templates using the ref namespace."
         >
@@ -199,7 +199,7 @@ export const templateEx = `
         <span class="token string">Hello</span>
         <span class="space"> </span>
 
-        <span class="highlight"
+        <span class="highlight brush"
             data-title="Template bindings"
             data-description="Double curly braces insert JavaScript expressions into the template. The @: prefix accesses watched state and automatically updates the DOM when values change."
         >

@@ -12,7 +12,9 @@ import WhyEnso from "./sections/why.enso"
 // Styles
 import Styles from "./app.css?inline";
 import CodeStyles from "./styles/code.css?inline";
+import BrushStroke from "./styles/brush.css?inline";
 import "./styles/main.css";
+
 import { templateEx } from './examplecode';
 
 

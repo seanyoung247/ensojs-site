@@ -10,7 +10,7 @@
 
         mask-image: url("/brush-stroke.svg");
         mask-repeat: no-repeat;
-        mask-size: 110% 400%;
+        mask-size: 110% 250%;
         mask-position: right center;
 
         transform: scaleX(0);
