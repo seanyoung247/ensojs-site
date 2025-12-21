@@ -1,0 +1,27 @@
+
+.brush {
+    position: relative;
+    z-index: 0;
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--current-stroke);
+
+        mask-image: url("/brush-stroke.svg");
+        mask-repeat: no-repeat;
+        mask-size: 110% 400%;
+        mask-position: right center;
+
+        transform: scaleX(0);
+        transform-origin: left;
+
+        transition:
+            transform 0.28s cubic-bezier(.25,.8,.25,1);
+
+        z-index: -1;
+    }
+    &:hover::before {
+        transform: scaleX(1);
+    }
+}
