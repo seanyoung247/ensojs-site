@@ -12,7 +12,6 @@
     "vite": "^7.2.4"
   },
   "dependencies": {
-    "ensojs": "^1.0.0-rc.8",
-    "prismjs": "^1.30.0"
+    "ensojs": "^1.0.0-rc.8"
   }
 }
