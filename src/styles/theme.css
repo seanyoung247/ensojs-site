@@ -49,38 +49,6 @@
     initial-value: #CA2E2E66;
 }
 
-/* Code highlight colors */
-@property --keyword-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #c65347;
-}
-@property --string-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #4a8077;
-}
-@property --property-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #3f63c5;
-}
-@property --number-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #495d8a;
-}
-@property --comment-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #8C7350B2;
-}
-@property --punctuation-color {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #8a8a8a;
-}
-
 @property --contrast-color {
     syntax: '<color>';
     inherits: true;
@@ -106,14 +74,6 @@
     --stroke-color-dark: #FFFFFF15;
     --current-stroke-dark: #CA2E2E99;
     --contrast-color-dark: #000;
-
-    /* Code Highlights */
-    --keyword-color-dark: #d26a5c;
-    --string-color-dark: #7aa89f;
-    --property-color-dark: #5780d8;
-    --number-color-dark: #6c7ea0;
-    --comment-color-dark: #A68B7099;
-    --punctuation-color-dark: #d8d7d7;
 }
 
 body {
@@ -153,13 +113,6 @@ body {
         --contrast-color: var(--contrast-color-dark);
 
         background-blend-mode: multiply;
-
-        --keyword-color: var(--keyword-color-dark);
-        --string-color: var(--string-color-dark);
-        --property-color: var(--property-color-dark);
-        --number-color: var(--number-color-dark);
-        --comment-color: var(--comment-color-dark);
-        --punctuation-color: var(--punctuation-color-dark);
     }
 }
 
@@ -179,13 +132,6 @@ body[data-theme="light"] {
     --contrast-color: revert;
 
     background-blend-mode: overlay;
-
-    --keyword-color: revert;
-    --string-color: revert;
-    --property-color: revert;
-    --number-color: revert;
-    --comment-color: revert;
-    --punctuation-color: revert;
 }
 
 body[data-theme="dark"] {
@@ -204,12 +150,5 @@ body[data-theme="dark"] {
     --contrast-color: var(--contrast-color-dark);
 
     background-blend-mode: multiply;
-
-    --keyword-color: var(--keyword-color-dark);
-    --string-color: var(--string-color-dark);
-    --property-color: var(--property-color-dark);
-    --number-color: var(--number-color-dark);
-    --comment-color: var(--comment-color-dark);
-    --punctuation-color: var(--punctuation-color-dark);
 }
 

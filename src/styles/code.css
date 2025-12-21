@@ -1,0 +1,137 @@
+
+/* Code highlight colors */
+@property --keyword-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #c65347;
+}
+@property --function-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #c4983a;  
+}
+@property --string-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #4a8077;
+}
+@property --property-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #3f63c5;
+}
+@property --number-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #495d8a;
+}
+@property --comment-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #8C7350B2;
+}
+@property --punctuation-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #8a8a8a;
+}
+
+@property --enso-directive-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #9A4D9E; /* muted magenta */
+}
+
+@property --enso-binding-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #3E8C88; /* teal-green */
+}
+
+@property --enso-event-color {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #C47A3A; /* warm amber */
+}
+
+:root {
+    /* Code Highlights */
+    --keyword-color-dark: #d26a5c;
+    --string-color-dark: #7aa89f;
+    --property-color-dark: #5780d8;
+    --number-color-dark: #6c7ea0;
+    --comment-color-dark: #9C846A99;
+    --punctuation-color-dark: #d8d7d7;
+    --enso-directive-color-dark: #B072B6;
+    --enso-binding-color-dark: #6FB6B1;
+    --enso-event-color-dark: #D69A63;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        --keyword-color: var(--keyword-color-dark);
+        --string-color: var(--string-color-dark);
+        --property-color: var(--property-color-dark);
+        --number-color: var(--number-color-dark);
+        --comment-color: var(--comment-color-dark);
+        --punctuation-color: var(--punctuation-color-dark);
+        --enso-directive: var(--enso-directive-color-dark);
+        --enso-binding: var(--enso-binding-color-dark);
+        --enso-event: var(--enso-event-color-dark);
+    }
+}
+
+body[data-theme="light"] {
+    --keyword-color: revert;
+    --string-color: revert;
+    --property-color: revert;
+    --number-color: revert;
+    --comment-color: revert;
+    --punctuation-color: revert;
+    --enso-directive-color: revert;
+    --enso-binding-color: revert;
+    --enso-event-color: revert;
+}
+
+body[data-theme="dark"] {
+    --keyword-color: var(--keyword-color-dark);
+    --string-color: var(--string-color-dark);
+    --property-color: var(--property-color-dark);
+    --number-color: var(--number-color-dark);
+    --comment-color: var(--comment-color-dark);
+    --punctuation-color: var(--punctuation-color-dark);
+    --enso-directive-color: var(--enso-directive-color-dark);
+    --enso-binding-color: var(--enso-binding-color-dark);
+    --enso-event-color: var(--enso-event-color-dark);
+}
+
+.token { white-space: pre; }
+.token.keyword      { color: var(--keyword-color); }
+.token.function     { color: var(--function-color); }
+.token.string       { color: var(--string-color); }
+.token.property     { color: var(--property-color); }
+.token.number       { color: var(--number-color); }
+.token.punctuation  { color: var(--punctuation-color); }
+.token.comment      { color: var(--comment-color); font-style: italic; }
+.token.attribute    { color: var(--function-color); }
+
+/* Enso */
+.token.directive    { color: var(--enso-directive-color); }
+.token.binding      { color: var(--enso-binding-color); }
+.token.event        { color: var(--enso-event-color); }
+
+/* CSS */
+.token.css-prop     { color: var(--keyword-color); }
+.token.css-value    { color: var(--string-color); }
+
+.highlight {
+    cursor: help;
+    &:hover {
+        background-color: red;
+    }
+}
+
+.code-line {
+    display: flex;
+    & > .space { white-space: pre; }
+}
