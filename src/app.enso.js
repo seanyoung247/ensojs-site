@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, attr } from 'ensojs';
 // Components
 import "./components/icon.enso";
 import "./components/header.enso";
@@ -11,15 +11,28 @@ import WhyEnso from "./sections/why.enso"
 
 // Styles
 import Styles from "./app.css?inline";
+import CodeStyles from "./styles/code.css?inline";
 import "./styles/main.css";
+import { templateEx } from './examplecode';
 
 
 console.log(Enso.version);
 
 
+Enso.component ( 'enso-templates', {
+    watched: { name: attr('World') },
+    template:  html`
+        <div #ref="output">Hello {{ @:name }}</div>
+        <input type = "text"
+            :value="{{ @:name }}" 
+            @change = "(e)=>@:name = e.target.value"
+        /> 
+    `
+}); 
+
 Enso.component("enso-app", {
     settings: { useShadow: false },
-    styles: css(Styles),
+    styles: [css(Styles), css(CodeStyles)],
     template: html`
         ${ Nav }
         <site-header>
@@ -28,5 +41,7 @@ Enso.component("enso-app", {
         </site-header>
         ${ Example }
         ${ WhyEnso }
+
+        ${ templateEx }
     `,
 });

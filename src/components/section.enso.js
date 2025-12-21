@@ -17,6 +17,9 @@ Enso.component('site-section', {
             padding: 1em;
             border-bottom: 2px solid var(--stroke-color);
         }
+        ::slotted(*) {
+            width: 100%;
+        }
     `],
     template: html`
         <section>
