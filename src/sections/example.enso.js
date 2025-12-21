@@ -1,46 +1,9 @@
+
 import Enso, { css, html } from 'ensojs';
+import { counterCode } from '../examplecode';
 import "../components/section.enso";
-import "../components/codepane.enso";
 import "../components/counter.enso";
 
-const charMap = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;",
-    "{": "&#123;",
-    "}": "&#125;"
-};
-
-const escapeCode = (code) => {
-    const out = [];
-    for (let i = 0; i < code.length; i++) {
-        const ch = code[i];
-        out.push(charMap[ch] || ch);
-    }
-    return out.join("");
-}
-
-const counterCode = escapeCode(`
-Enso.component("tiny-counter", {
-    watched: { value: attr(0) },
-    styles: css\`:host {
-        display:flex;
-        justify-content:space-between;
-    }\`,
-    template: html\`
-        <button 
-            @click="()=>@:value--"
-        >-</button>
-        {{ @:value }}
-        <button
-            @click="()=>@:value++"
-        >+</button>
-    \`
-});`
-);
-const counterHTML = escapeCode(`<tiny-counter value="5"></tiny-counter>`);
 
 export default Enso.component('example-section', {
     settings: { useShadow: false },
@@ -61,24 +24,40 @@ export default Enso.component('example-section', {
             text-align: center;
         }
 
+        code {
+            display: block;
+            margin: 0.5rem;
+            padding: 1em;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            background: var(--code-back);
+            border-radius: 0.5rem;
+        }
         .code-example {
-            max-width: 768px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
             width: 100%;
+            & > code {
+                min-width: fit-content;
+            }
         }
         .live-example {
             display: flex;
             justify-content: center;
-            align-items: center;
+            
             flex-wrap: wrap;
             padding-top: 0.5rem;
-            & > code-pane {
-                flex: 1 1 fit-content;
+            & > code {
+                margin-top: auto;
             }
             & > tiny-counter {
                 flex: 1 1 25%;
                 min-width: 100px;
                 max-width: 200px;
-                margin: 0 0.5rem;
+                margin: 0 0.5rem auto;
             }
         }
     `,
@@ -93,14 +72,17 @@ export default Enso.component('example-section', {
                 A native-first microframework for building declarative Web Components.
             </p>
             <div class="code-example">
-                <code-pane lang="js" enso:ignore>
-                    ${counterCode}
-                </code-pane>
+                <code>
+                    ${ counterCode }
+                </code>
                 <div class="live-example">
-                    <code-pane lang="html" enso:ignore>
-                        ${counterHTML}
-                    </code-pane>
-                    <tiny-counter value="5"></tiny-counter>
+                    <code>
+                        <counter-html #ref="counter" count="5"></counter-html>
+                    </code>
+                    <tiny-counter value="5" 
+                        @changed="(e)=>#:counter.watched.count = e.detail"
+                    >
+                    </tiny-counter>
                 </div>
             </div>
         </site-section>

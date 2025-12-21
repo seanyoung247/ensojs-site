@@ -7,6 +7,7 @@ export default Enso.component("why-enso", {
     settings: { useShadow: false },
     styles: css`
         .why-enso-grid {
+            width: 100%;
             list-style: none;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
