@@ -8,7 +8,7 @@
 @property --function-color {
     syntax: '<color>';
     inherits: true;
-    initial-value: #c4983a;  
+    initial-value: #c58700;  
 }
 @property --string-color {
     syntax: '<color>';
@@ -39,19 +39,19 @@
 @property --enso-directive-color {
     syntax: '<color>';
     inherits: true;
-    initial-value: #9A4D9E; /* muted magenta */
+    initial-value: #9A4D9E;
 }
 
 @property --enso-binding-color {
     syntax: '<color>';
     inherits: true;
-    initial-value: #3E8C88; /* teal-green */
+    initial-value: #9A4D9E; /* #356e75; */
 }
 
 @property --enso-event-color {
     syntax: '<color>';
     inherits: true;
-    initial-value: #C47A3A; /* warm amber */
+    initial-value: #c05a00; 
 }
 
 :root {
@@ -63,7 +63,7 @@
     --comment-color-dark: #9C846A99;
     --punctuation-color-dark: #d8d7d7;
     --enso-directive-color-dark: #B072B6;
-    --enso-binding-color-dark: #6FB6B1;
+    --enso-binding-color-dark: #B072B6; /*#4c9ca7;*/
     --enso-event-color-dark: #D69A63;
 }
 
@@ -116,15 +116,23 @@ body[data-theme="dark"] {
 .token.attribute    { color: var(--function-color); }
 
 /* Enso */
-.token.directive    { color: var(--enso-directive-color); }
-.token.binding      { color: var(--enso-binding-color); }
-.token.event        { color: var(--enso-event-color); }
+.token.directive,
+.token.binding,
+.token.event        { color: var(--enso-binding-color); }
 
 /* CSS */
 .token.css-prop     { color: var(--keyword-color); }
 .token.css-value    { color: var(--string-color); }
 
-.highlight { cursor: help; }
+.highlight { 
+    display: flex;
+    cursor: help;
+}
+.highlight:hover,
+.highlight.active {
+    text-shadow:
+        1px 1px 4px var(--contrast-color);
+}
 
 .code-line {
     display: flex;

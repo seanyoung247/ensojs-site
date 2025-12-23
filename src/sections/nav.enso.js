@@ -13,6 +13,7 @@ export default Enso.component('nav-section', {
     styles: [css(BrushStroke), css`
         site-nav {
             position: fixed;
+            z-index: 99;
             top: 0;
             max-width: 1920px;
         }

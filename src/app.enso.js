@@ -1,8 +1,9 @@
 
-import Enso, { css, html, attr } from 'ensojs';
+import Enso, { css, html, attr, watches, lifecycle } from 'ensojs';
 // Components
 import "./components/icon.enso";
 import "./components/header.enso";
+import "./components/annotatedCode.enso";
 
 // Sections
 import Nav from "./sections/nav.enso"
@@ -12,7 +13,6 @@ import WhyEnso from "./sections/why.enso"
 // Styles
 import Styles from "./app.css?inline";
 import CodeStyles from "./styles/code.css?inline";
-import BrushStroke from "./styles/brush.css?inline";
 import "./styles/main.css";
 
 import { templateEx } from './examplecode';
@@ -21,7 +21,7 @@ import { templateEx } from './examplecode';
 console.log(Enso.version);
 
 
-Enso.component ( 'enso-templates', {
+Enso.component ('enso-templates', {
     watched: { name: attr('World') },
     template:  html`
         <div #ref="output">Hello {{ @:name }}</div>
@@ -44,6 +44,8 @@ Enso.component("enso-app", {
         ${ Example }
         ${ WhyEnso }
 
-        ${ templateEx }
-    `,
+        <annotated-code #ref="test">
+            ${ templateEx }
+        </annotated-code>
+    `
 });

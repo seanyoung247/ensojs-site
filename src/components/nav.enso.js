@@ -24,7 +24,7 @@ Enso.component('site-nav', {
         nav-btn {
             position: absolute;
             align-self: flex-end;
-            z-index: 99;
+            z-index: 999;
             border-radius: 10px;
         }
         #menu {

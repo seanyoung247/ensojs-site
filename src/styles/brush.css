@@ -1,7 +1,7 @@
 
 .brush {
     position: relative;
-    z-index: 0;
+
     &::before {
         content: "";
         position: absolute;
@@ -21,7 +21,8 @@
 
         z-index: -1;
     }
-    &:hover::before {
+    &:hover::before,
+    &.active::before {
         transform: scaleX(1);
     }
 }

@@ -203,11 +203,9 @@ export const templateEx = `
             data-title="Template bindings"
             data-description="Double curly braces insert JavaScript expressions into the template. The @: prefix accesses watched state and automatically updates the DOM when values change."
         >
-            <span class="token binding">{{</span>
-            <span class="space"> </span>
+            <span class="token binding">{{ </span>
             <span class="token binding">@:</span>
-            <span class="token variable">name</span>
-            <span class="space"> </span>
+            <span class="token variable">name </span>
             <span class="token binding">}}</span>
         </span>
 
@@ -219,11 +217,7 @@ export const templateEx = `
     <span class="code-line">
         <span class="space">        </span>
         <span class="token punctuation">&lt;</span>
-        <span class="token property">input</span>
-    </span>
-
-    <span class="code-line">
-        <span class="space">            </span>
+        <span class="token property">input </span>
         <span class="token property">type</span>
         <span class="token punctuation">=</span>
         <span class="token string">"text"</span>
@@ -231,48 +225,55 @@ export const templateEx = `
 
     <span class="code-line">
         <span class="space">            </span>
-        <span class="token binding">:value</span>
-        <span class="token punctuation">=</span>
-        <span class="token string">"{{</span>
-        <span class="space"> </span>
-        <span class="token binding">@:</span>
-        <span class="token variable">name</span>
-        <span class="space"> </span>
-        <span class="token string">}}"</span>
+        <span class="highlight brush"
+            data-title="Attribute bindings"
+            data-description="Attributes can be bound to JavaScript expressions using the : prefix. When the bound value changes, Enso updates the attribute automatically."
+        >
+            <span class="token binding">:value</span>
+            <span class="token punctuation">=</span>
+            <span class="token string">"{{ </span>
+            <span class="token binding">@:</span>
+            <span class="token variable">name</span>
+            <span class="token string"> }}"</span>
+        </span>
     </span>
 
     <span class="code-line">
         <span class="space">            </span>
-        <span class="token event">@change</span>
-        <span class="token punctuation">=</span>
-        <span class="token string">"(e)=&gt;</span>
-        <span class="token binding">@:</span>
-        <span class="token variable">name</span>
-        <span class="token punctuation">=</span>
-        <span class="token variable">e</span>
-        <span class="token punctuation">.</span>
-        <span class="token property">target</span>
-        <span class="token punctuation">.</span>
-        <span class="token property">value"</span>
+        <span class="highlight brush"
+            data-title="Inline event handlers"
+            data-description="Events can be handled directly in the template using the @event syntax. Handlers run in component context and can update watched state inline."
+        >
+            <span class="token event">@change</span>
+            <span class="token punctuation">=</span>
+            <span class="token string">"(e)=&gt;</span>
+            <span class="token binding">@:</span>
+            <span class="token variable">name</span>
+            <span class="token punctuation">=</span>
+            <span class="token variable">e</span>
+            <span class="token punctuation">.</span>
+            <span class="token property">target</span>
+            <span class="token punctuation">.</span>
+            <span class="token property">value"</span>
+        </span>
     </span>
 
     <span class="code-line">
         <span class="space">        </span>
-        <span class="token punctuation">/&gt;</span>
+        <span class="token punctuation">/&gt;\`</span>
     </span>
-
-    <span class="code-line">
-        <span class="space">    </span>
-        <span class="token punctuation">\`</span>
-    </span>
-
     <span class="code-line">
         <span class="token punctuation">});</span>
     </span>
 `
 
 // Component Styles
+export const stylesEx = ``;
 // Component Expose
+export const exposeEx = ``;
 // Component Watched
+export const watchedEx = ``;
 // Component Script
+export const scriptEx = ``;
 // Component Settings
+export const settingsEx = ``;
