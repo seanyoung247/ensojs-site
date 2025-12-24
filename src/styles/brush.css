@@ -21,8 +21,8 @@
 
         z-index: -1;
     }
-    &:hover::before,
-    &.active::before {
+    &.active::before,
+    &.hover:hover::before {
         transform: scaleX(1);
     }
 }

@@ -77,10 +77,10 @@ export default Enso.component('nav-section', {
             <li class="nav-section">
                 <h2>On this page</h2>
                 <ul>
-                    <li class="nav-item brush" @click="this.closeNav">
+                    <li class="nav-item brush hover" @click="this.closeNav">
                         <a href="#why-enso">Why Enso?</a>
                     </li>
-                    <li class="nav-item brush" @click="this.closeNav">
+                    <li class="nav-item brush hover" @click="this.closeNav">
                         <a href="#overview">Overview</a>
                     </li>
                 </ul>
@@ -88,9 +88,9 @@ export default Enso.component('nav-section', {
             <li class="nav-section">
                 <h2>Explore</h2>
                 <ul>
-                    <li class="nav-item brush">Dummy Link</li>
-                    <li class="nav-item brush">Dummy Link</li>
-                    <li class="nav-item brush">Dummy Link</li>
+                    <li class="nav-item brush hover">Dummy Link</li>
+                    <li class="nav-item brush hover">Dummy Link</li>
+                    <li class="nav-item brush hover">Dummy Link</li>
                 </ul>
             </li>
             <li class="nav-section">
