@@ -203,10 +203,10 @@ export const templateEx = `
             data-title="Template bindings"
             data-description="Double curly braces insert JavaScript expressions into the template. The @: prefix accesses watched state and automatically updates the DOM when values change."
         >
-            <span class="token binding">{{ </span>
+            <span class="token string">{{ </span>
             <span class="token binding">@:</span>
             <span class="token variable">name </span>
-            <span class="token binding">}}</span>
+            <span class="token string">}}</span>
         </span>
 
         <span class="token punctuation">&lt;/</span>

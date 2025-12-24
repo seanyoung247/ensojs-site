@@ -28,3 +28,10 @@ h3 {
     text-align: center;
     padding-bottom: 1rem;
 }
+
+annotated-code [data-title][data-description]::after {
+    content: '[' attr(data-index) ']';
+    vertical-align: super;
+    font-size: 0.75em;
+    color: var(--muted-text);
+}
