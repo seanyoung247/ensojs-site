@@ -18,9 +18,6 @@ import "./styles/main.css";
 import { templateEx } from './examplecode';
 
 
-console.log(Enso.version);
-
-
 Enso.component ('enso-templates', {
     watched: { name: attr('World') },
     template:  html`
@@ -47,5 +44,9 @@ Enso.component("enso-app", {
         <annotated-code #ref="test">
             ${ templateEx }
         </annotated-code>
+
+        <footer>
+            Built with Enso v.${Enso.version}
+        </footer>
     `
 });
