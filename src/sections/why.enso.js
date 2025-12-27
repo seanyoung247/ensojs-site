@@ -13,10 +13,6 @@ export default Enso.component("why-enso", {
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.5rem;
             & > .why-card {
-                background: var(--back-overlay);
-                border-radius: 0.75rem;
-                padding: 1.25rem;
-                color: var(--primary-text);
                 transition: 
                     transform 200ms ease, 
                     box-shadow 200ms ease;
@@ -46,7 +42,7 @@ export default Enso.component("why-enso", {
             <h3>Why Enso?</h3>
 
             <ul class="why-enso-grid">
-                <li class="why-card">
+                <li class="why-card code-pane">
                     <h4>Minimal</h4>
                     <p class="lede">~7kb gzipped.</p>
                     <p>
@@ -55,7 +51,7 @@ export default Enso.component("why-enso", {
                     </p>
                 </li>
 
-                <li class="why-card">
+                <li class="why-card code-pane">
                     <h4>Fast</h4>
                     <p class="lede">
                         Updates are scheduled efficiently and applied directly to the DOM.
@@ -66,7 +62,7 @@ export default Enso.component("why-enso", {
                     </p>
                 </li>
 
-                <li class="why-card">
+                <li class="why-card code-pane">
                     <h4>Reactive</h4>
                     <p class="lede">
                         Reactive state updates templates automatically.
@@ -77,7 +73,7 @@ export default Enso.component("why-enso", {
                     </p>
                 </li>
 
-                <li class="why-card">
+                <li class="why-card code-pane">
                     <h4>Native</h4>
                     <p class="lede">
                         Built on Web Components and the platform itself.

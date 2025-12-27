@@ -126,15 +126,24 @@ body[data-theme="dark"] {
 
 .highlight { 
     display: flex;
-    cursor: help;
-}
-.highlight:hover,
-.highlight.active {
-    text-shadow:
-        1px 1px 4px var(--contrast-color);
+    &.active {
+        text-shadow:
+            1px 1px 4px var(--contrast-color);
+    }
 }
 
 .code-line {
     display: flex;
     & > .space { white-space: pre; }
+}
+
+/* Presentation */
+.code-pane {
+    display: block;
+    margin: 0.5rem;
+    padding: 1em;
+    font-size: 0.8rem;
+    overflow-x: auto;
+    background: var(--code-back);
+    border-radius: 0.5rem;
 }

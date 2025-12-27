@@ -24,15 +24,6 @@ export default Enso.component('example-section', {
             text-align: center;
         }
 
-        code {
-            display: block;
-            margin: 0.5rem;
-            padding: 1em;
-            font-size: 0.8rem;
-            overflow-x: auto;
-            background: var(--code-back);
-            border-radius: 0.5rem;
-        }
         .code-example {
             display: flex;
             flex-direction: row;
@@ -72,11 +63,11 @@ export default Enso.component('example-section', {
                 A native-first microframework for building declarative Web Components.
             </p>
             <div class="code-example">
-                <code>
+                <code class="code-pane">
                     ${ counterCode }
                 </code>
                 <div class="live-example">
-                    <code>
+                    <code class="code-pane">
                         <counter-html #ref="counter" count="5"></counter-html>
                     </code>
                     <tiny-counter value="5" 
