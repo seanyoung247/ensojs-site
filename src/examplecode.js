@@ -153,7 +153,10 @@ export const templateEx = `
         <span class="token punctuation">:</span>
         <span class="space"> </span>
         <span class="token punctuation">{</span>
-        <span class="space"> </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
         <span class="token property">name</span>
         <span class="token punctuation">:</span>
         <span class="space"> </span>
@@ -161,16 +164,18 @@ export const templateEx = `
         <span class="token punctuation">(</span>
         <span class="token string">'World'</span>
         <span class="token punctuation">)</span>
-        <span class="space"> </span>
-        <span class="token punctuation">}</span>
-        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token punctuation">},</span>
     </span>
 
     <span class="code-line">
         <span class="space">    </span>
         <span class="highlight brush"
             data-title="HTML tagged templates"
-            data-description="Templates are defined using the html tagged template literal. This enables declarative HTML with embedded JavaScript expressions, evaluated in component context."
+            data-description="Templates are defined using the html tagged template literal. This enables declarative HTML with embedded JavaScript expressions evaluated in component context."
         >
             <span class="token property">template</span>
             <span class="token punctuation">:</span>
@@ -188,7 +193,7 @@ export const templateEx = `
 
         <span class="highlight brush"
             data-title="Refs (#ref)"
-            data-description="The #ref directive creates a live reference to a DOM node. Refs are available via this.refs in script, and can also be accessed from within templates using the ref namespace."
+            data-description="The #ref directive creates a live reference to a DOM node. Refs are available via this.refs in script and can be accessed from templates."
         >
             <span class="token directive">#ref</span>
             <span class="token punctuation">=</span>
@@ -196,19 +201,26 @@ export const templateEx = `
         </span>
 
         <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
         <span class="token string">Hello</span>
         <span class="space"> </span>
 
         <span class="highlight brush"
             data-title="Template bindings"
-            data-description="Double curly braces insert JavaScript expressions into the template. The @: prefix accesses watched state and automatically updates the DOM when values change."
+            data-description="Double curly braces insert JavaScript values into the template. The @: prefix accesses watched state and keeps the DOM in sync."
         >
             <span class="token string">{{ </span>
             <span class="token binding">@:</span>
-            <span class="token variable">name </span>
-            <span class="token string">}}</span>
+            <span class="token variable">name</span>
+            <span class="token string"> }}</span>
         </span>
+    </span>
 
+    <span class="code-line">
+        <span class="space">        </span>
         <span class="token punctuation">&lt;/</span>
         <span class="token property">div</span>
         <span class="token punctuation">&gt;</span>
@@ -217,7 +229,11 @@ export const templateEx = `
     <span class="code-line">
         <span class="space">        </span>
         <span class="token punctuation">&lt;</span>
-        <span class="token property">input </span>
+        <span class="token property">input</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
         <span class="token property">type</span>
         <span class="token punctuation">=</span>
         <span class="token string">"text"</span>
@@ -242,7 +258,7 @@ export const templateEx = `
         <span class="space">            </span>
         <span class="highlight brush"
             data-title="Inline event handlers"
-            data-description="Events can be handled directly in the template using the @event syntax. Handlers run in component context and can update watched state inline."
+            data-description="Events can be handled inline using the @event syntax. Handlers run in component context and can update watched state directly."
         >
             <span class="token event">@change</span>
             <span class="token punctuation">=</span>
@@ -262,10 +278,11 @@ export const templateEx = `
         <span class="space">        </span>
         <span class="token punctuation">/&gt;\`</span>
     </span>
+
     <span class="code-line">
         <span class="token punctuation">});</span>
     </span>
-`
+`;
 
 // Component Styles
 export const stylesEx = ``;
