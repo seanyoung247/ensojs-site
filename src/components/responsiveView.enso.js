@@ -2,7 +2,7 @@
 import Enso, { html, css, attr, watches } from 'ensojs';
 import { range } from 'ensojs/helpers';
 
-import './arrowicons.enso';
+import './icons/arrow.enso';
 
 import Reset from '../styles/reset.css?inline';
 

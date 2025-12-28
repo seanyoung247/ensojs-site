@@ -1,9 +1,10 @@
 
-import Enso, { css, html, attr, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, attr } from 'ensojs';
 // Components
-import "./components/icon.enso";
-import "./components/header.enso";
+import "./components/icons/icon.enso";
+import "./components/layout/header.enso";
 import "./components/annotatedCode.enso";
+import "./components/tabs/";
 
 // Sections
 import Nav from "./sections/nav.enso"
@@ -12,8 +13,8 @@ import WhyEnso from "./sections/why.enso"
 
 // Styles
 import Styles from "./app.css?inline";
-import CodeStyles from "./styles/code.css?inline";
-import "./styles/main.css";
+import CodeStyles from "@styles/code.css?inline";
+import "@styles/main.css";
 
 import { templateEx } from './examplecode';
 
@@ -41,9 +42,19 @@ Enso.component("enso-app", {
         ${ Example }
         ${ WhyEnso }
 
-        <annotated-code #ref="test">
-            ${ templateEx }
-        </annotated-code>
+        <tabbed-view tab-width="equal">
+            <tab-panel title="Templates">
+                <annotated-code>
+                    ${ templateEx }
+                </annotated-code>
+            </tab-panel>
+            <tab-panel title="test">
+                Hello World
+            </tab-panel>
+            <tab-panel title="test2">
+                Hello World
+            </tab-panel>
+        </tabbed-view>
 
         <footer>
             Built with Enso v.${Enso.version}

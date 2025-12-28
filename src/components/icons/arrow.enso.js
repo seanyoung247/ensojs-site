@@ -1,5 +1,5 @@
 import Enso, { html, css, } from 'ensojs';
-import Reset from '../styles/reset.css?inline';
+import Reset from '@styles/reset.css?inline';
 
 
 Enso.component('arrow-icon', {

@@ -2,7 +2,7 @@
 import Enso, { css, html, attr } from 'ensojs';
 import './navbtn.enso';
 
-import Reset from "../styles/reset.css?inline";
+import Reset from "@styles/reset.css?inline";
 
 Enso.component('site-nav', {
     watched: { open: attr(false, Boolean) },

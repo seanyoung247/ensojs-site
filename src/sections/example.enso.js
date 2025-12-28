@@ -1,7 +1,7 @@
 
 import Enso, { css, html } from 'ensojs';
 import { counterCode } from '../examplecode';
-import "../components/section.enso";
+import "../components/layout/section.enso";
 import "../components/counter.enso";
 
 

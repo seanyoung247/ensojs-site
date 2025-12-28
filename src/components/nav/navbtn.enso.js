@@ -1,6 +1,6 @@
 
 import Enso, { attr, css, html, watches } from 'ensojs';
-import Reset from "../styles/reset.css?inline";
+import Reset from "@styles/reset.css?inline";
 
 
 Enso.component('nav-btn', {

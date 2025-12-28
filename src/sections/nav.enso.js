@@ -1,6 +1,6 @@
 
 import Enso, { css, html, watches, lifecycle } from 'ensojs';
-import "../components/nav.enso";
+import "../components/nav/nav.enso";
 import "../components/themeSwitch.enso";
 // Styles
 import BrushStroke from "../styles/brush.css?inline";

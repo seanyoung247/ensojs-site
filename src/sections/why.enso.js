@@ -1,6 +1,6 @@
 
 import Enso, { css, html } from 'ensojs';
-import "../components/section.enso";
+import "../components/layout/section.enso";
 
 
 export default Enso.component("why-enso", {
@@ -76,11 +76,11 @@ export default Enso.component("why-enso", {
                 <li class="why-card code-pane">
                     <h4>Native</h4>
                     <p class="lede">
-                        Built on Web Components and the platform itself.
+                        Built on Web Components, not abstractions.
                     </p>
                     <p>
-                        Encapsulated styles, real custom elements,
-                        no runtime illusion.
+                        Encapsulated styles. Real custom elements.
+                        No runtime tricks.
                     </p>
                 </li>
             </ul>

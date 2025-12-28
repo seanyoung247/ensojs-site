@@ -1,6 +1,6 @@
 
 import Enso, { css, html } from 'ensojs';
-import Reset from "../styles/reset.css?inline";
+import Reset from "@styles/reset.css?inline";
 
 
 Enso.component('site-section', {
