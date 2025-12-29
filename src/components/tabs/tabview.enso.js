@@ -41,7 +41,7 @@ Enso.component('tabbed-view', {
             border: none;
             border-radius: var(--tab-radius);
             padding: 0.25em 0.5em;
-            &[aria-selected] {
+            &[aria-selected="true"] {
                 background: var(--tab-active-bg);
                 box-shadow: 1px 0 0 var(--tab-bg);
                 z-index: 2;
@@ -55,7 +55,7 @@ Enso.component('tabbed-view', {
 
                 :id="tab-{{ tab.index }}"
                 :aria-controls="panel-{{ tab.index }}"
-                :aria-selected="{{ tab.index === @:selected }}"
+                :aria-selected="{{ tab.index === @:selected ? 'true' : 'false' }}"
                 :tabindex="{{ tab.index === @:selected ? 0 : -1 }}"
 
                 @click="() => @:selected = tab.index"
@@ -84,8 +84,9 @@ Enso.component('tabbed-view', {
 
         onSelection: watches(function(_,val) {
             if (!this.watched.tabs.length) return;
+
             const max = this.watched.tabs.length - 1;
-            const sel = Math.min(Math.max(val, 0), max);
+            const sel = clamp(0, max, val);
             if (sel !== val) {
                 this.watched.selected = sel;
                 return;
@@ -96,6 +97,7 @@ Enso.component('tabbed-view', {
         }, ['selected']),
 
         onKeyDown(e, index) {
+            const manual = this.getAttribute('activation') === 'manual';
             const count = this.watched.tabs.length - 1;
             const next = { 
                 'ArrowRight': index + 1,
@@ -106,8 +108,10 @@ Enso.component('tabbed-view', {
             if (next === undefined) return;
 
             e.preventDefault();  
-            this.watched.selected = clamp(0, count, next);
-            this.shadowRoot.querySelector(`#tab-${this.watched.selected}`)?.focus();
+            if (!manual) this.watched.selected = clamp(0, count, next);
+            this.shadowRoot.querySelector(
+                `#tab-${this.watched.selected}`
+            )?.focus();
         }
     }
 });
