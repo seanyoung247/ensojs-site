@@ -20,7 +20,7 @@
 div[role="tablist"] {
     display: grid;
     grid-auto-flow: column;
-    /* default, tabs fit content size */
+    /* default, tab buttons fit title size */
     grid-auto-columns: max-content;
     grid-template-rows: auto;
     align-content: start;
