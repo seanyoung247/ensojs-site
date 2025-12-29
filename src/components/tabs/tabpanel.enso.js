@@ -5,14 +5,14 @@ import Reset from './reset.css?inline';
 Enso.component('tab-panel', {
     settings: { useShadow: false },
     styles: [css(Reset),css`
-        tab-panel {
-            --panel-border: darkgrey;
-            --panel-bg: lightgrey;
-
-            border-top: 2px solid var(--panel-border);
-            background: var(--panel-bg);
-            display: block;
+        :where(tab-panel) {
+            border-top: 2px solid darkgrey;
+            background: lightgrey;
+            padding: 0.5em;
             width: 100%;
+        }
+        tab-panel {
+            display: block;
             &[hidden] {
                 display: none;
             }
@@ -45,6 +45,7 @@ Enso.component('tab-panel', {
             this.setAttribute(
                 'aria-labelledby', `tab-${this._index}`
             );
+            this.setAttribute('tabindex', '0');
         }
     }
 });
