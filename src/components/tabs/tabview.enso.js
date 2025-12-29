@@ -1,6 +1,6 @@
 
 import Enso, { html, css, prop, attr, watches } from 'ensojs';
-import Reset from './reset.css?inline';
+import Styles from './tabview.css?inline';
 
 
 const clamp = (min, max, val) => Math.max(min, Math.min(val ,max));
@@ -10,44 +10,7 @@ Enso.component('tabbed-view', {
         tabs: prop([]),
         selected: attr(0)
     },
-    styles: [ css(Reset), css`
-        :host {
-            --tab-border: transparent;
-            --tab-bg: 
-                lightgrey 
-                linear-gradient(
-                    0deg, rgba(0,0,0,0.5), transparent
-                ) no-repeat left bottom / 100% 15%;
-            --tab-active-bg: lightgrey;
-
-            --tab-padding: 0 0.5em;
-            --tab-radius: 0.25em 0.25em 0 0;
-            --tab-gap: 0.5em;
-        }
-        div[role="tablist"] {
-            display: grid;
-            grid-auto-flow: column;
-            grid-auto-columns: max-content;
-            grid-template-rows: auto;
-            align-content: start;
-            padding: var(--tab-padding);
-            gap: var(--tab-gap);
-        }
-        :host([tab-width="equal"]) > div[role="tablist"] {
-            grid-auto-columns: 1fr;
-        }
-        button[role="tab"] {
-            background: var(--tab-bg);
-            border: none;
-            border-radius: var(--tab-radius);
-            padding: 0.25em 0.5em;
-            &[aria-selected="true"] {
-                background: var(--tab-active-bg);
-                box-shadow: 1px 0 0 var(--tab-bg);
-                z-index: 2;
-            }
-        }
-    `],
+    styles: css(Styles),
     template: html`
         <div role="tablist" part="tablist" aria-orientation="horizontal">
             <button *for="tab of @:tabs"
@@ -107,11 +70,15 @@ Enso.component('tabbed-view', {
             }[e.key];
             if (next === undefined) return;
 
-            e.preventDefault();  
-            if (!manual) this.watched.selected = clamp(0, count, next);
+            e.preventDefault();
+            const selected = clamp(0, count, next);
             this.shadowRoot.querySelector(
-                `#tab-${this.watched.selected}`
+                `#tab-${selected}`
             )?.focus();
+
+            if (!manual && this.watched.selected != selected) {
+                this.watched.selected = selected;
+            }
         }
     }
 });
