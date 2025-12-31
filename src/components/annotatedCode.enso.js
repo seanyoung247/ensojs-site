@@ -26,8 +26,9 @@ Enso.component('annotated-code', {
             display: grid;
             grid-template-columns: auto 1fr;
             grid-auto-rows: auto;
-            column-gap: 0.75rem;
+            column-gap: var(--space-lg);
             align-items: center;
+            margin: var(--space-md);
             &::before {
                 content: attr(data-index);
                 grid-area: 1 / 1 / span 2 / 2;

@@ -24,7 +24,7 @@ Enso.component('responsive-view', {
                 pointer-events: auto;
                 border: none;
                 background: transparent;
-                padding: 0.5rem;
+                padding: var(--space-md);
 
                 height: 100%;
                 grid-column: 1 / 3;

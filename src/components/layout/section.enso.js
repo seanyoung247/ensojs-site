@@ -14,7 +14,7 @@ Enso.component('site-section', {
             display: flex;
             flex-direction: var(--direction);
             align-items: var(--align);
-            padding: 1em;
+            padding: var(--space-md);
             border-bottom: 2px solid var(--stroke-color);
         }
         ::slotted(*) {

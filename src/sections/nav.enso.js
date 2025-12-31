@@ -22,9 +22,9 @@ export default Enso.component('nav-section', {
             color: var(--primary-text);
             min-width: 75%;
             backdrop-filter: blur(4px);
-            border-radius: 0.5rem;
-            padding: 0.5rem;
-            margin: 1.5rem 0;
+            border-radius: var(--space-md);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
             &:first-of-type {
                 margin-top: 3rem;
             }
@@ -53,14 +53,14 @@ export default Enso.component('nav-section', {
 
         .nav-item {
             color: var(--primary-text);
-            padding: 0.75rem 0.5rem;
+            padding: 0.75rem var(--space-md);
             position: relative;
             & a {
                 display: block;
                 text-decoration: none;
                 font-weight: bold;
                 color: inherit;
-                padding: 0.5em ;
+                padding: var(--space-md);
             }
             &.theme {
                 display: flex;

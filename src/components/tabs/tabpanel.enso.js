@@ -8,7 +8,7 @@ Enso.component('tab-panel', {
         :where(tab-panel) {
             border-top: 2px solid darkgrey;
             background: lightgrey;
-            padding: 0.5em;
+            padding: 0.5rem;
             width: 100%;
         }
         tab-panel {

@@ -140,11 +140,11 @@ body[data-theme="dark"] {
 /* Presentation */
 .code-pane {
     display: block;
-    margin: 0.5rem;
-    padding: 1em;
+    margin: var(--space-xs);
+    padding: var(--space-sm);
     font-size: 0.8rem;
     overflow-x: auto;
     background: var(--code-back);
-    border: 2px solid var(--code-back);
+    border: var(--space-sm) solid var(--code-back);
     border-radius: 0.5rem;
 }

@@ -31,9 +31,9 @@ export default Enso.component('example-section', {
             justify-content: center;
             align-items: stretch;
             width: 100%;
-            & > code {
+            /*& > code {
                 min-width: fit-content;
-            }
+            }*/
         }
         .live-example {
             display: flex;
