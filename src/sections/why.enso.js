@@ -10,7 +10,7 @@ export default Enso.component("why-enso", {
             width: 100%;
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1.5rem;
             & > .why-card {
                 transition: 

@@ -135,6 +135,18 @@ export const counterHTML = Enso.component('counter-html', {
 });
 
 // Component Templates
+/*
+Enso.component ('enso-templates', {
+    watched: { name: attr('World') },
+    template:  html`
+        <div #ref="output">Hello {{ @:name }}</div>
+        <input type = "text"
+            :value="{{ @:name }}" 
+            @change = "(e)=>@:name = e.target.value"
+        /> 
+    `
+});
+*/
 export const templateEx = `
     <span class="code-line">
         <span class="token property">Enso</span>
@@ -285,6 +297,27 @@ export const templateEx = `
 `;
 
 // Component Styles
+/*
+Enso.component('enso-styles', {
+    watched: { value: attr(0) },
+    styles: [css(Reset), css`
+        button {
+            background: lightgrey;
+            padding: 0.5rem;
+            &:active:not([disabled]) {
+                filter: brightness(2.0);
+            }
+        }
+    `],
+    template: html`
+        <button 
+            @click="()=>@:value++"
+            :style="color: {{ @:value >= 9 ? 'red' : 'black' }};"
+            :disabled="{{ @:value >= 9 }}">
+            Value = {{ @:value }}
+        </button>`
+});
+*/
 export const stylesEx = `
     <span class="code-line">
         <span class="token property">Enso</span>
@@ -510,10 +543,277 @@ export const stylesEx = `
     </span>
 `;
 
+// Component Watched
+/*
+Enso.component('enso-watched', {
+    watched: {
+        items: prop([], true),
+        locked: attr(false)
+    },
+    template: html`
+        <input
+            @change="e => {
+                if (@:locked) return;
+                @:items.push(e.target.value);
+                e.target.value = '';
+            }"
+            :disabled="{{ @:locked }}" 
+        />
+        <ul><li 
+            *for="[idx, item] of @:items.entries()"
+        >
+            {{ item }}
+            <button @click="()=>@:items.splice(idx, 1);">
+                X
+            </button>
+        </li></ul>`
+});
+*/
+export const watchedEx = `
+    <span class="code-line">
+        <span class="token property">Enso</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">component</span>
+        <span class="token punctuation">(</span>
+        <span class="token string">'enso-watched'</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="highlight brush"
+            data-title="Watched properties"
+            data-description="Watched values define reactive state. By default, updates are detected when the value itself changes."
+        >
+            <span class="token property">watched</span>
+        </span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token property">items</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">prop</span>
+        <span class="token punctuation">(</span>
+        <span class="token punctuation">[</span>
+        <span class="token punctuation">]</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="highlight brush"
+            data-title="Deep reactivity (opt-in)"
+            data-description="Passing true enables deep reactivity. Mutating arrays or objects triggers updates automatically, but with additional runtime cost."
+        >
+            <span class="token boolean">true</span>
+        </span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token property">locked</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="highlight brush"
+            data-title="Attributes vs properties"
+            data-description="attr creates watched state backed by an HTML attribute. Attributes accept only strings, numbers, or booleans."
+        >
+            <span class="token function">attr</span>
+            <span class="token punctuation">(</span>
+            <span class="token boolean">false</span>
+            <span class="token punctuation">)</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token punctuation">},</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token property">template</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">html</span>
+        <span class="token punctuation">\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">input</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token binding">:disabled</span>
+        <span class="token punctuation">=</span>
+        <span class="token string">"{{ </span>
+        <span class="token binding">@:</span>
+        <span class="token variable">locked</span>
+        <span class="token string"> }}"</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token event">@change</span>
+        <span class="token punctuation">=</span>
+        <span class="token string">"e =&gt; {</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token keyword">if</span>
+        <span class="token space"> </span>
+        <span class="token punctuation">(</span>
+        <span class="token binding">@:</span>
+        <span class="token variable">locked</span>
+        <span class="token punctuation">)</span>
+        <span class="token space"> </span>
+        <span class="token keyword">return</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="highlight brush"
+            data-title="Direct mutation"
+            data-description="Watched state is mutated directly. When deep reactivity is enabled, changes to arrays or objects update the DOM automatically."
+        >
+            <span class="token binding">@:</span>
+            <span class="token variable">items</span>
+            <span class="token punctuation">.</span>
+            <span class="token function">push</span>
+            <span class="token punctuation">(</span>
+            <span class="token variable">e</span>
+            <span class="token punctuation">.</span>
+            <span class="token property">target</span>
+            <span class="token punctuation">.</span>
+            <span class="token property">value</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">;</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token variable">e</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">target</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">value</span>
+        <span class="token space"> </span>
+        <span class="token operator">=</span>
+        <span class="token space"> </span>
+        <span class="token string">''</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token string">}"</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">/&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">ul</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="highlight brush"
+            data-title="Reactive control flow"
+            data-description="Control flow directives react automatically to watched state changes."
+        >
+            <span class="token punctuation">&lt;</span>
+            <span class="token property">li</span>
+            <span class="space"> </span>
+            <span class="token directive">*for</span>
+            <span class="token punctuation">=</span>
+            <span class="token string">"[idx, item] of </span>
+            <span class="token binding">@:</span>
+            <span class="token variable">items</span>
+            <span class="token string">"</span>
+            <span class="token punctuation">&gt;</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token string">{{ </span>
+        <span class="token variable">item</span>
+        <span class="token string"> }}</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">button</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                    </span>
+        <span class="token event">@click</span>
+        <span class="token punctuation">=</span>
+        <span class="token string">"() =&gt; </span>
+        <span class="token binding">@:</span>
+        <span class="token variable">items</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">splice</span>
+        <span class="token punctuation">(</span>
+        <span class="token variable">idx</span>
+        <span class="token punctuation">,</span>
+        <span class="token space"> </span>
+        <span class="token number">1</span>
+        <span class="token punctuation">)"</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token punctuation">&gt;</span>
+        <span class="token string">X</span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">button</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">li</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">ul</span>
+        <span class="token punctuation">&gt;\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="token punctuation">});</span>
+    </span>
+`;
+
+
 // Component Expose
 export const exposeEx = ``;
-// Component Watched
-export const watchedEx = ``;
 // Component Script
 export const scriptEx = ``;
 

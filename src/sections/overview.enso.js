@@ -1,6 +1,6 @@
 
 import Enso, { css, html, attr } from 'ensojs';
-import { stylesEx, templateEx } from '../examplecode';
+import { stylesEx, templateEx, watchedEx } from '../examplecode';
 
 import "@components/layout/section.enso";
 import "@components/annotatedCode.enso";
@@ -37,6 +37,7 @@ export default Enso.component('overview-section', {
         }
         tab-panel {
             border-top: 2px solid transparent;
+            padding: var(--space-md);
             background: var(--tab-active-bg);
         }
         annotated-code {
@@ -52,6 +53,7 @@ export default Enso.component('overview-section', {
     `],
     template: html`
         <site-section id="overview">
+            <h3>Enso Overview</h3>
             <tabbed-view tab-width="equal">
                 <tab-panel title="Templates">
                     <annotated-code>
@@ -65,6 +67,7 @@ export default Enso.component('overview-section', {
                 </tab-panel>
                 <tab-panel title="Watched">
                     <annotated-code>
+                        ${ watchedEx }
                     </annotated-code>
                 </tab-panel>
             </tabbed-view>
