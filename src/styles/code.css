@@ -145,5 +145,6 @@ body[data-theme="dark"] {
     font-size: 0.8rem;
     overflow-x: auto;
     background: var(--code-back);
+    border: 2px solid var(--code-back);
     border-radius: 0.5rem;
 }

@@ -14,9 +14,10 @@ Enso.component('tabbed-view', {
     template: html`
         <div role="tablist" part="tablist" aria-orientation="horizontal">
             <button *for="tab of @:tabs"
-                role="tab" part="tab"
+                role="tab"
 
                 :id="tab-{{ tab.index }}"
+                :part="tab{{ tab.index === @:selected && ' active' }}"
                 :aria-controls="panel-{{ tab.index }}"
                 :aria-selected="{{ tab.index === @:selected ? 'true' : 'false' }}"
                 :tabindex="{{ tab.index === @:selected ? 0 : -1 }}"

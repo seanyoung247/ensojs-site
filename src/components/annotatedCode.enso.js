@@ -19,10 +19,13 @@ Enso.component('annotated-code', {
         descriptions: prop([]),
     },
     styles: [ css(Reset), css(CodeStyles), css(BrushStroke), css`
+        :host {
+            --code-height: auto;
+        }
         .item {
             display: grid;
             grid-template-columns: auto 1fr;
-            grid-template-rows: auto auto;
+            grid-auto-rows: auto;
             column-gap: 0.75rem;
             align-items: center;
             &::before {
@@ -46,6 +49,9 @@ Enso.component('annotated-code', {
                 border-bottom: 1px solid var(--stroke-color);
             }
         }
+        code.code-pane {
+            height: var(--code-height);
+        }
     `],
     template: html`
         <code class="code-pane">
@@ -62,13 +68,13 @@ Enso.component('annotated-code', {
         </responsive-view>
     `,
     script: {
-        _targets: [],
+        _annotations: [],
         onSlotChange(e) {
             // Find any slotted elements with descriptions
-            this._targets = querySlotted(
+            this._annotations = querySlotted(
                 e.target, '[data-title][data-description]'
             );
-            const descriptions = this._targets.map((element,i) => {
+            const descriptions = this._annotations.map((element,i) => {
                 element.dataset.index = i + 1;
                 return {
                     index: i + 1,
@@ -79,9 +85,16 @@ Enso.component('annotated-code', {
             setWatched(this, { descriptions });
         },
         setSelected(which) {
-            this._targets.forEach((el, i) => {
+            this._annotations.forEach((el, i) => {
                 const active = (i === (which - 1));
                 el.classList.toggle('active', active);
+                el.setAttribute('aria-current', active)
+                if (active) el.scrollIntoView({ 
+                    behavior: 'smooth',
+                    container: 'nearest',
+                    block: 'center',
+                    inline: 'nearest'
+                });
             });
         },
     }

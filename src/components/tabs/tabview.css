@@ -10,6 +10,9 @@
             0deg, rgba(0,0,0,0.5), transparent
         ) no-repeat left bottom / 100% 15%;
     --tab-active-bg: lightgrey;
+    --tab-fg: black;
+    --tab-active-fg: var(--tab-fg);
+    --tab-separator: transparent;
 
     --tab-padding: 0 0.5em;
     --tab-radius: 0.25em 0.25em 0 0;
@@ -34,13 +37,16 @@ div[role="tablist"] {
 
 /* tab selector buttons */
 button[role="tab"] {
+    color: var(--tab-fg);
     background: var(--tab-bg);
     border: none;
     border-radius: var(--tab-radius);
     padding: 0.25em 0.5em;
     &[aria-selected="true"] {
+        color: var(--tab-active-fg);
         background: var(--tab-active-bg);
-        box-shadow: 1px 0 0 var(--tab-bg);
-        z-index: 2;
+    }
+    & ~ & {
+        border-left: 1px solid var(--tab-separator);
     }
 }
