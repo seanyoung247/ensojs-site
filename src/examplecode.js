@@ -285,12 +285,237 @@ export const templateEx = `
 `;
 
 // Component Styles
-export const stylesEx = ``;
+export const stylesEx = `
+    <span class="code-line">
+        <span class="token property">Enso</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">component</span>
+        <span class="token punctuation">(</span>
+        <span class="token string">'enso-styles'</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token property">watched</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+        <span class="space"> </span>
+        <span class="token property">value</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">attr</span>
+        <span class="token punctuation">(</span>
+        <span class="token number">0</span>
+        <span class="token punctuation">)</span>
+        <span class="space"> </span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="highlight brush"
+            data-title="Adopted stylesheets"
+            data-description="Styles are applied using adopted stylesheets, giving components fast, platform-native styling. When a component uses Shadow DOM, styles are scoped automatically to that component."
+        >
+            <span class="token property">styles</span>
+        </span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="highlight brush"
+            data-title="Multiple stylesheets"
+            data-description="Components can apply multiple stylesheets, making it easy to share resets, base styles, or themes between components."
+        >
+            <span class="token punctuation">[</span>
+            <span class="token function">css</span>
+            <span class="token punctuation">(</span>
+            <span class="token constant">Reset</span>
+            <span class="token punctuation">)</span>
+            <span class="token punctuation">,</span>
+            <span class="space"> </span>
+            <span class="token function">css</span>
+            <span class="token punctuation">\`</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token property">button</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token property">background</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token string">lightgrey</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token property">padding</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token number">0.5</span>
+        <span class="token unit">rem</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="highlight brush"
+            data-title="Modern CSS"
+            data-description="Enso uses real CSS. Write modern selectors, pseudo-classes, and nesting without framework-specific syntax or abstractions."
+        >
+            <span class="token punctuation">&amp;:</span>
+            <span class="token pseudo-class">active</span>
+            <span class="token punctuation">:</span>
+            <span class="token function">not</span>
+            <span class="token punctuation">(</span>
+            <span class="token punctuation">[</span>
+            <span class="token property">disabled</span>
+            <span class="token punctuation">]</span>
+            <span class="token punctuation">)</span>
+        </span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token property">filter</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">brightness</span>
+        <span class="token punctuation">(</span>
+        <span class="token number">2.0</span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token punctuation">}</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">\`</span>
+        <span class="token punctuation">]</span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token property">template</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">html</span>
+        <span class="token punctuation">\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">button</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token event">@click</span>
+        <span class="token punctuation">=</span>
+        <span class="token string">"()=&gt;</span>
+        <span class="token binding">@:</span>
+        <span class="token variable">value</span>
+        <span class="token operator">++</span>
+        <span class="token string">"</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="highlight brush"
+            data-title="Reactive inline styles"
+            data-description="Style attributes can be bound to state safely. Inline styles are applied per instance and work consistently in both shadow and flat components."
+        >
+            <span class="token binding">:style</span>
+            <span class="token punctuation">=</span>
+            <span class="token string">"color: {{ </span>
+            <span class="token binding">@:</span>
+            <span class="token variable">value</span>
+            <span class="token space"> </span>
+            <span class="token operator">&gt;=</span>
+            <span class="token space"> </span>
+            <span class="token number">9</span>
+            <span class="token space"> </span>
+            <span class="token operator">?</span>
+            <span class="token space"> </span>
+            <span class="token string">'red'</span>
+            <span class="token space"> </span>
+            <span class="token operator">:</span>
+            <span class="token space"> </span>
+            <span class="token string">'black'</span>
+            <span class="token space"> </span>
+            <span class="token string">}};"</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token binding">:disabled</span>
+        <span class="token punctuation">=</span>
+        <span class="token string">"{{ </span>
+        <span class="token binding">@:</span>
+        <span class="token variable">value</span>
+        <span class="token space"> </span>
+        <span class="token operator">&gt;=</span>
+        <span class="token space"> </span>
+        <span class="token number">9</span>
+        <span class="token string"> }}"</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token string">Value</span>
+        <span class="space"> </span>
+        <span class="token operator">=</span>
+        <span class="space"> </span>
+        <span class="token string">{{ </span>
+        <span class="token binding">@:</span>
+        <span class="token variable">value</span>
+        <span class="token string"> }}</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">button</span>
+        <span class="token punctuation">&gt;\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="token punctuation">});</span>
+    </span>
+`;
+
 // Component Expose
 export const exposeEx = ``;
 // Component Watched
 export const watchedEx = ``;
 // Component Script
 export const scriptEx = ``;
-// Component Settings
-export const settingsEx = ``;
+
+
+
