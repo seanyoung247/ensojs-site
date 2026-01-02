@@ -812,10 +812,337 @@ export const watchedEx = `
 `;
 
 
-// Component Expose
-export const exposeEx = ``;
 // Component Script
-export const scriptEx = ``;
+/*
+const formatTime = (t) => t.toLocaleTimeString();
+Enso.component('enso-script', {
+    expose: { formatTime },
 
+    watched: {
+        toasts: prop([], true),
+        open: false
+    },
+
+    script: {
+        onToastsChange: watches(function () {
+            this.watched.open =
+                this.watched.toasts.length > 0;
+        }, ['toasts']),
+
+        dismiss(idx) {
+            this.watched.toasts.splice(idx, 1);
+        }
+    },
+
+    template: html`
+        <div *if="open">
+            <div *for="[i, toast] of @:toasts.entries()">
+                {{ toast.message }} —
+                {{ formatTime(toast.time) }}
+                <button @click="()=>this.dismiss(i)">
+                    x
+                </button>
+            </div>
+        </div>`
+});
+*/
+export const scriptEx = `
+    <span class="code-line">
+        <span class="token keyword">const</span>
+        <span class="space"> </span>
+        <span class="token function">formatTime</span>
+        <span class="space"> </span>
+        <span class="token operator">=</span>
+        <span class="space"> </span>
+        <span class="token punctuation">(</span>
+        <span class="token parameter">t</span>
+        <span class="token punctuation">)</span>
+        <span class="space"> </span>
+        <span class="token operator">=&gt;</span>
+        <span class="space"> </span>
+        <span class="token parameter">t</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">toLocaleTimeString</span>
+        <span class="token punctuation">(</span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="token property">Enso</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">component</span>
+        <span class="token punctuation">(</span>
+        <span class="token string">'enso-script'</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="highlight brush"
+            data-title="Expose"
+            data-description="Injects external values into the template environment, allowing helpers and constants defined outside the component to be used safely in templates."
+        >
+            <span class="token property">expose</span>
+            <span class="token punctuation">:</span>
+            <span class="space"> </span>
+            <span class="token punctuation">{</span>
+            <span class="space"> </span>
+            <span class="token property">formatTime</span>
+            <span class="space"> </span>
+            <span class="token punctuation">}</span>
+        </span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token property">watched</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token property">toasts</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">prop</span>
+        <span class="token punctuation">(</span>
+        <span class="token punctuation">[]</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token boolean">true</span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token property">open</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token boolean">false</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token punctuation">},</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="highlight brush"
+            data-title="Script"
+            data-description="Defines the component’s behaviour and methods, and provides the API available to templates and event handlers."
+        >
+            <span class="token property">script</span>
+            <span class="token punctuation">:</span>
+            <span class="space"> </span>
+            <span class="token punctuation">{</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="highlight brush"
+            data-title="watches"
+            data-description="Registers a script function to run when a watched value changes or when a lifecycle event is triggered."
+        >
+            <span class="token property">onToastsChange</span>
+            <span class="token punctuation">:</span>
+            <span class="space"> </span>
+            <span class="token function">watches</span>
+            <span class="token punctuation">(</span>
+            <span class="token function">function</span>
+            <span class="token punctuation"> () </span>
+            <span class="token punctuation">{</span>
+        </span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token keyword">this</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">watched</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">open</span>
+        <span class="space"> </span>
+        <span class="token operator">=</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token keyword">this</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">watched</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">toasts</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">length</span>
+        <span class="space"> </span>
+        <span class="token operator">&gt;</span>
+        <span class="space"> </span>
+        <span class="token number">0</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">}</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token punctuation">[</span>
+        <span class="token string">'toasts'</span>
+        <span class="token punctuation">]</span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">,</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token function">dismiss</span>
+        <span class="token punctuation">(</span>
+        <span class="token parameter">idx</span>
+        <span class="token punctuation">)</span>
+        <span class="space"> </span>
+        <span class="token punctuation">{</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token keyword">this</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">watched</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">toasts</span>
+        <span class="token punctuation">.</span>
+        <span class="token function">splice</span>
+        <span class="token punctuation">(</span>
+        <span class="token parameter">idx</span>
+        <span class="token punctuation">,</span>
+        <span class="space"> </span>
+        <span class="token number">1</span>
+        <span class="token punctuation">)</span>
+        <span class="token punctuation">;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">}</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token punctuation">},</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">    </span>
+        <span class="token property">template</span>
+        <span class="token punctuation">:</span>
+        <span class="space"> </span>
+        <span class="token function">html</span>
+        <span class="token punctuation">\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">div</span>
+        <span class="space"> </span>
+        <span class="token directive">*if</span>
+        <span class="token operator">=</span>
+        <span class="token string">"open"</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">div</span>
+        <span class="space"> </span>
+        <span class="token directive">*for</span>
+        <span class="token operator">=</span>
+        <span class="token string">"[i, toast] of @:toasts.entries()"</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token string">{{</span>
+        <span class="space"> </span>
+        <span class="token property">toast</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">message</span>
+        <span class="space"> </span>
+        <span class="token string">}}</span>
+        <span class="space"> </span>
+        <span class="token punctuation">—</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token string">{{</span>
+        <span class="space"> </span>
+        <span class="token function">formatTime</span>
+        <span class="token punctuation">(</span>
+        <span class="token property">toast</span>
+        <span class="token punctuation">.</span>
+        <span class="token property">time</span>
+        <span class="token punctuation">)</span>
+        <span class="space"> </span>
+        <span class="token string">}}</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token punctuation">&lt;</span>
+        <span class="token property">button</span>
+        <span class="space"> </span>
+        <span class="highlight brush"
+            data-title="Event handlers"
+            data-description="Template event handlers execute script methods through the component instance, enabling state changes in response to user interaction."
+        >
+            <span class="token event">@click</span>
+            <span class="token operator">=</span>
+            <span class="token string">"()=&gt;this.dismiss(i)"</span>
+        </span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                    </span>
+        <span class="token string">x</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">                </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">button</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">            </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">div</span>
+        <span class="token punctuation">&gt;</span>
+    </span>
+
+    <span class="code-line">
+        <span class="space">        </span>
+        <span class="token punctuation">&lt;/</span>
+        <span class="token property">div</span>
+        <span class="token punctuation">&gt;\`</span>
+    </span>
+
+    <span class="code-line">
+        <span class="token punctuation">});</span>
+    </span>
+`;
 
 

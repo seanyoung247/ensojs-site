@@ -1,6 +1,6 @@
 
-import Enso, { css, html, attr } from 'ensojs';
-import { stylesEx, templateEx, watchedEx } from '../examplecode';
+import Enso, { css, html } from 'ensojs';
+import { stylesEx, templateEx, watchedEx, scriptEx } from '../examplecode';
 
 import "@components/layout/section.enso";
 import "@components/annotatedCode.enso";
@@ -12,6 +12,10 @@ import Reset from "@styles/reset.css?inline";
 export default Enso.component('overview-section', {
     settings: { useShadow: false },
     styles: [css(Reset), css`
+        overview-section > site-section {
+            --height: auto;
+            --align: start;
+        }
         tabbed-view {
             --tab-bg: var(--back-overlay);
             --tab-active-bg: color-mix(
@@ -41,8 +45,7 @@ export default Enso.component('overview-section', {
             background: var(--tab-active-bg);
         }
         annotated-code {
-            --code-height: 25em;
-
+            --code-height: 50dvh;
             & [data-title][data-description]::after {
                 content: '[' attr(data-index) ']';
                 vertical-align: super;
@@ -68,6 +71,11 @@ export default Enso.component('overview-section', {
                 <tab-panel title="Watched">
                     <annotated-code>
                         ${ watchedEx }
+                    </annotated-code>
+                </tab-panel>
+                <tab-panel title="Script">
+                    <annotated-code>
+                        ${ scriptEx }
                     </annotated-code>
                 </tab-panel>
             </tabbed-view>

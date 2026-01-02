@@ -21,18 +21,20 @@
 
 /* tab list container */
 div[role="tablist"] {
-    display: grid;
-    grid-auto-flow: column;
-    /* default, tab buttons fit title size */
-    grid-auto-columns: max-content;
-    grid-template-rows: auto;
-    align-content: start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: flex-start;
     padding: var(--tab-padding);
     gap: var(--tab-gap);
+    & > [role="tab"] {
+        flex: 0 0 auto;
+        min-width: max-content;
+    }
 }
 /* tab buttons equal sized option */
-:host([tab-width="equal"]) > div[role="tablist"] {
-    grid-auto-columns: 1fr;
+:host([tab-width="equal"]) div[role="tablist"] > [role="tab"] {
+    flex: 1 1 0;
 }
 
 /* tab selector buttons */

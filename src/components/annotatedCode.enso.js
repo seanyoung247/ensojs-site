@@ -55,7 +55,7 @@ Enso.component('annotated-code', {
         }
     `],
     template: html`
-        <code class="code-pane">
+        <code class="code-pane" part="code">
             <slot @slotchange="this.onSlotChange"></slot>
         </code>
         <responsive-view @showchange="e=>this.setSelected(e.detail.show)">
@@ -93,7 +93,7 @@ Enso.component('annotated-code', {
                 if (active) el.scrollIntoView({ 
                     behavior: 'smooth',
                     container: 'nearest',
-                    block: 'center',
+                    block: 'nearest',
                     inline: 'nearest'
                 });
             });

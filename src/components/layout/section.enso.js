@@ -7,6 +7,8 @@ Enso.component('site-section', {
     styles: [css(Reset),
     css`
         :host {
+            display: block;
+            height: var(--height, auto);
             --direction: column;
             --align: center;
         }
@@ -16,6 +18,8 @@ Enso.component('site-section', {
             align-items: var(--align);
             padding: var(--space-md);
             border-bottom: 2px solid var(--stroke-color);
+            height: 100%;
+            width: 100%;
         }
         ::slotted(*) {
             width: 100%;
