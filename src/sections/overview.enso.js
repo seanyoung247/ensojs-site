@@ -15,6 +15,7 @@ export default Enso.component('overview-section', {
         overview-section > site-section {
             --height: auto;
             --align: start;
+
         }
         tabbed-view {
             --tab-bg: var(--back-overlay);

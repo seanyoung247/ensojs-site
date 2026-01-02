@@ -1,5 +1,5 @@
 
-import Enso, { css, html, attr } from 'ensojs';
+import Enso, { css, html } from 'ensojs';
 // Components
 import "./components/icons/icon.enso";
 import "./components/layout/header.enso";
@@ -13,40 +13,8 @@ import Overview from "./sections/overview.enso";
 // Styles
 import Styles from "./app.css?inline";
 import CodeStyles from "@styles/code.css?inline";
-import Reset from "@styles/reset.css?inline";
 import "@styles/main.css";
 
-
-Enso.component ('enso-templates', {
-    watched: { name: attr('World') },
-    template:  html`
-        <div #ref="output">Hello {{ @:name }}</div>
-        <input type = "text"
-            :value="{{ @:name }}" 
-            @change = "(e)=>@:name = e.target.value"
-        /> 
-    `
-});
-
-Enso.component('enso-styles', {
-    watched: { value: attr(0) },
-    styles: [css(Reset), css`
-        button {
-            background: lightgrey;
-            padding: 0.5rem;
-            &:active:not([disabled]) {
-                filter: brightness(2.0);
-            }
-        }
-    `],
-    template: html`
-        <button 
-            @click="()=>@:value++"
-            :style="color: {{ @:value >= 9 ? 'red' : 'black' }};"
-            :disabled="{{ @:value >= 9 }}">
-            Value = {{ @:value }}
-        </button>`
-});
 
 Enso.component("enso-app", {
     settings: { useShadow: false },
@@ -63,7 +31,23 @@ Enso.component("enso-app", {
         ${ Overview }
 
         <footer>
-            Built with Enso v.${Enso.version}
+            <enso-icon 
+                aria-hidden="true"
+                role="presentation"
+                focusable="false"
+            >
+            </enso-icon>
+            <span class="version">
+                Built with Enso v.${Enso.version}
+            </span>
+            <span class="links">
+                Native Web Components
+                <a href="#">Docs</a>
+                <a href="https://github.com/seanyoung247/ensoJS">Github</a>
+            </span>
+            <span class="copyright">
+                &copy; Sean Young ${new Date().getFullYear()}
+            </span>
         </footer>
-    `
+    `,
 });

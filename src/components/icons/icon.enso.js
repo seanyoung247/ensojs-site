@@ -1,6 +1,6 @@
 
 import Enso, { css, html } from 'ensojs';
-import EnsoIcon from "/icon.svg?raw";
+import EnsoUrl from "/icon.svg";
 
 
 export default Enso.component("enso-icon", {
@@ -11,5 +11,9 @@ export default Enso.component("enso-icon", {
             height: 100%;
         }
     `,
-    template: html(EnsoIcon),
+    template: html`
+        <svg viewBox="0 0 129.64582 129.64585">
+            <use href="${EnsoUrl}#enso"></use>
+        </svg>
+    `
 });
