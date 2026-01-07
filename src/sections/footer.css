@@ -1,41 +1,4 @@
 
-enso-app {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: fit-content;
-    max-width: 1920px;
-    padding-top: 2rem;
-    color: var(--primary-text); 
-}
-
-enso-icon {
-    --fill: var(--primary-text);
-    width: 100px;
-    height: 100px;
-}
-
-site-section {
-  align-items: center;
-}
-
-h1 {
-    font-family: "Slackside One", cursive;
-    font-size: 4rem;
-}
-h3 {
-    font-size: 1.5rem;
-    text-align: center;
-    padding-bottom: 1rem;
-}
-
-annotated-code [data-title][data-description]::after {
-    content: '[' attr(data-index) ']';
-    vertical-align: super;
-    font-size: 0.75em;
-    color: var(--muted-text);
-}
-
 footer {
     position: relative;
     overflow: hidden;
@@ -50,6 +13,10 @@ footer {
 
     font-size: 0.875rem;
     color: var(--secondary-text);
+
+    width: 100%;
+    max-width: var(--max-content, auto);
+    margin-inline: auto;
 }
 
 footer > enso-icon {

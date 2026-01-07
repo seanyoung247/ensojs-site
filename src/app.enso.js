@@ -1,53 +1,56 @@
 
 import Enso, { css, html } from 'ensojs';
-// Components
-import "./components/icons/icon.enso";
-import "./components/layout/header.enso";
+
 
 // Sections
 import Nav from "./sections/nav.enso";
+import header from "./sections/header.enso";
 import Example from "./sections/example.enso";
 import WhyEnso from "./sections/why.enso";
 import Overview from "./sections/overview.enso";
+import Footer from "./sections/footer.enso";
 
 // Styles
-import Styles from "./app.css?inline";
 import CodeStyles from "@styles/code.css?inline";
+import Reactive from '@styles/reactive.css?inline';
 import "@styles/main.css";
+
 
 
 Enso.component("enso-app", {
     settings: { useShadow: false },
-    styles: [css(Styles), css(CodeStyles)],
-    template: html`
-        ${ Nav }
-        <site-header>
-            <enso-icon></enso-icon>
-            <h1>Enso</h1>
-        </site-header>
-        
-        ${ Example }
-        ${ WhyEnso }
-        ${ Overview }
+    styles: [css(CodeStyles), css(Reactive), css`
+        enso-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: fit-content;
+            padding-top: 2rem;
+            color: var(--primary-text);
 
-        <footer>
-            <enso-icon 
-                aria-hidden="true"
-                role="presentation"
-                focusable="false"
-            >
-            </enso-icon>
-            <span class="version">
-                Built with Enso v.${Enso.version}
-            </span>
-            <span class="links">
-                Native Web Components
-                <a href="#">Docs</a>
-                <a href="https://github.com/seanyoung247/ensoJS">Github</a>
-            </span>
-            <span class="copyright">
-                &copy; Sean Young ${new Date().getFullYear()}
-            </span>
-        </footer>
+            @media (min-width: 768px) {
+                padding-top: 4rem;
+            }
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        site-section {
+            align-items: center;
+        }
+    `],
+    template: html`
+        ${ Nav({class:"constrained"}) }
+        ${ header({class:"constrained"}) }
+        ${ Example({class:"constrained"}) }
+        ${ WhyEnso({class:"constrained"}) }
+        ${ Overview({class:"constrained"}) }
+        ${ Footer({class:"constrained"}) }
     `,
 });

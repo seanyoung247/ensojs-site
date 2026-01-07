@@ -27,3 +27,13 @@ input, button, textarea, select {
 *:not(:defined) {
     display: none;
 }
+
+:focus-visible:not(input, textarea) {
+    outline: none;
+    box-shadow:
+        0 0 0 2px color-mix(
+            in srgb,
+            var(--accent-color) 35%,
+            transparent
+        );
+}

@@ -33,8 +33,10 @@ export default Enso.component('overview-section', {
             &::part(tab) {
                 border-bottom: 1px solid var(--stroke-color);
             }
-            &::part(tab):hover {
-                color: var(--tab-active-fg);
+            @media(hover: hover) {
+                &::part(tab):hover {
+                    color: var(--tab-active-fg);
+                }
             }
             &::part(tab active) {
                 border-bottom: 2px solid var(--accent-color);
@@ -46,12 +48,17 @@ export default Enso.component('overview-section', {
             background: var(--tab-active-bg);
         }
         annotated-code {
-            --code-height: 50dvh;
+            height: min(50dvh, 500px);
             & [data-title][data-description]::after {
                 content: '[' attr(data-index) ']';
                 vertical-align: super;
                 font-size: 0.75em;
                 color: var(--muted-text);
+            }
+            @media (min-width: 900px) {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                height: 500px;
             }
         }
     `],

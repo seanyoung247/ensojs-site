@@ -147,4 +147,74 @@ body[data-theme="dark"] {
     background: var(--code-back);
     border: var(--space-sm) solid var(--code-back);
     border-radius: 0.5rem;
+
+    @media (min-width: 768px) {
+        font-size: 0.9rem;
+    }
+}
+
+/* .scroll-hint {
+  background: 
+    linear-gradient(var(--code-back) 33%, rgba(216,101,242, 0)),
+    linear-gradient(rgba(216,101,242, 0), var(--code-back) 66%) 0 100%,
+    radial-gradient(farthest-side at 50% 0, rgba(34,34,34, 0.5), rgba(0,0,0,0)),
+    radial-gradient(farthest-side at 50% 100%, rgba(34,34,34, 0.5), rgba(0,0,0,0)) 0 100%;
+  background-color: var(--code-back);
+  background-repeat: no-repeat;
+  background-attachment: local, local, scroll, scroll;
+  background-size: 100% 45px, 100% 45px, 100% 15px, 100% 15px;
+} */
+
+.scroll-hint {
+    --fade-size: 45px;
+    --shadow-size: 15px;
+    --shadow-color: rgb(from var(--secondary-text) r g b / 0.25);
+
+    overflow: auto;
+
+    background:
+        /* ── TOP eraser ── */
+        linear-gradient(var(--code-back) 33%, transparent) top,
+        /* ── BOTTOM eraser ── */
+        linear-gradient(transparent, var(--code-back) 66%) bottom,
+
+        /* ── LEFT eraser ── */
+        linear-gradient(to right, var(--code-back) 33%, transparent) left,
+        /* ── RIGHT eraser (FIXED) ── */
+        linear-gradient(to left, var(--code-back) 33%, transparent) right,
+
+        /* ── TOP shadow ── */
+        radial-gradient(farthest-side at 50% 0,
+        var(--shadow-color), transparent) top,
+        /* ── BOTTOM shadow ── */
+        radial-gradient(farthest-side at 50% 100%,
+        var(--shadow-color), transparent) bottom,
+
+        /* ── LEFT shadow ── */
+        radial-gradient(farthest-side at 0 50%,
+        var(--shadow-color), transparent) left,
+        /* ── RIGHT shadow (FIXED) ── */
+        radial-gradient(farthest-side at 100% 50%,
+        var(--shadow-color), transparent) right;
+
+    background-repeat: no-repeat;
+
+    background-attachment:
+        /* erasers */ local, local, local, local,
+        /* shadows */ scroll, scroll, scroll, scroll;
+
+    background-size:
+        /* erasers */
+        100% var(--fade-size),
+        100% var(--fade-size),
+        var(--fade-size) 100%,
+        var(--fade-size) 100%,
+
+        /* shadows */
+        100% var(--shadow-size),
+        100% var(--shadow-size),
+        var(--shadow-size) 100%,
+        var(--shadow-size) 100%;
+
+    background-color: var(--code-back);
 }

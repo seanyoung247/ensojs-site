@@ -1,6 +1,9 @@
 
-import Enso, { html, css, prop, setWatched } from 'ensojs';
-import './responsiveView.enso';
+import Enso, { html, css, prop, attr, watches, lifecycle } from 'ensojs';
+import { range } from 'ensojs/helpers';
+
+import './stackListView.enso';
+
 import Reset from '../styles/reset.css?inline';
 import CodeStyles from '../styles/code.css?inline';
 import BrushStroke from '../styles/brush.css?inline';
@@ -14,13 +17,34 @@ const querySlotted = (slot, selector) => {
     return results;
 }
 
+function scrollIntoContainer(el, container, options = {}) {
+    const elRect = el.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    const fullyVisible =
+            elRect.top >= containerRect.top &&
+            elRect.bottom <= containerRect.bottom;
+
+    if (fullyVisible) return;
+
+    container.scrollTo({
+        top:
+            elRect.top -
+            containerRect.top +
+            container.scrollTop - 5,
+        behavior: options.behavior ?? 'smooth'
+    });
+}
+
 Enso.component('annotated-code', {
     watched: {
         descriptions: prop([]),
+        selected: attr(1, Number),
+        mode: prop('stack'),
     },
     styles: [ css(Reset), css(CodeStyles), css(BrushStroke), css`
         :host {
-            --code-height: auto;
+            --code-height: min(450px, 50dvh);
         }
         .item {
             display: grid;
@@ -28,7 +52,6 @@ Enso.component('annotated-code', {
             grid-auto-rows: auto;
             column-gap: var(--space-lg);
             align-items: center;
-            margin: var(--space-md);
             &::before {
                 content: attr(data-index);
                 grid-area: 1 / 1 / span 2 / 2;
@@ -46,30 +69,80 @@ Enso.component('annotated-code', {
             }
             & > h4 {
                 font-size: 1rem;
-                margin-bottom: 0.25rem;
                 border-bottom: 1px solid var(--stroke-color);
+            }
+            @media (min-width: 900px) {
+                margin: 0;
+                position: relative;
+                border: 2px solid var(--code-back);
+                overflow: visible;
+                &[data-active] {
+                    border-left: 2px solid var(--accent-color);
+                    &::after {
+                        content: '';
+                        position: absolute;
+                        width: 0; height: 0;
+                        left: -10px;
+                        border-top: 10px solid transparent;
+                        border-bottom: 10px solid transparent; 
+                        border-right:10px solid var(--accent-color); 
+                    }
+                    & > h4 {
+                        border-bottom: 1px solid var(--accent-color);
+                    }
+                }
             }
         }
         code.code-pane {
             height: var(--code-height);
+            margin: 0;
+            @media (min-width: 900px) {
+                height: auto;
+                max-height: 100%;
+            }
         }
     `],
     template: html`
-        <code class="code-pane" part="code">
+        <code #ref="codePane" class="code-pane scroll-hint" part="code">
             <slot @slotchange="this.onSlotChange"></slot>
         </code>
-        <responsive-view @showchange="e=>this.setSelected(e.detail.show)">
+        <stack-list-view 
+            :mode="{{ @:mode }}"
+            @prev="()=>this.watched.selected--" 
+            @next="()=>this.watched.selected++"
+        >
             <li *for="{ index, title, description } of @:descriptions"
                 :data-index="{{ index }}"
+                :data-active="{{ @:selected === index }}"
+                @mousemove="()=>this.watched.selected = index"
                 class="item code-pane"
             >
                 <h4>{{ title }}</h4>
                 <p>{{ description }}</p>
             </li>
-        </responsive-view>
+        </stack-list-view>
     `,
     script: {
         _annotations: [],
+        _range: range(0),
+
+        mount: watches(function() {
+            const mq = window.matchMedia('(min-width: 900px)');
+
+            const update = () => {
+                this.watched.mode = mq.matches ? 'list' : 'stack';
+            };
+
+            update();
+            mq.addEventListener('change', update);
+
+            this._cleanup = () => mq.removeEventListener('change', update);
+        }, [lifecycle.mount]),
+
+        unMount: watches(function() {
+            this._cleanup();
+        }, [lifecycle.unmount]),
+
         onSlotChange(e) {
             // Find any slotted elements with descriptions
             this._annotations = querySlotted(
@@ -83,20 +156,28 @@ Enso.component('annotated-code', {
                     description: element.dataset.description
                 };
             });
-            setWatched(this, { descriptions });
+            this._range = range(1, this._annotations.length + 1);
+            this.watched.selected = 1;
+            this.watched.descriptions = descriptions;
         },
-        setSelected(which) {
+
+        setSelected: watches(function() {
+            const which = this._range.wrap(this.watched.selected);
+            if (which !== this.watched.selected) {
+                this.watched.selected = which;
+                return;
+            }
+
             this._annotations.forEach((el, i) => {
                 const active = (i === (which - 1));
                 el.classList.toggle('active', active);
-                el.setAttribute('aria-current', active)
-                if (active) el.scrollIntoView({ 
-                    behavior: 'smooth',
-                    container: 'nearest',
-                    block: 'nearest',
-                    inline: 'nearest'
-                });
+                if (active) {
+                    el.setAttribute('aria-current', 'true');
+                    scrollIntoContainer(el, this.refs.codePane);
+                } else {
+                    el.removeAttribute('aria-current');
+                }
             });
-        },
+        }, ['selected']),
     }
 });

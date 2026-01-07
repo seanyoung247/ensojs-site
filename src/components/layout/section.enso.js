@@ -20,6 +20,8 @@ Enso.component('site-section', {
             border-bottom: 2px solid var(--stroke-color);
             height: 100%;
             width: 100%;
+            max-width: var(--max-content, 100%);
+            margin-inline: auto;
         }
         ::slotted(*) {
             width: 100%;

@@ -55,6 +55,40 @@ Enso.component('site-nav', {
             height: 100dvh;
             overflow-y: auto;
         }
+        @media (min-width: 768px) {
+            :host {
+                top: var(--space-lg);
+                height: auto;
+            }
+
+            nav {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+            }
+
+            nav-btn {
+                display: none;
+            }
+
+            #menu {
+                height: auto;
+                max-width: var(--max-content, 1200px);
+
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                gap: var(--space-lg);
+
+                background: none;
+                backdrop-filter: none;
+                border: none;
+
+                overflow: visible;
+                transition: none;
+            }
+        }
     `],
     template: html`
         <nav>
@@ -62,7 +96,10 @@ Enso.component('site-nav', {
                 @nav-toggle="(e)=>@:open = e.detail.open"
                 :open="{{ @:open }}"
             ></nav-btn>
-            <ul id="menu"><slot></slot></ul>
+
+            <ul id="menu">
+                <slot></slot>
+            </ul>
         </nav>
     `,
     script: {

@@ -10,16 +10,32 @@ export default Enso.component("why-enso", {
             width: 100%;
             list-style: none;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+
+            max-width: calc(4 * 500px + 3 * 1rem);
+            margin-inline: auto;
+
+            @media (min-width: 600px) {
+                grid-template-columns: 1fr 1fr;
+            }
+            @media (min-width: 1200px) {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
             & > .why-card {
+
                 transition: 
                     transform 200ms ease, 
                     box-shadow 200ms ease;
-                &:hover {
-                    transform: translateY(-2px);
-                    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+                @media (hover: hover) {
+                    &:hover {
+                        transform: translateY(-2px);
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+                    }
                 }
+
                 & h4 {
                     font-size: 1rem;
                     margin-bottom: 0.25rem;

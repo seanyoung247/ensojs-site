@@ -7,3 +7,8 @@
     --space-lg: clamp(1rem, 2vw, 2rem);
     --space-xl: clamp(2rem, 4vw, 3rem);
 }
+
+.constrained {
+    --max-content: 1280px;
+    width: 100%;
+}

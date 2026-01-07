@@ -13,18 +13,18 @@
 @property --back-overlay {
     syntax: '<color>';
     inherits: true;
-    initial-value: #F6F2EE;
+    initial-value: #f6f4f2;
 }
 @property --code-back {
     syntax: '<color>';
     inherits: true;
-    initial-value: #F3F0EC;
+    initial-value: #edeae6;
 }
 
 @property --primary-text {
     syntax: '<color>';
     inherits: true;
-    initial-value: #2D2D2D;
+    initial-value: #2b2b2b;
 }
 @property --secondary-text {
     syntax: '<color>';
@@ -34,7 +34,7 @@
 @property --muted-text {
     syntax: '<color>';
     inherits: true;
-    initial-value: #777777;
+    initial-value: #7a7a7a;
 }
 
 @property --stroke-color {

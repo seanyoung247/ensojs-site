@@ -15,7 +15,7 @@ export default Enso.component('nav-section', {
             position: fixed;
             z-index: 99;
             top: 0;
-            max-width: 1920px;
+            width: 100%
         }
 
         .nav-section {
@@ -71,6 +71,50 @@ export default Enso.component('nav-section', {
                 border-top: 1px solid var(--stroke-color);
             }
         }
+        @media (min-width: 768px) {
+            site-nav {
+                background: var(--code-back)
+                    linear-gradient(var(--muted-text)) no-repeat bottom/100% 1px;
+            }
+            .nav-section {
+                min-width: 0;
+                width: auto;
+                margin: 0;
+                padding: 0;
+
+                backdrop-filter: none;
+                border-radius: 0;
+                background: none;
+
+                &:first-of-type {
+                    margin-top: 0;
+                }
+                &:last-of-type {
+                    width: auto;
+                    margin-top: 0;
+                    margin-bottom: 0;
+                    padding: var(--space-xs) var(--space-md);
+                    border-radius: 999px;
+                }
+                & > ul {
+                    display: flex;
+                    flex-direction: row;
+                    padding: 0;
+                    gap: var(--space-md);
+                }
+            }
+
+            .nav-section h2 {
+                display: none;
+            }
+
+            .nav-item {
+                padding: 0;
+                & a { padding: 0; }
+                & + & { border-top: none; }
+                &.theme { gap: var(--space-md); }
+            }
+        }
     `],
     template: html`
         <site-nav #ref="nav">
@@ -113,7 +157,9 @@ export default Enso.component('nav-section', {
             ];
         }, [lifecycle.mount]),
         closeNav() {
-            this.refs.nav.close();
+            if (window.innerWidth < 768) {
+                this.refs.nav.close();
+            }
         }
     }   
 });
