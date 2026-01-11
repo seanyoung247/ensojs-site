@@ -1,7 +1,6 @@
 
 import Enso, { css, html } from 'ensojs';
 
-
 // Sections
 import Nav from "./sections/nav.enso";
 import header from "./sections/header.enso";

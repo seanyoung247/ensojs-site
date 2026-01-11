@@ -1,7 +1,8 @@
 
 import Enso, { css, html, watches, lifecycle } from 'ensojs';
-import "../components/nav/nav.enso";
-import "../components/themeSwitch.enso";
+import "@components/nav/nav.enso";
+import "@components/themeSwitch.enso";
+
 // Styles
 import BrushStroke from "../styles/brush.css?inline";
 // Images
@@ -17,7 +18,12 @@ export default Enso.component('nav-section', {
             top: 0;
             width: 100%
         }
-
+        svg-icons {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            --fill: var(--primary-text);
+        }
         .nav-section {
             color: var(--primary-text);
             min-width: 75%;
@@ -132,9 +138,14 @@ export default Enso.component('nav-section', {
             <li class="nav-section">
                 <h2>Explore</h2>
                 <ul>
-                    <li class="nav-item brush hover">Dummy Link</li>
-                    <li class="nav-item brush hover">Dummy Link</li>
-                    <li class="nav-item brush hover">Dummy Link</li>
+                    <li class="nav-item brush hover">
+                        <a href="#">Docs</a>
+                    </li>
+                    <li class="nav-item brush hover">
+                        <a href="https://github.com/seanyoung247/ensoJS">
+                            Github
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li class="nav-section">

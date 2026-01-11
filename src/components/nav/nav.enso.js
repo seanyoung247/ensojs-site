@@ -60,6 +60,9 @@ Enso.component('site-nav', {
                 top: var(--space-lg);
                 height: auto;
             }
+            :host([open]) #menu {
+                height: auto;
+            }
 
             nav {
                 flex-direction: row;

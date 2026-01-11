@@ -153,18 +153,6 @@ body[data-theme="dark"] {
     }
 }
 
-/* .scroll-hint {
-  background: 
-    linear-gradient(var(--code-back) 33%, rgba(216,101,242, 0)),
-    linear-gradient(rgba(216,101,242, 0), var(--code-back) 66%) 0 100%,
-    radial-gradient(farthest-side at 50% 0, rgba(34,34,34, 0.5), rgba(0,0,0,0)),
-    radial-gradient(farthest-side at 50% 100%, rgba(34,34,34, 0.5), rgba(0,0,0,0)) 0 100%;
-  background-color: var(--code-back);
-  background-repeat: no-repeat;
-  background-attachment: local, local, scroll, scroll;
-  background-size: 100% 45px, 100% 45px, 100% 15px, 100% 15px;
-} */
-
 .scroll-hint {
     --fade-size: 45px;
     --shadow-size: 15px;
@@ -180,7 +168,7 @@ body[data-theme="dark"] {
 
         /* ── LEFT eraser ── */
         linear-gradient(to right, var(--code-back) 33%, transparent) left,
-        /* ── RIGHT eraser (FIXED) ── */
+        /* ── RIGHT eraser ── */
         linear-gradient(to left, var(--code-back) 33%, transparent) right,
 
         /* ── TOP shadow ── */
@@ -193,7 +181,7 @@ body[data-theme="dark"] {
         /* ── LEFT shadow ── */
         radial-gradient(farthest-side at 0 50%,
         var(--shadow-color), transparent) left,
-        /* ── RIGHT shadow (FIXED) ── */
+        /* ── RIGHT shadow ── */
         radial-gradient(farthest-side at 100% 50%,
         var(--shadow-color), transparent) right;
 
