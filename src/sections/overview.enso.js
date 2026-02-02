@@ -17,7 +17,7 @@ export default Enso.component('overview-section', {
             --align: start;
 
         }
-        tabbed-view {
+        enso-tabbed-view {
             --tab-bg: var(--back-overlay);
             --tab-active-bg: color-mix(
                 in srgb,
@@ -42,7 +42,7 @@ export default Enso.component('overview-section', {
                 border-bottom: 2px solid var(--accent-color);
             }
         }
-        tab-panel {
+        enso-tab-panel {
             border-top: 2px solid transparent;
             padding: var(--space-md);
             background: var(--tab-active-bg);
@@ -65,28 +65,28 @@ export default Enso.component('overview-section', {
     template: html`
         <site-section id="overview">
             <h3>Enso Overview</h3>
-            <tabbed-view tab-width="equal">
-                <tab-panel title="Templates">
+            <enso-tabbed-view tab-width="equal">
+                <enso-tab-panel title="Templates">
                     <annotated-code>
                         ${ templateEx }
                     </annotated-code>
-                </tab-panel>
-                <tab-panel title="Styles">
+                </enso-tab-panel>
+                <enso-tab-panel title="Styles">
                     <annotated-code>
                         ${ stylesEx }
                     </annotated-code>
-                </tab-panel>
-                <tab-panel title="Watched">
+                </enso-tab-panel>
+                <enso-tab-panel title="Watched">
                     <annotated-code>
                         ${ watchedEx }
                     </annotated-code>
-                </tab-panel>
-                <tab-panel title="Script">
+                </enso-tab-panel>
+                <enso-tab-panel title="Script">
                     <annotated-code>
                         ${ scriptEx }
                     </annotated-code>
-                </tab-panel>
-            </tabbed-view>
+                </enso-tab-panel>
+            </enso-tabbed-view>
         </site-section>
     `
 });

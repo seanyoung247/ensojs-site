@@ -5,7 +5,7 @@ import Styles from './tabview.css?inline';
 
 const clamp = (min, max, val) => Math.max(min, Math.min(val ,max));
 
-Enso.component('tabbed-view', {
+export default Enso.component('enso-tabbed-view', {
     watched: {
         tabs: prop([]),
         selected: attr(0)
@@ -34,7 +34,7 @@ Enso.component('tabbed-view', {
         onSlotChange({target: slot}) {
             const items = slot
                 .assignedElements({flatten:true})
-                .filter(el => el.tagName === 'TAB-PANEL');
+                .filter(el => el.tagName === 'ENSO-TAB-PANEL');
             this.watched.tabs = items.map((v,i) => {
                 v.index = i;
                 return {

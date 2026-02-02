@@ -60,7 +60,7 @@ export default Enso.component("why-enso", {
             <ul class="why-enso-grid">
                 <li class="why-card code-pane">
                     <h4>Minimal</h4>
-                    <p class="lede">~7kb gzipped.</p>
+                    <p class="lede">~8kb gzipped.</p>
                     <p>
                         Write components directly, no required build step,
                         no compilation pipeline, no framework ceremony.

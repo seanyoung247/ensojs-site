@@ -2,16 +2,16 @@ import Enso, { html, css, watches, lifecycle } from 'ensojs';
 import Reset from './reset.css?inline';
 
 
-Enso.component('tab-panel', {
+export default Enso.component('enso-tab-panel', {
     settings: { useShadow: false },
     styles: [css(Reset),css`
-        :where(tab-panel) {
+        :where(enso-tab-panel) {
             border-top: 2px solid darkgrey;
             background: lightgrey;
             padding: 0.5rem;
             width: 100%;
         }
-        tab-panel {
+        enso-tab-panel {
             display: block;
             &[hidden] {
                 display: none;

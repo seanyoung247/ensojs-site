@@ -1,12 +1,10 @@
 
-import Enso, { css, html, watches, lifecycle } from 'ensojs';
+import Enso, { css, html } from 'ensojs';
 import "@components/nav/nav.enso";
-import "@components/themeSwitch.enso";
+import "@components/nav/themes.enso";
 
 // Styles
 import BrushStroke from "../styles/brush.css?inline";
-// Images
-import ThemeIcons from "/theme_icons.svg";
 
 
 export default Enso.component('nav-section', {
@@ -139,7 +137,7 @@ export default Enso.component('nav-section', {
                 <h2>Explore</h2>
                 <ul>
                     <li class="nav-item brush hover">
-                        <a href="#">Docs</a>
+                        <a href="/docs/">Docs</a>
                     </li>
                     <li class="nav-item brush hover">
                         <a href="https://github.com/seanyoung247/ensoJS">
@@ -153,20 +151,13 @@ export default Enso.component('nav-section', {
                 <ul>
                     <li class="nav-item theme">
                         <span>Theme: </span>
-                        <theme-switch #ref="themer"></theme-switch>
+                        <enso-theme-switch #ref="themer"></enso-theme-switch>
                     </li>
                 </ul>
             </li>
         </site-nav>
     `,
-    script: { 
-        setup: watches(function() {
-            this.refs.themer.watched.themes = [
-                {name: 'light', icon:`${ThemeIcons}#light`}, 
-                {name: 'dark', icon:`${ThemeIcons}#dark`},
-                {name: 'auto', icon:`${ThemeIcons}#auto`}
-            ];
-        }, [lifecycle.mount]),
+    script: {
         closeNav() {
             if (window.innerWidth < 768) {
                 this.refs.nav.close();
