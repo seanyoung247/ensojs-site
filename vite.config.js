@@ -1,6 +1,8 @@
 
 import { defineConfig } from 'vite';
-import path from 'path';
+import { dirname, resolve, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import fs from 'fs';
 
 
 function cloneIndexTo404() {
@@ -8,8 +10,8 @@ function cloneIndexTo404() {
     name: 'clone-index-to-404',
     closeBundle() {
       const outDir = 'dist/docs';
-      const indexPath = path.join(outDir, 'index.html');
-      const notFoundPath = path.join(outDir, '404.html');
+      const indexPath = join(outDir, 'index.html');
+      const notFoundPath = join(outDir, '404.html');
       if (fs.existsSync(indexPath)) {
         fs.copyFileSync(indexPath, notFoundPath);
         console.log('Copied index.html to 404.html');
@@ -18,15 +20,26 @@ function cloneIndexTo404() {
   };
 }
 
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 export default defineConfig({
+  root: 'src',
   plugins: [cloneIndexTo404()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@styles': path.resolve(__dirname, 'src/styles'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@': resolve(__dirname, 'src'),
+      '@components': resolve(__dirname, 'src/components'),
+      '@styles': resolve(__dirname, 'src/styles'),
+      '@assets': resolve(__dirname, 'src/assets'),
     }
-  }
+  },
+  build: {
+    outDir: '../dist',
+    rollupOptions: {
+      input: {
+        main: resolve(__dirname, 'src/index.html'),
+        docs: resolve(__dirname, 'src/docs/index.html'),
+      }
+    }
+  },
 });
