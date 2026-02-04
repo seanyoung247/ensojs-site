@@ -7,6 +7,6 @@ export default Enso.component("enso-tree-item", {
         item: prop(null)
     },
     template: html`
-        <span>{{ item.title }}</span>
+        <span>{{ @:item.title }}</span>
     `,
 });
