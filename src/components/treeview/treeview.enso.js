@@ -2,6 +2,7 @@
 import Enso, { css, html, prop } from 'ensojs';
 import TreeItem from "./treeitem.enso";
 
+
 Enso.component("enso-tree-view", {
     watched: {
         items: prop([], true),
@@ -16,9 +17,10 @@ Enso.component("enso-tree-view", {
     `],
     template: html`
         <ul>
-            <li>
-                
+            <li *for="item of @:items">
+                <enso-tree-item .item="{{ item }}"></enso-tree-item>
             </li>
         </ul>
     `
 });
+

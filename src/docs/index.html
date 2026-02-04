@@ -11,12 +11,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Slackside+One&display=swap" rel="stylesheet">
 
     <script src="./spa.enso.js" type="module"></script>
+    <script src="../components/treeview/index.js" type="module"></script>
     <title>Docs - EnsoJS</title>
 </head>
 <body>
     
+    <enso-tree-view></enso-tree-view>
     <enso-spa>
     </enso-spa>
 
 </body>
+
+<script>
+    const treeView = document.getElementsByTagName('enso-tree-view')[0];
+    treeView.items = [{ title: 'test' }, { title: 'test2' }];
+</script>
+
 </html>
