@@ -50,7 +50,5 @@ Enso.component("enso-app", {
         ${ WhyEnso({class:"constrained"}) }
         ${ Overview({class:"constrained"}) }
         ${ Footer({class:"constrained"}) }
-
-
     `,
 });
