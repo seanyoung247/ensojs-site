@@ -44,11 +44,11 @@ Enso.component("enso-app", {
         }
     `],
     template: html`
-        ${ Nav({class:"constrained"}) }
-        ${ header({class:"constrained"}) }
-        ${ Example({class:"constrained"}) }
-        ${ WhyEnso({class:"constrained"}) }
-        ${ Overview({class:"constrained"}) }
-        ${ Footer({class:"constrained"}) }
+        ${ Nav.html({class:"constrained"}) }
+        ${ header.html({class:"constrained"}) }
+        ${ Example.html({class:"constrained"}) }
+        ${ WhyEnso.html({class:"constrained"}) }
+        ${ Overview.html({class:"constrained"}) }
+        ${ Footer.html({class:"constrained"}) }
     `,
 });

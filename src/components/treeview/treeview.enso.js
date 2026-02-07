@@ -18,7 +18,7 @@ Enso.component("enso-tree-view", {
     template: html`
         <ul>
             <li *for="item of @:items">
-                ${ TreeItem({'.item':"{{ item }}"} )}
+                ${ TreeItem.html({'.item': "{{ item }}"} ) }
             </li>
         </ul>
     `
