@@ -7,6 +7,9 @@ export default Enso.component("enso-tree-item", {
         item: prop(null)
     },
     template: html`
-        <span>{{ @:item.title }}</span>
+
+        <a *if="{{ @:item.link }}" :href="{{ @:item.link }}">{{ @:item.title }}</a>
+        <span *if="{{ !@:item.link }}">{{ @:item.title }}</span>
+    
     `,
 });

@@ -1,8 +1,9 @@
 
 export const pages = [
     { 
-        name: "Introduction",
-        path: "intro",
-        action: () => import("./intro.enso.js")
+        id: "intro",
+        title: "Introduction",
+        link: "intro",
+        load() { return import("./intro.enso.js") },
     }
 ];
