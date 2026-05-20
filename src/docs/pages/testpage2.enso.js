@@ -3,10 +3,10 @@ import Enso, { css, html } from 'ensojs';
 import Reset from "@styles/reset.css?inline";
 
 
-export default Enso.component("docs-intro-page", {
+export default Enso.component("test-page-2", {
     settings: { useShadow: false },
     styles: [css(Reset), css`
-        docs-intro-page {
+        test-page-2 {
             display: block;
             width: 100%;
             height: fit-content;
@@ -29,8 +29,8 @@ export default Enso.component("docs-intro-page", {
         }
     `],
     template: html`
-        <h1>Welcome to EnsoJS Documentation</h1>
-        <p>Your journey to mastering EnsoJS starts here. Explore guides, tutorials, and API references to build amazing web applications with EnsoJS.</p>
+        <h1>Test Page 2</h1>
+        <p>This is a test page!</p>
     `,
 }); 
 

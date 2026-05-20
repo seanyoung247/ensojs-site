@@ -49,6 +49,7 @@ export default Enso.component('header-banner', {
             <div class="hero right">
                 <a title="Ensojs NPM page"
                     class="button"
+                    target="_blank"
                     href="https://www.npmjs.com/package/ensojs?activeTab=readme"
                 >
                     npm i ensojs
