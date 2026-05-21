@@ -13,7 +13,6 @@
     <script src="./spa.enso.js" type="module"></script>
     <script src="../components/treeview/index.js" type="module"></script>
 
-
     <title>Docs - EnsoJS</title>
 </head>
 <body>
@@ -24,9 +23,10 @@
 
 </body>
 
-<script>
+<script type="module">
+    import { pages } from './pages/manifest.js'
     const treeView = document.querySelector('enso-tree-view');
-    treeView.items = [{ title: 'test' }, { title: 'test2' }];
+    treeView.items = pages;
 </script>
 
 </html>

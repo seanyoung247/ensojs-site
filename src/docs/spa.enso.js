@@ -1,15 +1,18 @@
 
 import Enso, { css, html, watches, lifecycle } from 'ensojs';
 import { captureLinks, DocsRouter } from './router';
-import { pages, routes } from './pages/manifest';
+import { routes } from './pages/manifest';
 
 Enso.component("enso-spa", {
     settings: { useShadow: false },
     styles: css`
         enso-spa {
-            display: block;
+            display: flex;
             width: 100%;
             height: 100%;
+        }
+        main {
+            border: 1px solid red;
         }
     `,
     template: html`

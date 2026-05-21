@@ -13,17 +13,19 @@ export const pages = [
             {
                 id: "test-page-1",
                 title: "Intro test",
+                link: "test-page-1",
                 loader: () => import('./intro.enso')
             }
         ]
     },
     // Test 2 section
     {
-        title: "Test2",
+        title: "Test - 2",
         children: [
             {
                 id: "test-page-2",
                 title: "Test page 2",
+                link: "test-page-2",
                 loader: () => import('./testpage2.enso')
             }
         ]
