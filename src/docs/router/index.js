@@ -1,34 +1,22 @@
 
 export * from './docsRouter';
 
-export function getSlug() {
-    const path = location.pathname.replace(/\/$/, '');
-    const slug = path.split('/').pop();
-    return slug || 'intro';
-}
 
-export function captureLinks(router, base = '/docs') {
-    document.addEventListener('click', e => {
-        if (e.defaultPrevented) return;
+export function captureNavigation(router, base = '/docs') {
 
-        if (e.button !== 0) return;
+    navigation.addEventListener('navigate', e => {
 
-        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        if (!e.canIntercept) return;
 
-        const link = e.target.closest('a');
-
-        if (!link) return;
-
-        if (link.target === '_blank') return;
-
-        const url = new URL(link.href);
+        const url = new URL(e.destination.url);
 
         if (url.origin !== location.origin) return;
-
         if (!url.pathname.startsWith(base)) return;
 
-        e.preventDefault();
-
-        router.navigate(url.pathname);
+        e.intercept({
+            async handler() {
+                await router.load(url.pathname);
+            }
+        });
     });
 }

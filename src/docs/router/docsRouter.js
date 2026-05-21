@@ -5,27 +5,51 @@ export class DocsRouter {
     #outlet;
     #pages;
     #defaultPage;
-    
+    #base;
+
     constructor(outlet, pages, options = {}) {
         this.#outlet = outlet;
         this.#pages = pages;
         this.#defaultPage = options.defaultPage ?? 'intro';
+        this.#base = options.base ?? '/';
+    }
 
-        window.addEventListener('popstate', () => {
-            this.load(location.pathname);
-        });
+    normalize(pathname) {
+
+        console.log(this.#base);
+        if (this.#base !== '/' &&
+            pathname.startsWith(this.#base)) {
+
+            pathname = pathname.slice(this.#base.length);
+        }
+
+        return pathname;
     }
 
     async navigate(path) {
-        history.pushState({}, '', path);
-        await this.load(path);
+
+        const target = new URL(path, location.origin);
+
+        history.pushState({}, '', target.pathname);
+
+        await this.load(target.pathname);
     }
 
     async load(pathname) {
-        const parts = pathname.split('/');
-        const pageID = parts.pop() || this.#defaultPage;
+
+        pathname = this.normalize(pathname);
+
+        const parts = pathname.split('/').filter(Boolean);
+
+        const pageID =
+            parts.pop() || this.#defaultPage;
+
         const loader = this.#pages[pageID];
-        const page = (!loader) ? page404 : (await loader()).default; 
+
+        const page =
+            (!loader)
+                ? page404
+                : (await loader()).default;
 
         this.#outlet.replaceChildren(page());
     }

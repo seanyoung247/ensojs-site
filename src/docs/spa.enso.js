@@ -1,7 +1,9 @@
 
 import Enso, { css, html, watches, lifecycle } from 'ensojs';
-import { captureLinks, DocsRouter } from './router';
+import { captureNavigation, DocsRouter } from './router';
 import { routes } from './pages/manifest';
+
+const appBase = new URL('docs/', location.origin + import.meta.env.BASE_URL).pathname;
 
 Enso.component("enso-spa", {
     settings: { useShadow: false },
@@ -26,10 +28,13 @@ Enso.component("enso-spa", {
             this.router = new DocsRouter(
                 this.refs.outlet,
                 routes,
-                { defaultPage: 'test-page-1' }
+                {
+                    base: appBase,
+                    defaultPage: 'test-page-1'
+                }
             );
 
-            captureLinks(this.router, '/docs');
+            captureNavigation(this.router, appBase);
 
             await this.router.load(location.pathname);
         }, [lifecycle.mount], false)
