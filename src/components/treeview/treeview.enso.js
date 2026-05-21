@@ -1,5 +1,5 @@
 
-import Enso, { css, html, prop } from 'ensojs';
+import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
 import TreeItem from "./treeitem.enso";
 
 
@@ -18,9 +18,16 @@ Enso.component("enso-tree-view", {
     template: html`
         <ul>
             <li *for="item of @:items">
-                ${ TreeItem.html({'.item': "{{ item }}"} ) }
+                <enso-tree-item .item="{{ item }}"></enso-tree-item>
             </li>
         </ul>
-    `
+    `,
+
+    // script: {
+    //     onStart: watches(function() {
+    //         console.log(this.items.children?.length);
+    //     }, [lifecycle.mount], false)
+    // }
 });
 
+// ${ TreeItem.html({'.item': "{{ item }}"} ) }

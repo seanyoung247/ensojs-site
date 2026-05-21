@@ -14,7 +14,10 @@ export const pages = [
                 id: "test-page-1",
                 title: "Intro test",
                 link: "test-page-1",
-                loader: () => import('./intro.enso')
+                loader: () => import('./intro.enso'),
+                children: [
+                    { title: "dummy heading 1", }
+                ]
             }
         ]
     },

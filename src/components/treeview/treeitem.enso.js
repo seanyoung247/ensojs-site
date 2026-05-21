@@ -7,13 +7,16 @@ export default Enso.component("enso-tree-item", {
         item: prop(null)
     },
     template: html`
+        <a *if="{{ !@:item.children?.length }}" :href="{{ @:item.link }}">{{ @:item.title }}</a>
 
-        
-
-        <a *if="{{ @:item.link }}" :href="{{ @:item.link }}">{{ @:item.title }}</a>
-        <span *if="{{ !@:item.link }}">{{ @:item.title }}</span>
-
-
-    `,
+        <details *if="{{ @:item.children?.length }}">
+            <summary><a :href="{{ @:item.link }}">{{ @:item.title }}</a></summary>
+            <ul *if="{{ @:item.children?.length }}">
+                <li *for="it of @:item.children">
+                    <enso-tree-item .item="{{ it }}"></enso-tree-item>
+                </li>
+            </ul>
+        </details>
+    `
 
 });
