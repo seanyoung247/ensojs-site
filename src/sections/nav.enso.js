@@ -137,7 +137,7 @@ export default Enso.component('nav-section', {
                 <h2>Explore</h2>
                 <ul>
                     <li class="nav-item brush hover">
-                        <a href="/docs/">Docs</a>
+                        <a href="docs/">Docs</a>
                     </li>
                     <li class="nav-item brush hover">
                         <a href="https://github.com/seanyoung247/ensoJS">
