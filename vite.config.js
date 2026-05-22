@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite';
 import { dirname, resolve, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+import { cloudflare } from '@cloudflare/vite-plugin'
 import fs from 'fs';
 
 
@@ -22,11 +23,14 @@ function cloneIndexTo404() {
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig(({command}) => ({
+export default defineConfig({
   root: 'src',
   base: '/',
 
-  plugins: [cloneIndexTo404()],
+  plugins: [
+    cloneIndexTo404(),
+    cloudflare()
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -44,4 +48,4 @@ export default defineConfig(({command}) => ({
       }
     }
   },
-}));
+});
