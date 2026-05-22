@@ -22,8 +22,12 @@ function cloneIndexTo404() {
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig({
+export default defineConfig((command) => ({
   root: 'src',
+  base: command === 'build'
+    ? 'ensojs-site'         // Github Pages deployment
+    : '/',
+
   plugins: [cloneIndexTo404()],
   resolve: {
     alias: {
@@ -42,4 +46,4 @@ export default defineConfig({
       }
     }
   },
-});
+}));

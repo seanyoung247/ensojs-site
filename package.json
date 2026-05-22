@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite --force",
     "build": "vite build",
+    "deploy": "npm run build && gh-pages -d dist",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "vite": "^7.2.4"
   },
   "dependencies": {
