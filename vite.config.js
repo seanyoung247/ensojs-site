@@ -22,11 +22,9 @@ function cloneIndexTo404() {
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig((command) => ({
+export default defineConfig(({command}) => ({
   root: 'src',
-  base: command === 'build'
-    ? 'ensojs-site'         // Github Pages deployment
-    : '/',
+  base: '/',
 
   plugins: [cloneIndexTo404()],
   resolve: {
