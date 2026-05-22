@@ -6,24 +6,27 @@
 *.launch
 .settings/
 *.sublime-workspace
-.VSCodeCounter/
 
-# IDE - VSCode
+# VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# VSCodeCounter
 .vsCodeCounter/*
 .VSCodeCounter/*
 
-# System Files
+# System files
 .DS_Store
 Thumbs.db
 
-node_modules
+# Dependencies
+node_modules/
 
-# Build files
-/dist
+# Build output
+dist/
 
-.wrangler
+# Cloudflare Wrangler
+.wrangler/
