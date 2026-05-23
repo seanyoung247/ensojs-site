@@ -16,6 +16,6 @@
     "wrangler": "^4.94.0"
   },
   "dependencies": {
-    "ensojs": "^1.0.0-rc.19"
+    "ensojs": "^1.0.0-rc.20"
   }
 }
