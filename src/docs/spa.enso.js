@@ -4,7 +4,7 @@ import { captureNavigation, DocsRouter } from './router';
 import { routes } from './pages/manifest';
 
 // const appBase = new URL('docs/', location.origin + import.meta.env.BASE_URL).pathname;
-const appBase = `${import.meta.env.BASE_URL}/docs/`;
+const spaBase = `${import.meta.env.BASE_URL}docs/`;
 
 Enso.component("enso-spa", {
     settings: { useShadow: false },
@@ -26,17 +26,17 @@ Enso.component("enso-spa", {
         router: null,
 
         onStart: watches(async function() {
-            console.log(appBase);
+            console.log(spaBase);
             this.router = new DocsRouter(
                 this.refs.outlet,
                 routes,
                 {
-                    base: appBase,
+                    base: spaBase,
                     defaultPage: 'test-page-1'
                 }
             );
 
-            captureNavigation(this.router, appBase);
+            captureNavigation(this.router, spaBase);
 
             await this.router.load(location.pathname);
         }, [lifecycle.mount], false)
