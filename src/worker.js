@@ -4,29 +4,25 @@ export default {
 
         const url = new URL(request.url);
 
-        // Try actual static asset first
-        const asset = await env.ASSETS.fetch(request);
-
-        if (asset.status !== 404) {
-            return asset;
+        // Serve real files normally
+        if (url.pathname.includes('.')) {
+            return env.ASSETS.fetch(request);
         }
 
-        // SPA fallback for docs routes
+        // Docs SPA routes
         if (url.pathname.startsWith('/docs/')) {
 
             return env.ASSETS.fetch(
                 new Request(
-                    `${url.origin}/docs/index.html`,
-                    request
+                    `${url.origin}/docs/index.html`
                 )
             );
         }
 
-        // Main site fallback
+        // Main site
         return env.ASSETS.fetch(
             new Request(
-                `${url.origin}/index.html`,
-                request
+                `${url.origin}/index.html`
             )
         );
     }
