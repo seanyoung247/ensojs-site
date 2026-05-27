@@ -3,8 +3,10 @@ import Enso, { css, html, watches, lifecycle } from 'ensojs';
 import { captureNavigation, DocsRouter } from './router';
 import { routes } from './pages/manifest';
 
-// const appBase = new URL('docs/', location.origin + import.meta.env.BASE_URL).pathname;
-const spaBase = `${import.meta.env.BASE_URL}docs/`;
+
+const spaBase = (
+    `${new URL('./', import.meta.url).pathname}/`
+).replace(/\/+$/, '/');
 
 Enso.component("enso-spa", {
     settings: { useShadow: false },
@@ -26,7 +28,6 @@ Enso.component("enso-spa", {
         router: null,
 
         onStart: watches(async function() {
-            console.log(spaBase);
             this.router = new DocsRouter(
                 this.refs.outlet,
                 routes,

@@ -13,7 +13,7 @@ export class DocsRouter {
         this.#defaultPage = options.defaultPage ?? 'intro';
         this.#base = options.base ?? '/';
     }
-
+ 
     normalize(pathname) {
 
         console.log(this.#base);
