@@ -33,7 +33,7 @@ Enso.component("enso-spa", {
                 routes,
                 {
                     base: spaBase,
-                    defaultPage: 'test-page-1'
+                    defaultPage: 'intro-about-page'
                 }
             );
 
