@@ -47,7 +47,17 @@ Enso.component("enso-app", {
         }
     `],
     template: html`
-        ${ Nav.html({class:"constrained"}) }
+        ${ Nav.html({
+            class: "constrained",
+            '.headings': `[
+                { title: 'Why Enso?', link: '#why-enso' },
+                { title: 'Overview', link: '#overview' }
+            ]`,
+            '.pages': `[
+                { title: 'Docs', link: '/docs/' },
+                { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
+            ]`
+        }) }
         ${ header.html({class:"constrained"}) }
         ${ Example.html({class:"constrained"}) }
         ${ WhyEnso.html({class:"constrained"}) }

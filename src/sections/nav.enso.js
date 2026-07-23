@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
 import "@components/nav/nav.enso";
 import "@components/nav/themes.enso";
 
@@ -9,6 +9,11 @@ import BrushStroke from "../styles/brush.css?inline";
 
 export default Enso.component('nav-section', {
     settings: { useShadow: false },
+    watched:{
+        headings: prop([]),
+        pages: prop([])
+    },
+
     styles: [css(BrushStroke), css`
         site-nav {
             position: fixed;
@@ -158,6 +163,11 @@ export default Enso.component('nav-section', {
         </site-nav>
     `,
     script: {
+
+        onStart: watches(function() {
+            console.log(this.headings);
+        }, [lifecycle.mount]),
+
         closeNav() {
             if (window.innerWidth < 768) {
                 this.refs.nav.close();
