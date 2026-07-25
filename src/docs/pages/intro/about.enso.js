@@ -19,11 +19,11 @@ export default Enso.component('intro-about-page', {
         }
     `],
     template: html`
-        <h1>About</h1>
+        <h1 id="about">About</h1>
         <p>Enso is a lightweight Web Component framework that simplifies development by removing boilerplate, providing intuitive declarative templates, and enabling clean component structure.</p>
         <p>It aims to be modern, minimal, and forward focused — no build step, no virtual DOM, and no legacy baggage.</p>
 
-        <h2>Philosophy</h2>
+        <h2 id="philosophy">Philosophy</h2>
         <ul class="philosophy">
             <li>Native-first — build on browser standards: Custom Elements, Shadow DOM, template literals.</li>
             <li>Minimal surface area — small API, small mental overhead.</li>
@@ -33,7 +33,7 @@ export default Enso.component('intro-about-page', {
             <li>Zero boilerplate — refs, events, bindings, and reactivity should “just work.”</li>
         </ul>
 
-        <h2>Features</h2>
+        <h2 id="features">Features</h2>
         <ul class="features">
             <li><span>✨</span>Tiny, modern, reactive core
             <li><span>💡</span>Component-based architecture using native custom elements
@@ -44,5 +44,14 @@ export default Enso.component('intro-about-page', {
             <li><span>📦</span>ESM-first, no legacy module formats
             <li><span>🔌</span>Extensible template pipeline — define custom attribute handlers or parsing steps
         </ul>
-    `
+    `,
+    script: {
+        getHeadings() {
+            return [
+                { title: "About", link: "#about" },
+                { title: "Philosophy", link: "#philosophy" },
+                { title: "Features", link: "#features" }
+            ]
+        }
+    }
 })

@@ -127,7 +127,7 @@ export default Enso.component('nav-section', {
     `],
     template: html`
         <site-nav #ref="nav">
-            <li *if="@:headings.length" class="nav-section">
+            <li class="nav-section">
                 <h2>On this page</h2>
                 <ul>
                     <li *for="heading of @:headings" class="nav-item brush hover" @click="this.closeNav">
@@ -135,7 +135,7 @@ export default Enso.component('nav-section', {
                     </li>
                 </ul>
             </li>
-            <li *if="@:pages.length" class="nav-section">
+            <li class="nav-section">
                 <h2>Explore</h2>
                 <ul>
                     <li *for="page of @:pages" class="nav-item brush hover">

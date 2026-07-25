@@ -1,5 +1,5 @@
 
-import Enso, { css, html, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
 import { captureNavigation, DocsRouter } from './router';
 import { routes } from './pages/manifest';
 
@@ -13,6 +13,8 @@ const spaBase = (
 ).replace(/\/+$/, '/');
 
 Enso.component("enso-spa", {
+    watched: { headings: prop([]) },
+
     styles: [css(Theme), css(Reactive), css`
         enso-spa {
             width: 100%;
@@ -42,7 +44,7 @@ Enso.component("enso-spa", {
 
         <main id="main-content">
             <nav aria-label="Documentation page navigation">
-        <slot></slot>
+                <slot></slot>
             </nav>
             <section 
                 #ref="outlet" id="outlet"
@@ -67,7 +69,9 @@ Enso.component("enso-spa", {
 
             captureNavigation(this.router, spaBase);
 
-            await this.router.load(location.pathname);
+            const test = await this.router.load(location.pathname);
+            this.headings = test.getHeadings();
+            console.log(this.headings)
         }, [lifecycle.mount], false)
     }
 });
