@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
 import "@components/nav/nav.enso";
 import "@components/nav/themes.enso";
 
@@ -9,6 +9,11 @@ import BrushStroke from "../styles/brush.css?inline";
 
 export default Enso.component('nav-section', {
     settings: { useShadow: false },
+    watched:{
+        headings: prop([]),
+        pages: prop([])
+    },
+
     styles: [css(BrushStroke), css`
         site-nav {
             position: fixed;
@@ -125,24 +130,16 @@ export default Enso.component('nav-section', {
             <li class="nav-section">
                 <h2>On this page</h2>
                 <ul>
-                    <li class="nav-item brush hover" @click="this.closeNav">
-                        <a href="#why-enso">Why Enso?</a>
-                    </li>
-                    <li class="nav-item brush hover" @click="this.closeNav">
-                        <a href="#overview">Overview</a>
+                    <li *for="heading of @:headings" class="nav-item brush hover" @click="this.closeNav">
+                        <a .href="{{ heading.link }}">{{ heading.title }}</a>
                     </li>
                 </ul>
             </li>
             <li class="nav-section">
                 <h2>Explore</h2>
                 <ul>
-                    <!-- <li class="nav-item brush hover">
-                        <a href="/docs/">Docs</a>
-                    </li> -->
-                    <li class="nav-item brush hover">
-                        <a href="https://github.com/seanyoung247/ensoJS">
-                            Github
-                        </a>
+                    <li *for="page of @:pages" class="nav-item brush hover">
+                        <a .href="{{ page.link }}">{{ page.title }}</a>
                     </li>
                 </ul>
             </li>
@@ -158,6 +155,11 @@ export default Enso.component('nav-section', {
         </site-nav>
     `,
     script: {
+
+        onStart: watches(function() {
+            console.log(this.headings);
+        }, [lifecycle.mount]),
+
         closeNav() {
             if (window.innerWidth < 768) {
                 this.refs.nav.close();

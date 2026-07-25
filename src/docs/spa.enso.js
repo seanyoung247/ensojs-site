@@ -1,29 +1,59 @@
 
-import Enso, { css, html, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
 import { captureNavigation, DocsRouter } from './router';
 import { routes } from './pages/manifest';
 
+import Nav from "../sections/nav.enso";
+
+import Reactive from '@styles/reactive.css?inline';
+import Theme from '@styles/theme.css?inline';
 
 const spaBase = (
     `${new URL('./', import.meta.url).pathname}/`
 ).replace(/\/+$/, '/');
 
 Enso.component("enso-spa", {
-    settings: { useShadow: false },
-    styles: css`
+    watched: { headings: prop([]) },
+
+    styles: [css(Theme), css(Reactive), css`
         enso-spa {
-            display: flex;
             width: 100%;
-            height: 100%;
         }
         main {
-            border: 1px solid red;
+            padding: 3rem 0.5rem 0.5rem;
+            display: flex;
+            flex-flow: column no-wrap;
+            color: var(--primary-text);
         }
-    `,
+        nav {
+
+            width: 300px;
+            color: var(--primary-text);
+        }
+    `],
+
     template: html`
-        <slot></slot>
-        <main #ref="outlet" id="outlet"></main>
+        ${ Nav.html({
+            class: "constrained",
+            '.headings': `{{ @:headings }}`,
+            '.pages': `[
+                { title: 'EnsoJS', link: '/' },
+                { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
+            ]`
+        }) }
+
+        <main id="main-content">
+            <nav aria-label="Documentation page navigation">
+                <slot></slot>
+            </nav>
+            <section 
+                #ref="outlet" id="outlet"
+                aria-label="Documentation content"
+            >
+            </section>
+        </main>
     `,
+    
     script: {
         router: null,
 
@@ -33,13 +63,15 @@ Enso.component("enso-spa", {
                 routes,
                 {
                     base: spaBase,
-                    defaultPage: 'test-page-1'
+                    defaultPage: 'intro-about-page'
                 }
             );
 
             captureNavigation(this.router, spaBase);
 
-            await this.router.load(location.pathname);
+            const test = await this.router.load(location.pathname);
+            this.headings = test.getHeadings();
+            console.log(this.headings)
         }, [lifecycle.mount], false)
     }
 });

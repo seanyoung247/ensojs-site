@@ -17,5 +17,10 @@
   },
   "dependencies": {
     "ensojs": "^1.0.0-rc.20"
+  },
+  "allowScripts": {
+    "sharp@0.34.5": true,
+    "esbuild@0.28.1": true,
+    "workerd@1.20260714.1": true
   }
 }
