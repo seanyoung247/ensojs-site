@@ -155,11 +155,6 @@ export default Enso.component('nav-section', {
         </site-nav>
     `,
     script: {
-
-        onStart: watches(function() {
-            console.log(this.headings);
-        }, [lifecycle.mount]),
-
         closeNav() {
             if (window.innerWidth < 768) {
                 this.refs.nav.close();

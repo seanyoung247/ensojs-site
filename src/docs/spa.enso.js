@@ -7,6 +7,8 @@ import Nav from "../sections/nav.enso";
 
 import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
+import Reset from "@styles/reset.css?inline";
+import Code from "@styles/code.css?inline";
 
 const spaBase = (
     `${new URL('./', import.meta.url).pathname}/`
@@ -15,7 +17,7 @@ const spaBase = (
 Enso.component("enso-spa", {
     watched: { headings: prop([]) },
 
-    styles: [css(Theme), css(Reactive), css`
+    styles: [css(Reset), css(Theme), css(Code), css(Reactive), css`
         enso-spa {
             width: 100%;
         }
@@ -26,9 +28,16 @@ Enso.component("enso-spa", {
             color: var(--primary-text);
         }
         nav {
-
             width: 300px;
             color: var(--primary-text);
+        }
+        #outlet {
+            display: flex;
+            justify-content: center;
+
+            & > * {
+                max-width: var(--max-content);
+            }
         }
     `],
 
@@ -48,6 +57,7 @@ Enso.component("enso-spa", {
             </nav>
             <section 
                 #ref="outlet" id="outlet"
+                class="constrained"
                 aria-label="Documentation content"
             >
             </section>
