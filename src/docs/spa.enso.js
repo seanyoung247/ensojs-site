@@ -1,6 +1,6 @@
 
 import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
-import { captureNavigation, DocsRouter } from './router';
+import { captureNavigation, EnsoRouter } from './router';
 import { routes } from './pages/manifest';
 
 import Nav from "../sections/nav.enso";
@@ -58,7 +58,7 @@ Enso.component("enso-spa", {
         router: null,
 
         onStart: watches(async function() {
-            this.router = new DocsRouter(
+            this.router = new EnsoRouter(
                 this.refs.outlet,
                 routes,
                 {
@@ -68,10 +68,12 @@ Enso.component("enso-spa", {
             );
 
             captureNavigation(this.router, spaBase);
+            this.router.addEventListener("page-loaded", e=>{
+                this.headings = e.detail?.getHeadings() ?? [];
+            });
 
-            const test = await this.router.load(location.pathname);
-            this.headings = test.getHeadings();
-            console.log(this.headings)
+            await this.router.load(location.pathname);
+
         }, [lifecycle.mount], false)
     }
 });
