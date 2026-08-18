@@ -19,7 +19,10 @@ export default Enso.component('nav-section', {
             position: fixed;
             z-index: 99;
             top: 0;
-            width: 100%
+            width: 100%;
+
+            overflow: scroll;
+            overscroll-behaviour: contain;
         }
         svg-icons {
             display: inline-block;
@@ -29,11 +32,14 @@ export default Enso.component('nav-section', {
         }
         .nav-section {
             color: var(--primary-text);
+
             min-width: 75%;
             backdrop-filter: blur(4px);
+
             border-radius: var(--space-md);
             padding: var(--space-md);
             margin: var(--space-lg) 0;
+
             &:first-of-type {
                 margin-top: 3rem;
             }
@@ -82,6 +88,8 @@ export default Enso.component('nav-section', {
         }
         @media (min-width: 768px) {
             site-nav {
+                overscroll-behaviour: auto;
+
                 background: var(--code-back)
                     linear-gradient(var(--muted-text)) no-repeat bottom/100% 1px;
             }

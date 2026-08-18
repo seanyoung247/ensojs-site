@@ -1,9 +1,10 @@
 
 import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
 import { captureNavigation, EnsoRouter } from './router';
-import { routes } from './pages/manifest';
+import { routes, pages } from './pages/manifest';
 
 import Nav from "../sections/nav.enso";
+import "../components/treeview";
 
 import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
@@ -16,6 +17,7 @@ const spaBase = (
 
 Enso.component("enso-spa", {
     watched: { headings: prop([]) },
+    expose: { pages },
 
     styles: [css(Reset), css(Theme), css(Code), css(Reactive), css`
         enso-spa {
@@ -53,7 +55,7 @@ Enso.component("enso-spa", {
 
         <main id="main-content">
             <nav aria-label="Documentation page navigation">
-                <slot></slot>
+                <enso-tree-view .items="{{ pages }}"></enso-tree-view>
             </nav>
             <section 
                 #ref="outlet" id="outlet"
