@@ -1,10 +1,11 @@
 
 import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
 import { captureNavigation, EnsoRouter } from './router';
-import { routes, pages } from './pages/manifest';
+import { routes, pages as docs } from './pages/manifest';
 
 import Nav from "../sections/nav.enso";
 import "../components/treeview";
+import Footer from "../sections/footer.enso";
 
 import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
@@ -17,29 +18,20 @@ const spaBase = (
 
 Enso.component("enso-spa", {
     watched: { headings: prop([]) },
-    expose: { pages },
+    expose: { docs },
 
-    styles: [css(Reset), css(Theme), css(Code), css(Reactive), css`
+    styles: [css(Reset), css(Theme), css(Code), 
+                css(Reactive), css`
+
         enso-spa {
             width: 100%;
         }
         main {
             padding: 3rem 0.5rem 0.5rem;
             display: flex;
-            flex-flow: column no-wrap;
+            align-items: center;
+            flex-flow: column nowrap;
             color: var(--primary-text);
-        }
-        nav {
-            width: 300px;
-            color: var(--primary-text);
-        }
-        #outlet {
-            display: flex;
-            justify-content: center;
-
-            & > * {
-                max-width: var(--max-content);
-            }
         }
     `],
 
@@ -50,20 +42,21 @@ Enso.component("enso-spa", {
             '.pages': `[
                 { title: 'EnsoJS', link: '/' },
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
-            ]`
+            ]`,
+            '.docs': '{{ docs }}'
         }) }
 
         <main id="main-content">
-            <nav aria-label="Documentation page navigation">
-                <enso-tree-view .items="{{ pages }}"></enso-tree-view>
-            </nav>
+            <div class="left spacer"></div>
             <section 
                 #ref="outlet" id="outlet"
                 class="constrained"
                 aria-label="Documentation content"
             >
             </section>
+            <div class="right spacer"></div>
         </main>
+        ${ Footer.html({class:"constrained"}) }
     `,
     
     script: {
