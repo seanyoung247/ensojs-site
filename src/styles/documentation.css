@@ -1,0 +1,20 @@
+
+h1, h2 {
+    padding: 0.5em 0;
+}
+
+section:not(:first-of-type) {
+    margin-top: 1em;
+}
+
+code.code-pane {
+    padding: 0.1em;
+}
+
+.spaced {
+    padding-top: 1em;
+}
+
+li {
+    padding-top: 0.25em;
+}

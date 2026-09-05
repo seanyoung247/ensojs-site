@@ -35,5 +35,4 @@ export default Enso.component("enso-tree-item", {
             </ul>
         </details>
     `
-
 });
