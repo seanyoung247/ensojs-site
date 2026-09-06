@@ -18,6 +18,10 @@
 
   "routes": [
     {
+      "pattern": "ensojs.dev",
+      "custom_domain": true
+    },
+    {
       "pattern": "docs.ensojs.dev",
       "custom_domain": true
     }
