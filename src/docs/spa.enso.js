@@ -25,15 +25,16 @@ Enso.component("enso-spa", {
 
     styles: [css(Reset), css(Theme), css(Code), 
                 css(Reactive), css`
-
-        enso-spa {
-            width: 100%;
+        :host {
+            display: flex;
+            flex-direction: column;
         }
         main {
+            flex: 1;
             display: grid;
-
+            
             color: var(--primary-text);
-            padding: 3rem 0.5rem 0.5rem;
+            padding: 3rem var(--space-md) var(--space-md);
             
         }
         #outlet {
@@ -70,7 +71,7 @@ Enso.component("enso-spa", {
 
                 justify-content: center;
                 color: var(--primary-text);
-                padding: var(--space-xl) var(--space-md) var(--space-md);
+                padding: 3rem var(--space-md) var(--space-md);
             }
         }
     `],
