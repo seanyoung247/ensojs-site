@@ -13,6 +13,7 @@ import Footer from "./sections/footer.enso";
 import CodeStyles from "@styles/code.css?inline";
 import Reactive from '@styles/reactive.css?inline';
 import "@styles/main.css";
+import { docsUrl } from './urls';
 
 
 Enso.enableDiagnostics();
@@ -54,7 +55,7 @@ Enso.component("enso-app", {
                 { title: 'Overview', link: '#overview' }
             ]`,
             '.pages': `[
-                { title: 'Docs', link: '/docs/' },
+                { title: 'Docs', link: '${docsUrl}' },
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
             ]`
         }) }
