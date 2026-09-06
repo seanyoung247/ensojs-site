@@ -8,7 +8,13 @@ Enso.component("enso-tree-view", {
         items: prop([], true),
     },
     styles: [css`
-        :host { display: block; }
+        :host {
+            display: block; 
+
+            --item-color: white;
+            --link-style: none;
+            --list-style: '-';
+        }
         ul {
             list-style: none;
             padding-left: 0;
@@ -22,12 +28,4 @@ Enso.component("enso-tree-view", {
             </li>
         </ul>
     `,
-
-    // script: {
-    //     onStart: watches(function() {
-    //         console.log(this.items.children?.length);
-    //     }, [lifecycle.mount], false)
-    // }
 });
-
-// ${ TreeItem.html({'.item': "{{ item }}"} ) }

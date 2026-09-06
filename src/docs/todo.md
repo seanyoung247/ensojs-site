@@ -1,7 +1,7 @@
 Documentation
 
 Getting Started
-□ About
+✓ About
 □ Installing
 □ Basic Component
 
@@ -26,4 +26,4 @@ Reference
 □ setWatched()
 □ lifecycle
 
-Progress: 0 / 19 pages✓
+Progress: 1 / 19 pages

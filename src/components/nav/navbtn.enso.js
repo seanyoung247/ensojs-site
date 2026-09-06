@@ -51,28 +51,30 @@ Enso.component('nav-btn', {
             pointer-events: none;
         }
 
-        :host([open]) { outline: none; }
-        :host([open]) .enso {
-            stroke-dashoffset: 10;
-            transition: stroke-dashoffset 0.5s ease 0.2s;
-        }
-        :host([open]) .line.bottom { --f: -1; }
-        :host([open]) .line.top, :host([open]) .line.bottom {
-            opacity: 0.85;
-            stroke: var(--accent-color);
-            transform:
-                translateY(calc(12.5% * var(--f, 1)))
-                translateX(-10%)
-                rotate(calc(45deg * var(--f, 1)))
-                scale(0.8);
-            transition: 
-                transform 0.5s ease 0.1s,
-                stroke 0.5s ease,
-                opacity 0.5s ease;
-        }
-        :host([open]) .line.middle {
-            stroke-dashoffset: -65;
-            transition: stroke-dashoffset 0.5s ease;
+        @media (max-width: 768px) {
+            :host([open]) { outline: none; }
+            :host([open]) .enso {
+                stroke-dashoffset: 10;
+                transition: stroke-dashoffset 0.5s ease 0.2s;
+            }
+            :host([open]) .line.bottom { --f: -1; }
+            :host([open]) .line.top, :host([open]) .line.bottom {
+                opacity: 0.85;
+                stroke: var(--accent-color);
+                transform:
+                    translateY(calc(12.5% * var(--f, 1)))
+                    translateX(-10%)
+                    rotate(calc(45deg * var(--f, 1)))
+                    scale(0.8);
+                transition: 
+                    transform 0.5s ease 0.1s,
+                    stroke 0.5s ease,
+                    opacity 0.5s ease;
+            }
+            :host([open]) .line.middle {
+                stroke-dashoffset: -65;
+                transition: stroke-dashoffset 0.5s ease;
+            }
         }
     `],
     template: html`

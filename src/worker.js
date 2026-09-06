@@ -1,29 +1,22 @@
 
 export default {
     async fetch(request, env) {
-
         const url = new URL(request.url);
 
-        // Serve real files normally
-        if (url.pathname.includes('.')) {
-            return env.ASSETS.fetch(request);
-        }
+        const isDocs =
+            url.hostname === 'docs.localhost' ||
+            url.hostname === 'docs.ensojs.dev';
 
-        // Docs SPA routes
-        if (url.pathname.startsWith('/docs/')) {
+        if (request.headers.get('sec-fetch-mode') === 'navigate') {
+            const entry = isDocs
+                ? '/docs/index.html'
+                : '/index.html';
 
             return env.ASSETS.fetch(
-                new Request(
-                    `${url.origin}/docs/index.html`
-                )
+                new URL(entry, request.url)
             );
         }
 
-        // Main site
-        return env.ASSETS.fetch(
-            new Request(
-                `${url.origin}/index.html`
-            )
-        );
+        return env.ASSETS.fetch(request);
     }
 };
