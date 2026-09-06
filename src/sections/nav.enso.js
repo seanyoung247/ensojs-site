@@ -1,5 +1,5 @@
 
-import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, prop, attr } from 'ensojs';
 import "@components/nav/nav.enso";
 import "@components/nav/themes.enso";
 
@@ -11,15 +11,20 @@ export default Enso.component('nav-section', {
     settings: { useShadow: false },
     watched:{
         headings: prop([]),
-        pages: prop([])
+        pages: prop([]),
+        docs: prop([]),
+        section: attr('')
     },
 
     styles: [css(BrushStroke), css`
         site-nav {
             position: fixed;
             z-index: 99;
-            top: 0;
-            width: 100%
+            top: 0; left: 0;
+            width: 100%;
+
+            overflow: scroll;
+            overscroll-behaviour: contain;
         }
         svg-icons {
             display: inline-block;
@@ -29,11 +34,14 @@ export default Enso.component('nav-section', {
         }
         .nav-section {
             color: var(--primary-text);
+
             min-width: 75%;
             backdrop-filter: blur(4px);
+
             border-radius: var(--space-md);
             padding: var(--space-md);
             margin: var(--space-lg) 0;
+
             &:first-of-type {
                 margin-top: 3rem;
             }
@@ -80,8 +88,66 @@ export default Enso.component('nav-section', {
                 border-top: 1px solid var(--stroke-color);
             }
         }
+
+        details.docs-section {
+            & > summary {
+                list-style: none;
+                cursor: pointer;
+                position: relative;
+                padding-left: 1em;
+                font-weight: bold;
+
+                &::-webkit-details-marker {
+                    display: none;
+                }
+
+                &::after {
+                    content: "+";
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                }
+
+                &:hover {
+                    color: var(--accent);
+                }
+            }
+            &[open] > summary::after {
+                content: "-";
+            }
+
+            & ul.docs-pages {
+                position: relative;
+                margin-left: 0.5em;
+                border-left: 1px solid var(--muted-text);
+
+                &:empty {
+                    display: none;
+                }
+                & > li {
+                    padding-left: 1em;
+                    & > a {
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: -1em;
+                            top: 50%;
+                            width: 1em;
+                            border-top: 1px solid var(--muted-text);
+                        }
+                    }
+                }
+            }
+        }
+
+
         @media (min-width: 768px) {
             site-nav {
+                overscroll-behaviour: auto;
+                overflow: visible;
+
                 background: var(--code-back)
                     linear-gradient(var(--muted-text)) no-repeat bottom/100% 1px;
             }
@@ -123,6 +189,19 @@ export default Enso.component('nav-section', {
                 & + & { border-top: none; }
                 &.theme { gap: var(--space-md); }
             }
+
+            .documentation {
+                position: absolute;
+                top: calc(100% + var(--space-xl));
+                left: max(var(--space-md), calc(50% - var(--docs-nav-offset)));
+
+                width: var(--docs-nav-width);
+                overflow-y: auto;
+
+                & > ul {
+                    flex-direction: column;
+                }
+            }
         }
     `],
     template: html`
@@ -143,6 +222,29 @@ export default Enso.component('nav-section', {
                     </li>
                 </ul>
             </li>
+            <li class="nav-section documentation" *if="@:docs.length > 0">
+                <h2>Documentation</h2>
+                <ul>
+                    <li *for="section of @:docs" class="nav-item">
+                        <details
+                            name="docs-page" 
+                            class="docs-section"
+                            :open="{{ section.id === @:section }}"
+                        >
+                            <summary>
+                                {{ section.title }}
+                            </summary>
+                            <ul class="docs-pages">
+                                <li *for="page of section.children" class="brush hover">
+                                    <a :href="{{ page.link }}">
+                                        {{ page.title }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-section">
                 <h2>Settings</h2>
                 <ul>
@@ -155,15 +257,8 @@ export default Enso.component('nav-section', {
         </site-nav>
     `,
     script: {
-
-        onStart: watches(function() {
-            console.log(this.headings);
-        }, [lifecycle.mount]),
-
         closeNav() {
-            if (window.innerWidth < 768) {
-                this.refs.nav.close();
-            }
+            this.refs.nav.close();
         }
     }   
 });

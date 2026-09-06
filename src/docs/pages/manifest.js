@@ -8,6 +8,7 @@
 export const pages = [
     // Getting Started Section
     {
+        id: "docs-getting-started",
         title: "Getting Started",
         children: [
             {
@@ -32,10 +33,12 @@ export const pages = [
     },
     // Components Section
     {
+        id: "docs-components-section",
         title: "Components",
     },
     // Reference Section
     {
+        id: "docs-reference-section",
         title: "Reference",
     },
 

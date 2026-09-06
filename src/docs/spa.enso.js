@@ -1,34 +1,79 @@
 
-import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
-import { captureNavigation, DocsRouter } from './router';
-import { routes } from './pages/manifest';
+import Enso, { css, html, watches, lifecycle, prop, attr } from 'ensojs';
+import { captureNavigation, EnsoRouter } from './router';
+import { routes, pages as docs } from './pages/manifest';
 
 import Nav from "../sections/nav.enso";
+import "../components/treeview";
+import Footer from "../sections/footer.enso";
 
 import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
+import Reset from "@styles/reset.css?inline";
+import Code from "@styles/code.css?inline";
+import { siteUrl } from '../urls';
 
-const spaBase = (
-    `${new URL('./', import.meta.url).pathname}/`
-).replace(/\/+$/, '/');
+
+const spaBase = '/';
 
 Enso.component("enso-spa", {
-    watched: { headings: prop([]) },
+    watched: { 
+        headings: prop([]),
+        section: attr('')
+    },
+    expose: { docs },
 
-    styles: [css(Theme), css(Reactive), css`
-        enso-spa {
-            width: 100%;
+    styles: [css(Reset), css(Theme), css(Code), 
+                css(Reactive), css`
+        :host {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         main {
-            padding: 3rem 0.5rem 0.5rem;
-            display: flex;
-            flex-flow: column no-wrap;
+            flex: 1;
+            display: grid;
+            
             color: var(--primary-text);
+            padding: 3rem var(--space-md) var(--space-md);
+            
         }
-        nav {
+        #outlet {
+            padding: 0 var(--space-md);
+            min-width: 0;
+        }
 
-            width: 300px;
-            color: var(--primary-text);
+        @media (min-width: 768px) {
+            main {
+                display: grid;
+                grid-template-columns:
+                    var(--docs-nav-width)
+                    minmax(0, var(--max-content));
+
+                justify-content: center;
+            }
+
+            .left.spacer {
+                display: block;
+            }
+
+            #outlet {
+                grid-column: 2;
+            }
+        }
+
+        @media (min-width: 1580px) {
+            main {
+                display: grid;
+                grid-template-columns:
+                    minmax(0, var(--docs-nav-width))
+                    minmax(0, var(--max-content))
+                    minmax(0, var(--docs-nav-width));
+
+                justify-content: center;
+                color: var(--primary-text);
+                padding: 3rem var(--space-md) var(--space-md);
+            }
         }
     `],
 
@@ -37,28 +82,28 @@ Enso.component("enso-spa", {
             class: "constrained",
             '.headings': `{{ @:headings }}`,
             '.pages': `[
-                { title: 'EnsoJS', link: '/' },
+                { title: 'EnsoJS', link: '${siteUrl}' },
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
-            ]`
+            ]`,
+            '.docs': '{{ docs }}',
+            ':section': '{{ @:section }}' 
         }) }
-
         <main id="main-content">
-            <nav aria-label="Documentation page navigation">
-                <slot></slot>
-            </nav>
             <section 
                 #ref="outlet" id="outlet"
+                class="constrained"
                 aria-label="Documentation content"
             >
             </section>
         </main>
+        ${ Footer.html({class:"constrained"}) }
     `,
     
     script: {
         router: null,
 
         onStart: watches(async function() {
-            this.router = new DocsRouter(
+            this.router = new EnsoRouter(
                 this.refs.outlet,
                 routes,
                 {
@@ -68,10 +113,14 @@ Enso.component("enso-spa", {
             );
 
             captureNavigation(this.router, spaBase);
+            this.router.addEventListener("page-loaded", e=>{
+                const component = e.detail;
+                this.headings = component?.getHeadings() ?? [];
+                this.section = component?.getSection() ?? '';
+            });
 
-            const test = await this.router.load(location.pathname);
-            this.headings = test.getHeadings();
-            console.log(this.headings)
+            await this.router.load(location.pathname);
+
         }, [lifecycle.mount], false)
     }
 });
