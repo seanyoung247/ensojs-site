@@ -204,7 +204,7 @@ export default Enso.component('intro-about-page', {
                 { title: "Philosophy", link: "#philosophy" },
                 { title: "Features", link: "#features" },
                 { title: "History", link: "#history" }
-            ]
+            ];
         },
         getSection() {
             return "docs-getting-started";

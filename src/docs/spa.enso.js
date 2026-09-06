@@ -28,6 +28,7 @@ Enso.component("enso-spa", {
         :host {
             display: flex;
             flex-direction: column;
+            align-items: center;
         }
         main {
             flex: 1;
