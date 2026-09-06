@@ -1,5 +1,5 @@
 
-import Enso, { css, html, watches, lifecycle, prop } from 'ensojs';
+import Enso, { css, html, watches, lifecycle, prop, attr } from 'ensojs';
 import { captureNavigation, EnsoRouter } from './router';
 import { routes, pages as docs } from './pages/manifest';
 
@@ -17,7 +17,10 @@ const spaBase = (
 ).replace(/\/+$/, '/');
 
 Enso.component("enso-spa", {
-    watched: { headings: prop([]) },
+    watched: { 
+        headings: prop([]),
+        section: attr('')
+    },
     expose: { docs },
 
     styles: [css(Reset), css(Theme), css(Code), 
@@ -66,7 +69,7 @@ Enso.component("enso-spa", {
                     minmax(0, var(--docs-nav-width));
 
                 justify-content: center;
-            color: var(--primary-text);
+                color: var(--primary-text);
                 padding: var(--space-xl) var(--space-md) var(--space-md);
             }
         }
@@ -80,7 +83,8 @@ Enso.component("enso-spa", {
                 { title: 'EnsoJS', link: '/' },
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
             ]`,
-            '.docs': '{{ docs }}'
+            '.docs': '{{ docs }}',
+            ':section': '{{ @:section }}' 
         }) }
         <main id="main-content">
             <section 
@@ -108,7 +112,9 @@ Enso.component("enso-spa", {
 
             captureNavigation(this.router, spaBase);
             this.router.addEventListener("page-loaded", e=>{
-                this.headings = e.detail?.getHeadings() ?? [];
+                const component = e.detail;
+                this.headings = component?.getHeadings() ?? [];
+                this.section = component?.getSection() ?? '';
             });
 
             await this.router.load(location.pathname);

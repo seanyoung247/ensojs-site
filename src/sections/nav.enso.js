@@ -1,5 +1,5 @@
 
-import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
+import Enso, { css, html, prop, attr } from 'ensojs';
 import "@components/nav/nav.enso";
 import "@components/nav/themes.enso";
 
@@ -12,7 +12,8 @@ export default Enso.component('nav-section', {
     watched:{
         headings: prop([]),
         pages: prop([]),
-        docs: prop([])
+        docs: prop([]),
+        section: attr('')
     },
 
     styles: [css(BrushStroke), css`
@@ -225,7 +226,11 @@ export default Enso.component('nav-section', {
                 <h2>Documentation</h2>
                 <ul>
                     <li *for="section of @:docs" class="nav-item">
-                        <details name="docs-page" class="docs-section">
+                        <details
+                            name="docs-page" 
+                            class="docs-section"
+                            :open="{{ section.id === @:section }}"
+                        >
                             <summary>
                                 {{ section.title }}
                             </summary>
