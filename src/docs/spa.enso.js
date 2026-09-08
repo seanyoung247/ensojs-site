@@ -115,8 +115,8 @@ Enso.component("enso-spa", {
             captureNavigation(this.router, spaBase);
             this.router.addEventListener("page-loaded", e=>{
                 const component = e.detail;
-                this.headings = component?.getHeadings() ?? [];
-                this.section = component?.getSection() ?? '';
+                this.headings = component?.getHeadings?.() ?? [];
+                this.section = component?.getSection?.() ?? '';
             });
 
             await this.router.load(location.pathname);
