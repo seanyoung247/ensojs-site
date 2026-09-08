@@ -937,7 +937,7 @@ export const scriptEx = `
         <span class="space">    </span>
         <span class="highlight brush"
             data-title="Script"
-            data-description="Defines the component’s behaviour and methods, and provides the API available to templates and event handlers."
+            data-description="Defines the component\'s behaviour and methods, and provides the API available to templates and event handlers."
         >
             <span class="token property">script</span>
             <span class="token punctuation">:</span>
