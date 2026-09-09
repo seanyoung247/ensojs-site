@@ -23,7 +23,7 @@ export default Enso.component('nav-section', {
             top: 0; left: 0;
             width: 100%;
 
-            overflow: scroll;
+            /* overflow: scroll; */
             overscroll-behaviour: contain;
         }
         svg-icons {
@@ -222,7 +222,7 @@ export default Enso.component('nav-section', {
                     </li>
                 </ul>
             </li>
-            <li class="nav-section documentation" *if="@:docs.length > 0">
+            <li class="nav-section documentation" *if="{{ @:docs.length > 0 }}">
                 <h2>Documentation</h2>
                 <ul>
                     <li *for="section of @:docs" class="nav-item">
