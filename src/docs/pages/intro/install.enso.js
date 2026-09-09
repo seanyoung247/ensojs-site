@@ -12,12 +12,33 @@ const npmExamples = {
     install:
 `npm install ensojs`,
     import:
-`import Enso, { html, css, prop } from 'ensojs';`,
+`import { Enso, html, css, prop } from 'ensojs';`,
 };
 
+const cdnExamples = {
+    import:
+`import { Enso, html, css, prop } from 'https://cdn.jsdelivr.net/npm/ensojs';`,
+    export:
+`// enso.js:
+export * from 'https://cdn.jsdelivr.net/npm/ensojs';
 
-export default Enso.component('install-about-page', {
-    expose: { npmExamples },
+// component.enso.js
+import { Enso, html, css, prop } from './enso.js';
+`,
+    importmap:
+`<script type="importmap">
+{
+    "imports": {
+        "ensojs": "https://cdn.jsdelivr.net/npm/ensojs"
+    }
+}
+</script>`,
+    import2:
+`import { Enso, html, css, prop } from 'ensojs';`
+};
+
+export default Enso.component('installing-enso-page', {
+    expose: { npmExamples, cdnExamples },
     styles: [css(Reset), css(DocStyles), css`
     
     `],
@@ -62,6 +83,37 @@ export default Enso.component('install-about-page', {
         <section>
             <h2 id="cdn">CDN</h2>
 
+            <p>
+                Enso can also be imported directly from jsDelivr without installing any packages:
+            </p>
+            <enso-code-view
+                .code="{{ cdnExamples.import }}"
+                language="javascript"
+            ></enso-code-view>
+            <p>
+                Using the full URL in every component can become verbose. For larger projects, you can re-export Enso from a local module:
+            </p>
+            <enso-code-view
+                .code="{{ cdnExamples.export }}"
+                language="javascript"
+            ></enso-code-view>
+            <p>
+                Alternatively, you can use an import map for more ergonomic imports:
+            </p>
+            <enso-code-view
+                .code="{{ cdnExamples.importmap }}"
+                language="markup"
+            ></enso-code-view>
+            <p>
+                An import map allows the same imports used with npm to work directly in the browser:
+            </p>
+            <enso-code-view
+                .code="{{ cdnExamples.import2 }}"
+                language="javascript"
+            ></enso-code-view>
+            <p>
+                Import maps are generally preferred, as they allow components to use the same imports whether Enso is installed from npm or loaded from a CDN.
+            </p>
         </section>
     `,
     
