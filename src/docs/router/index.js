@@ -3,10 +3,10 @@ export * from './ensorouter';
 
 
 export function captureNavigation(router, base = '/docs') {
-
     navigation.addEventListener('navigate', e => {
 
         if (!e.canIntercept) return;
+        if (e.hashChange) return;
 
         const url = new URL(e.destination.url);
 
