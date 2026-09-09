@@ -32,7 +32,7 @@ const examples = {
 };
 
 
-export default Enso.component('intro-about-page', {
+export default Enso.component('about-enso-page', {
     expose: { examples },
     styles: [css(Reset), css(DocStyles), css`
         ul.philosophy {
