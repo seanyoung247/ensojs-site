@@ -33,7 +33,7 @@ Enso.component('enso-counter', {
 });`,
 
     attributes:
-        `<enso-counter count="10"><enso-counter>`
+        `<enso-counter count="10"></enso-counter>`
 };
 
 
@@ -102,7 +102,7 @@ export default Enso.component('first-enso-component-page', {
                 <p>
                     Template expressions are written using <span enso:ignore>{{}}</span>.
                     The JavaScript expression inside is evaluated and its result inserted
-                    into the DOM as text. Here,<code class="callout"> @:count </code>, is
+                    into the DOM as text. Here,<code class="callout"> @:count </code> is
                     shorthand for the watched<code class="callout"> count </code>value.
                     Because the expression depends on count, Enso will automatically update 
                     it whenever<code class="callout"> count </code>changes.

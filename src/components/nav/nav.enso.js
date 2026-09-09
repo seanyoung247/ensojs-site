@@ -31,13 +31,7 @@ Enso.component('site-nav', {
             width: 100%;
             max-width: 768px;
 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
             overflow-y: hidden;
-
-            list-style: none;
             background:
                 linear-gradient(
                     to bottom,
@@ -79,11 +73,6 @@ Enso.component('site-nav', {
             #menu {
                 height: auto;
                 max-width: var(--max-content, 1200px);
-
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-                align-items: center;
                 gap: var(--space-lg);
 
                 background: none;
@@ -102,9 +91,9 @@ Enso.component('site-nav', {
                 :open="{{ @:open }}"
             ></nav-btn>
 
-            <ul id="menu">
+            <div id="menu">
                 <slot></slot>
-            </ul>
+            </div>
         </nav>
     `,
     script: {

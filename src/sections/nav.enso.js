@@ -32,6 +32,12 @@ export default Enso.component('nav-section', {
             height: 1em;
             --fill: var(--primary-text);
         }
+        ul.nav-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+        }
         .nav-section {
             color: var(--primary-text);
 
@@ -52,9 +58,6 @@ export default Enso.component('nav-section', {
                 
                 margin-top: auto;
                 margin-bottom: 3rem;
-
-                opacity: 0.9;
-                background: var(--texture-overlay);
             }
             & h2 {
                 font-size: 0.75rem;
@@ -144,6 +147,14 @@ export default Enso.component('nav-section', {
 
 
         @media (min-width: 768px) {
+            ul.nav-list {
+                display: grid;
+                grid-template-columns:
+                    minmax(0, 1fr)
+                    auto
+                    minmax(0, 1fr);
+                align-items: center;
+            }
             site-nav {
                 overscroll-behaviour: auto;
                 overflow: visible;
@@ -166,6 +177,7 @@ export default Enso.component('nav-section', {
                 }
                 &:last-of-type {
                     width: auto;
+                    max-width: none;
                     margin-top: 0;
                     margin-bottom: 0;
                     padding: var(--space-xs) var(--space-md);
@@ -202,59 +214,66 @@ export default Enso.component('nav-section', {
                     flex-direction: column;
                 }
             }
+
+            .settings {
+                display: flex;
+                justify-content: end;
+            }
         }
     `],
     template: html`
         <site-nav #ref="nav">
-            <li class="nav-section">
-                <h2>On this page</h2>
-                <ul>
-                    <li *for="heading of @:headings" class="nav-item brush hover" @click="this.closeNav">
-                        <a .href="{{ heading.link }}">{{ heading.title }}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-section">
-                <h2>Explore</h2>
-                <ul>
-                    <li *for="page of @:pages" class="nav-item brush hover">
-                        <a .href="{{ page.link }}">{{ page.title }}</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-section documentation" *if="{{ @:docs.length > 0 }}">
-                <h2>Documentation</h2>
-                <ul>
-                    <li *for="section of @:docs" class="nav-item">
-                        <details
-                            name="docs-page" 
-                            class="docs-section"
-                            :open="{{ section.id === @:section }}"
-                        >
-                            <summary>
-                                {{ section.title }}
-                            </summary>
-                            <ul class="docs-pages">
-                                <li *for="page of section.children" class="brush hover">
-                                    <a :href="{{ page.link }}">
-                                        {{ page.title }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </details>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-section">
-                <h2>Settings</h2>
-                <ul>
-                    <li class="nav-item theme">
-                        <span>Theme: </span>
-                        <enso-theme-switch #ref="themer">
-                        </enso-theme-switch>
-                    </li>
-                </ul>
-            </li>
+            <ul class="nav-list">
+                <li class="nav-section on-page">
+                    <h2>On this page</h2>
+                    <ul>
+                        <li *for="heading of @:headings" class="nav-item brush hover" @click="this.closeNav">
+                            <a .href="{{ heading.link }}">{{ heading.title }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-section explore">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li *for="page of @:pages" class="nav-item brush hover">
+                            <a .href="{{ page.link }}">{{ page.title }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-section documentation" *if="{{ @:docs.length > 0 }}">
+                    <h2>Documentation</h2>
+                    <ul>
+                        <li *for="section of @:docs" class="nav-item">
+                            <details
+                                name="docs-page" 
+                                class="docs-section"
+                                :open="{{ section.id === @:section }}"
+                            >
+                                <summary>
+                                    {{ section.title }}
+                                </summary>
+                                <ul class="docs-pages">
+                                    <li *for="page of section.children" class="brush hover">
+                                        <a :href="{{ page.link }}">
+                                            {{ page.title }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </details>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-section settings">
+                    <h2>Settings</h2>
+                    <ul>
+                        <li class="nav-item theme">
+                            <span>Theme: </span>
+                            <enso-theme-switch #ref="themer">
+                            </enso-theme-switch>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </site-nav>
     `,
     script: {
