@@ -1,5 +1,5 @@
 
-import Enso, { css, html, attr } from 'ensojs';
+import Enso, { css, html, attr, watches } from 'ensojs';
 import './navbtn.enso';
 
 import Reset from "@styles/reset.css?inline";
@@ -91,17 +91,20 @@ Enso.component('site-nav', {
                 :open="{{ @:open }}"
             ></nav-btn>
 
-            <div id="menu">
+            <div #ref="menu" id="menu">
                 <slot></slot>
             </div>
         </nav>
     `,
     script: {
         open() {
-            this.watched.open = true;
+            this.open = true;
         },
         close() {
-            this.watched.open = false;
-        }
+            this.open = false;
+        },
+        onOpen: watches(function() {
+            this.refs.menu.scrollTo(0,0);
+        }, ['open'], false)
     }
 });
