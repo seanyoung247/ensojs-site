@@ -131,4 +131,4 @@ export default Enso.component('first-enso-component-page', {
             return "docs-getting-started";
         }
     }
-})
+});
