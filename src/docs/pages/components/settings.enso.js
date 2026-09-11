@@ -15,12 +15,11 @@ export default Enso.component('first-enso-component-page', {
     script: {
         getHeadings() {
             return [
-                { title: "A Basic Component", link: "#basic-component" },
-                { title: "A Simple Counter", link: "#simple-counter" },
+                { title: "", link: "#" },
             ];
         },
         getSection() {
-            return "docs-getting-started";
+            return "docs-components";
         }
     }
 });
