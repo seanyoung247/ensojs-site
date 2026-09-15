@@ -1,5 +1,5 @@
 
-import Enso, { prop, css, html, attr, watches } from 'ensojs';
+import { Enso, prop, css, html, attr, watches } from 'ensojs';
 
 import Reset from "../styles/reset.css?inline";
 import Tooltips from "../styles/tooltip.css?inline";
@@ -91,8 +91,6 @@ Enso.component('theme-switch', {
     `,
     script: {
         onThemesChange: watches(function () {
-            if (!this.theme || !this.themes.length) return;
-
             this.applyTheme(this.theme);
         }, ['themes']),
 

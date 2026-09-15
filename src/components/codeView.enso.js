@@ -14,22 +14,17 @@ export default Enso.component('enso-code-view', {
 
     styles: [css(Reset), css(Code)],
     template: html`
-        <pre>
-            <code #ref="codePane"
-                class="code-pane">
-            </code>
-        </pre>
+        <pre><code #ref="codePane"
+            class="code-pane">
+        </code></pre>
     `,
 
     script: {
         highlight: watches(function() {
-            if (!this.refs.codePane) return;
-
-            const grammar = Prism.languages[this.language];
-
             this.refs.codePane.innerHTML = (
                 Prism.highlight( this.code,
-                    grammar, this.language
+                    Prism.languages[this.language],
+                    this.language
                 )
             );
         }, ['code', 'language'])
