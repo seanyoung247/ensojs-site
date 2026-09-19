@@ -18,7 +18,7 @@ export default Enso.component('components-script-page', {
             ];
         },
         getSection() {
-            return "docs-components";
+            return "docs-components-section";
         }
     }
 });
