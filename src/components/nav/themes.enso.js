@@ -10,12 +10,12 @@ export default Enso.component('enso-theme-switch', {
     expose: { getStored },
     template: html`
         <theme-switch
-            .themes="[
+            :theme="{{ getStored('enso-theme', 'auto') }}"
+            .themes="{{ [
                 {name: 'light', icon:'${ThemeIcons}#light'}, 
                 {name: 'dark', icon:'${ThemeIcons}#dark'},
                 {name: 'auto', icon:'${ThemeIcons}#auto'}
-            ]"
-            :theme="{{ getStored('enso-theme', 'auto') }}"
+            ] }}"
             @theme-changed="this.onThemeChanged"
         ></theme-switch>
     `,
