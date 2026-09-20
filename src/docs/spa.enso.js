@@ -65,7 +65,7 @@ Enso.component("enso-spa", {
             }
         }
 
-        @media (min-width: 1024px) {
+        @media (min-width: 1250px) {
             main {
                 display: grid;
                 grid-template-columns:
