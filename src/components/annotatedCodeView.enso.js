@@ -84,25 +84,32 @@ Enso.component("annotated-code-view", {
                 }
             }
 
-        enso-code-view {
+            enso-code-view {
                 grid-column: 1;
                 grid-row: 1;
                 max-width: var(--code-width, 720px);
 
-            &::part(code-pane) {
-                margin-block: 0;
-                border-radius: 0;
+                &::part(code-pane) {
+                    margin-block: 0;
+                    border-radius: 0;
                 }
             }
         }
     `],
 
     template: html`
-        <section *for="section of @:sections">
-
+        <section *for="section of @:sections"
+            :id="{{ section.id }}"
+            class="code-section"
+        >
             <div class="annotation">
-                <h2>{{ section.title }}</h2>
+                <h3>{{ section.title }}</h3>
                 <p>{{ section.description }}</p>
+                <ul class="related">
+                    <li *for="tag of section.related">
+                        <a :href="{{ tag.href }}">{{ tag.title }}</a>
+                    </li>
+                </ul>
             </div>
 
             <enso-code-view

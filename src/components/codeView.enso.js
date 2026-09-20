@@ -12,7 +12,14 @@ export default Enso.component('enso-code-view', {
         language: attr('javascript')
     },
 
-    styles: [css(Reset), css(Code)],
+    styles: [css(Reset), css(Code), css`
+        :host {
+            display: block;
+            & * {
+                height: 100%;
+            }
+        }    
+    `],
     template: html`
         <pre><code #ref="codePane"
             class="code-pane scroll-hint"
