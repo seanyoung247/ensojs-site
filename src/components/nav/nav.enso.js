@@ -104,7 +104,7 @@ Enso.component('site-nav', {
             this.open = false;
         },
         onOpen: watches(function() {
-            this.refs.menu.scrollTo(0,0);
+            if (this.open) this.refs.menu.scrollTo(0,0);
         }, ['open'], false)
     }
 });
