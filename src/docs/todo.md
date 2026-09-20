@@ -6,7 +6,7 @@ Getting Started
 ✓ Basic Component
 
 Components
-□ Overview
+✓ Overview
 □ Templates
 □ Styles
 □ Watched
@@ -26,4 +26,4 @@ Reference
 □ setWatched()
 □ lifecycle
 
-Progress: 3 / 19 pages
+Progress: 4 / 19 pages

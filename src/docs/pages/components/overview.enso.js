@@ -305,9 +305,28 @@ export default Enso.component('components-overview-page', {
             margin-left: auto;
             margin-right: auto;
         }
+        .codepen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         #codepen-slideshow-link {
-            display: block;
+            padding: var(--space-md) var(--space-lg);
+            color: var(--secondary-text);
+            background: var(--code-back);
+            text-decoration: none;
+            border-radius: 999px;
+            opacity: 0.8;
+            border: 1px solid var(--stroke-color);
+            box-shadow: color-mix(in srgb, black 15%, transparent 85%) 0px 1px 2px;
 
+            &:hover {
+                opacity: 1.0;
+            }
+            &:active {
+                transform: translateY(2px);
+                box-shadow: none;
+            }
         }
     `],
     
@@ -317,7 +336,7 @@ export default Enso.component('components-overview-page', {
                 <h1>Enso Components</h1>
                 <p>
                     Enso components combine reactive state, declarative templates, style
-                    encapsulation, and custom javascript behaviour within native custom
+                    encapsulation, and custom JavaScript behaviour within native custom
                     element Web Components.
                 </p>
             </section>
@@ -343,13 +362,15 @@ export default Enso.component('components-overview-page', {
                 ></annotated-code-view>
 
             </section>
-            <section class="slim">
-                <a id="codepen-slideshow-link" class="button"
+            <div class="codepen slim">
+                <a id="codepen-slideshow-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     href="https://codepen.io/editor/seanyoung247/pen/01a0bf8e-57df-7c5d-90e2-065f2c195033"
                 >
                     Try the slideshow on CodePen &#x2192;
                 </a>
-            <section>
+            </div>
         </div>
     `,
 
