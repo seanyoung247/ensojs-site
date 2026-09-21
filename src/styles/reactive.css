@@ -20,12 +20,6 @@
  * Docs shared
  */
 :root {
-    --docs-nav-width: 150px;
+    --docs-nav-width: 200px;
     --docs-nav-offset: calc((var(--max-content) / 2) + var(--docs-nav-width));
-}
-
-@media (min-width: 1180px) {
-    :root {
-        --docs-nav-width: 200px
-    }
 }
