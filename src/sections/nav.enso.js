@@ -240,7 +240,7 @@ export default Enso.component('nav-section', {
                         </li>
                     </ul>
                 </li>
-                <li class="nav-section documentation" *if="{{ @:docs.length > 0 }}">
+                <li class="nav-section documentation" *if="@:docs.length > 0">
                     <h2>Documentation</h2>
                     <ul>
                         <li *for="section of @:docs" class="nav-item">
