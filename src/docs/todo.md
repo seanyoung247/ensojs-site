@@ -7,8 +7,8 @@ Getting Started
 
 Components
 ✓ Overview
-□ Templates
-□ Styles
+✓ Templates
+✓ Styles
 □ Watched
 □ Expose
 □ Script
@@ -26,4 +26,4 @@ Reference
 □ setWatched()
 □ lifecycle
 
-Progress: 4 / 19 pages
+Progress: 6 / 19 pages
