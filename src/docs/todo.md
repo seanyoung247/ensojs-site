@@ -9,7 +9,7 @@ Components
 ✓ Overview
 ✓ Templates
 ✓ Styles
-□ Watched
+✓ Watched
 □ Expose
 □ Script
 □ Settings
@@ -26,4 +26,4 @@ Reference
 □ setWatched()
 □ lifecycle
 
-Progress: 6 / 19 pages
+Progress: 7 / 19 pages
