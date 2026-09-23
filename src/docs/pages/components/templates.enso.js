@@ -43,7 +43,7 @@ const examples = {
 ></div>`,
     properties:
 `<todo-list
-    .user="['task 1', 'task2']" 
+    .tasks="['task 1', 'task2']" 
     enso-prop:theme="@:theme"
 ></todo-list>`,
     references:
@@ -56,6 +56,22 @@ const examples = {
     Decrement
 </button>
 `,
+    if:
+`<div *if="false">
+    Will never appear
+</div>
+<div *if="@:show">
+    Shown when show is truthy
+</div>
+`,
+    for:
+`
+<ul>
+    <li *for="item of @:items">
+        {{ item.title }}
+    </li>
+</ul>
+`
 };
 
 
@@ -237,8 +253,44 @@ export default Enso.component('components-templates-page', {
             </section>
             <section id="#component-templates-directives">
                 <h2>Directives</h2>
-                <!-- *if, enso-if -->
-                <!-- *for, enso-for -->
+                <p>
+                    Bindings allow components to update elements and respond to events. Directives control the structure
+                    of a template, determining which elements are created and when they appear in the DOM.
+                </p>
+                <section class="sub-section">
+                    <!-- *if, enso-if -->
+                    <h3>If directive</h3>
+                    <p>
+                        The <code class="callout">*if</code> directive evaluates a JavaScript expression. When the result
+                        is truthy, the element and its subtree are mounted in the DOM. When falsy, they are unmounted. The
+                        directive is lazy: its subtree is only created when the condition first becomes truthy.
+                    </p>
+                    <enso-code-view
+                        .code="examples.if"
+                        language="markup"
+                    ></enso-code-view>
+                </section>
+                <section class="sub-section">
+                    <!-- *for, enso-for -->
+                    <h3>For directive</h3>
+                    <p>
+                        The <code class="callout">*for</code> directive accepts an <code class="callout">of</code> or
+                        <code class="callout">in</code> iteration expression. It uses the element and its subtree as a
+                        template, creating an instance for each item in the iteration.
+                    </p>
+                    <p>
+                        The iteration variable is available to the element and all its descendants, allowing expressions
+                        within the generated subtree to access the current item.
+                    </p>
+                    <p>
+                        When a watched property used by the iteration expression changes, Enso updates the generated
+                        elements to reflect the new collection.
+                    </p>
+                    <enso-code-view
+                        .code="examples.for"
+                        language="markup"
+                    ></enso-code-view>
+                </section>
 
             </section>
         </div>
