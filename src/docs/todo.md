@@ -12,7 +12,7 @@ Components
 ✓ Watched
 ✓ Expose
 ✓ Script
-□ Settings
+✓ Settings
 □ Lifecycle
 
 Reference
@@ -32,4 +32,4 @@ Helpers
 □ load
 □ range
 
-Progress: 9 / 23 pages
+Progress: 10 / 23 pages
