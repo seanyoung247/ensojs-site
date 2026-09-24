@@ -29,10 +29,12 @@ Enso.component("enso-spa", {
 
     styles: [css(Reset), css(Theme), css(Code), 
                 css(Reactive), css`
-        :host {
+        enso-spa {
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            min-height: 100dvh;
         }
         main {
             flex: 1;
