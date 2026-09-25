@@ -7,7 +7,7 @@ import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
 
 
-const example = {
+const examples = {
     settings:
 `Enso.component('enso-settings', {
     settings: {
@@ -23,7 +23,7 @@ const example = {
 
 export default Enso.component('components-settings-page', {
     settings: { useShadow: false },
-    expose: { example },
+    expose: { examples },
 
     styles: [css(Reset), css(DocStyles)],
 
@@ -65,6 +65,10 @@ export default Enso.component('components-settings-page', {
                         </tr>
                     </tbody>
                 </table>
+                <enso-code-view
+                    .code="examples.settings"
+                    language="javascript"
+                ></enso-code-view>
                 <p>
                     Most components shouldn't need to change their settings. If you opt out of
                     Shadow DOM with <code class="callout">useShadow: false</code> you lose

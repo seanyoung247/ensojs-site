@@ -9,7 +9,7 @@ import Code from '../styles/code.css?inline';
 export default Enso.component('enso-code-view', {
     watched: {
         code: prop(''),
-        language: attr('javascript')
+        language: attr('javascript'),
     },
 
     styles: [css(Reset), css(Code), css`
