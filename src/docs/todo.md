@@ -24,12 +24,12 @@ Reference
 □ watches()
 □ getWatched()
 □ setWatched()
-□ lifecycle
 
 Helpers
 □ cssObj
 □ classList
 □ load
 □ range
+□ comp
 
 Progress: 11 / 24 pages

@@ -1,4 +1,5 @@
 
+import { comp } from 'ensojs/helpers';
 import page404 from "./404.enso";
 
 export class EnsoRouter extends EventTarget {
@@ -51,7 +52,7 @@ export class EnsoRouter extends EventTarget {
                 ? page404
                 : (await loader()).default;
 
-        const component = page();
+        const component = comp(page)();
         this.#outlet.replaceChildren(component);
 
         this.dispatchEvent(new CustomEvent("page-loaded", {

@@ -1,20 +1,21 @@
 
-import Enso, { css, html, watches, lifecycle, prop, attr } from 'ensojs';
+import { Enso, css, html, watches, lifecycle, prop, attr } from 'ensojs';
+import { comp } from 'ensojs/helpers';
 
 import { captureNavigation, EnsoRouter } from './router';
 import { routes, pages as docs } from './pages/manifest';
 import { siteUrl } from '../urls';
 
-import Nav from "../sections/nav.enso";
-import "../components/treeview";
-import Footer from "../sections/footer.enso";
+import NavComp from "../sections/nav.enso";
+import FooterComp from "../sections/footer.enso";
 
 import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
 import Reset from "@styles/reset.css?inline";
 import Code from "@styles/code.css?inline";
 
-
+const Nav = comp(NavComp);
+const Footer = comp(FooterComp)
 
 const spaBase = '/';
 
