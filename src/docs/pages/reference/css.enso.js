@@ -7,23 +7,24 @@ import DocStyles from "@styles/documentation.css?inline";
 
 
 const examples = {
+    css:
+``
+};
 
-}
-
-export default Enso.component('components-styles-page', {
+export default Enso.component('components-css-page', {
     settings: { useShadow: false },
     expose: { examples },
     styles: [css(Reset), css(DocStyles)],
 
     template: html`
         <div class="document">
-            <section id="">
+            <section id="reference-css">
                 <h1></h1>
                 <p>
                 
                 </p>
                 <enso-code-view
-                    .code=""
+                    .code="examples.css"
                     language="javascript"
                 ></enso-code-view>
             </section>
@@ -33,7 +34,7 @@ export default Enso.component('components-styles-page', {
     script: {
         getHeadings() {
             return [
-                { title: "", link: "#" },
+                { title: "CSS", link: "#reference-css" },
             ];
         },
         getSection() {
