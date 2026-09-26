@@ -121,7 +121,9 @@ Enso.component("enso-spa", {
             this.router.addEventListener("page-loaded", e=>{
                 const component = e.detail;
                 this.headings = component?.getHeadings?.() ?? [];
-                this.section = component?.getSection?.() ?? '';
+                const section = component?.getSection?.() ?? '';
+                if (section) this.section = section;
+
             });
 
             await this.router.load(location.pathname);
