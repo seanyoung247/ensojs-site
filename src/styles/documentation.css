@@ -58,6 +58,13 @@
         margin-top: var(--space-md);
     }
 
+    & enso-func-sig {
+        background: var(--code-back);
+        margin: 1em;
+        padding: 0.5em;
+        border-radius: 0.5em;
+    }
+
     & table.docs-table {
         width: 100%;
         border-collapse: collapse;
