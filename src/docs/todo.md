@@ -18,13 +18,12 @@ Components
 
 Reference
 ✓ html()
-□ css()
-□ prop()
-□ attr()
+✓ css()
+✓ prop()
+✓ attr()
 □ computed()
 □ watches()
-□ getWatched()
-□ setWatched()
+□ watchers
 
 Helpers
 □ cssObj
@@ -33,4 +32,4 @@ Helpers
 □ range
 □ comp
 
-Progress: 13 / 25 pages
+Progress: 16 / 24 pages

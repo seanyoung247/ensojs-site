@@ -134,16 +134,10 @@ export const pages = [
                 loader: ()=> import('./reference/watches.enso')
             },
             {
-                id: "reference-getwatched",
-                title: "getWatched()",
-                link: "reference-getwatched",
-                loader: ()=> import('./reference/getwatched.enso')
-            },
-            {
-                id: "reference-setwatched",
-                title: "setWatched()",
-                link: "reference-setwatched",
-                loader: ()=> import('./reference/setwatched.enso')
+                id: "reference-watchers",
+                title: "Watchers",
+                link: "reference-watchers",
+                loader: ()=> import('./reference/watchers.enso')
             },
         ] 
     },
