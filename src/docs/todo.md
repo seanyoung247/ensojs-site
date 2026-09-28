@@ -26,10 +26,10 @@ Reference
 ✓ watchers
 
 Helpers
-□ cssObj
-□ classList
+✓ cssObj
+✓ classList
 □ load
 □ range
 □ comp
 
-Progress: 19 / 24 pages
+Progress: 21 / 24 pages

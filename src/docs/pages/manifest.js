@@ -145,7 +145,38 @@ export const pages = [
     {
         id: "docs-helpers-section",
         title: "Helpers",
-        children: []
+        children: [
+            {
+                id: "helpers-cssobj",
+                title: "cssObj()",
+                link: "helpers-cssobj",
+                loader: ()=> import('./helpers/cssobj.enso')
+            },
+            {
+                id: "helpers-classlist",
+                title: "classList()",
+                link: "helpers-classlist",
+                loader: ()=> import('./helpers/classlist.enso')
+            },
+            {
+                id: "helpers-load",
+                title: "load()",
+                link: "helpers-load",
+                loader: ()=> import('./helpers/load.enso')
+            },
+            {
+                id: "helpers-range",
+                title: "range()",
+                link: "helpers-range",
+                loader: ()=> import('./helpers/range.enso')
+            },
+            {
+                id: "helpers-comp",
+                title: "comp()",
+                link: "helpers-comp",
+                loader: ()=> import('./helpers/comp.enso')
+            },
+        ]
     }
 
 ];
