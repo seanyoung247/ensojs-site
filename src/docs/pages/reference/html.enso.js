@@ -31,7 +31,7 @@ export default Enso.component('components-html-page', {
                     .params="['strings', '...values']"
                     returns="EnsoTemplate"
                 ></enso-func-sig>
-                <p>
+                <p class="spaced">
                     The <code class="callout">html()</code> function accepts a string
                     or template literal and creates an Enso template for use in a
                     component.

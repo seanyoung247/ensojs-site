@@ -55,15 +55,15 @@ export default Enso.component('components-watchers-page', {
                 <h1>Watchers</h1>
                 <p>
                     Watcher functions are functions that can be attached to watched properties and
-                    lifecycle events. When the lifecycle hook is run or the watched properties
-                    updated, the function will be called.
+                    lifecycle events. The provided watcher will be called when any of the listed
+                    watched properties are changed, or on listed lifecycle events.
                 </p>
                 <enso-func-sig
                     name="watcher" 
                     .params="['prop', 'value']"
                     returns="any"
                 ></enso-func-sig>
-                <p>
+                <p class="spaced">
                     <code class="callout">Prop</code> is the string name of the changed value.
                     <code class="callout">value</code> is the new value of the property.
                 </p>

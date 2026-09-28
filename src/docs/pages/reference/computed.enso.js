@@ -47,11 +47,11 @@ export default Enso.component('components-computed-page', {
                     .headers="['Parameter', 'Type', 'Description']"
                     .rows="[
                         ['fn', 'function', 'The function called when any dependencies are changed.'],
-                        ['deps', 'string array', 'An Array of string names of the dependencies of this property.']
+                        ['deps', '[string]', 'An Array of string names of the dependencies of this property.']
                     ]"
                 ></docs-table>
 
-                <p>
+                <p class="spaced">
                     The <code class="callout">computed()</code> function creates a read-only watched property
                     that derives its value from other watched properties.
                 </p>

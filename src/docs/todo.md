@@ -22,7 +22,7 @@ Reference
 ✓ prop()
 ✓ attr()
 ✓ computed()
-□ watches()
+✓ watches()
 ✓ watchers
 
 Helpers
@@ -32,4 +32,4 @@ Helpers
 □ range
 □ comp
 
-Progress: 18 / 24 pages
+Progress: 19 / 24 pages
