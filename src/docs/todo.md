@@ -28,7 +28,7 @@ Reference
 Helpers
 ✓ cssObj
 ✓ classList
-□ load
+✓ load
 □ range
 □ comp
 
