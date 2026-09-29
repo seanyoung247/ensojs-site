@@ -2,6 +2,7 @@ import Enso, { css, html } from 'ensojs';
 
 import '@components/codeView.enso';
 import '@components/docsSignature.enso';
+import '@components/docsTable.enso';
 
 import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
@@ -52,9 +53,16 @@ export default Enso.component('helpers-load-page', {
                 <h1>load()</h1>
                 <enso-func-sig
                     name="load" 
-                    .params="[base, ...files]"
+                    .params="['base', '...files']"
                     returns="Promise<any[]>"
                 ></enso-func-sig>
+                <docs-table 
+                    .headers="['Parameter', 'Type', 'Description']"
+                    .rows="[
+                        ['base', 'string || function', 'The base URL string or a resolver function.'],
+                        ['files', 'string || object', 'One or more strings or objects describing the files to load.']
+                    ]"
+                ></docs-table>
                 <p class="spaced">
                     The <code class="callout">load()</code> function allows components to load external files
                     for inclusion in the component definition.

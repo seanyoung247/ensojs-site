@@ -2,6 +2,7 @@ import Enso, { css, html } from 'ensojs';
 
 import '@components/codeView.enso';
 import '@components/docsSignature.enso';
+import '@components/docsTable.enso';
 
 import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
@@ -26,6 +27,12 @@ export default Enso.component('helpers-classlist-page', {
                     .params="['...classes']"
                     returns="string"
                 ></enso-func-sig>
+                <docs-table 
+                    .headers="['Parameter', 'Type', 'Description']"
+                    .rows="[
+                        ['classes', '[string]', 'string classname(s)']
+                    ]"
+                ></docs-table>
                 <p class="spaced">
                     The <code class="callout">classList()</code> function takes a list of class name strings and
                     returns them formatted for use in a class attribute.
