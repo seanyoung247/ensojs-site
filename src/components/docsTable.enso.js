@@ -37,9 +37,9 @@ export default Enso.component('docs-table', {
             & td:nth-child(2) {
                 font-family: monospace;
             }
-            & tr:last-child td {
+            /*& tr:last-child td {
                 border-bottom: none;
-            }
+            }*/
         }
     `],
     template: html`

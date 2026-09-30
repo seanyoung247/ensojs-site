@@ -92,8 +92,8 @@
             font-family: monospace;
             white-space: nowrap;
         }
-        & tr:last-child td {
+        /*& tr:last-child td {
             border-bottom: none;
-        }
+        }*/
     }
 }
