@@ -29,7 +29,7 @@ Helpers
 ✓ cssObj
 ✓ classList
 ✓ load
-□ range
+✓ range
 □ comp
 
-Progress: 21 / 24 pages
+Progress: 23 / 24 pages
