@@ -30,6 +30,6 @@ Helpers
 ✓ classList
 ✓ load
 ✓ range
-□ comp
+✓ comp
 
-Progress: 23 / 24 pages
+Progress: 24 / 24 pages
