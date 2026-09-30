@@ -13,7 +13,7 @@ Components
 ✓ Expose
 ✓ Script
 ✓ Settings
-□ Lifecycle
+✓ Lifecycle
 
 Reference
 □ html()
@@ -32,4 +32,4 @@ Helpers
 □ load
 □ range
 
-Progress: 10 / 23 pages
+Progress: 11 / 23 pages

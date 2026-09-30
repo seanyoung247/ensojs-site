@@ -28,7 +28,9 @@
     & p {
         margin-top: 0.5em;
     }
-
+    & ul {
+        padding-left: 1em;
+    }
     & li {
         padding-top: 0.25em;
     }

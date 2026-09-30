@@ -23,6 +23,17 @@ const examples = {
             this.count++;
         }
     }
+});`,
+    watches:
+`Enso.component('enso-watches', {
+    watched: {
+        count: attr(0)
+    },
+    script: {
+        onCount: watches(function(){
+            console.log(this.count);
+        }, ['count'])
+    }
 });`
 };
 
@@ -52,6 +63,20 @@ export default Enso.component('components-script-page', {
                     other component properties and methods through 
                     <code class="callout">this</code>, and be referenced by template
                     expressions.
+                </p>
+                <h2>Watches</h2>
+                <p>
+                    The <code class="callout">script</code> field is also where you can
+                    define functions using <code class="callout">watches</code>. These
+                    functions run when specified watched properties change or when particular component lifecycle events occur.
+                </p>
+                <enso-code-view
+                    .code="examples.watches"
+                    language="javascript"
+                ></enso-code-view>
+                <p>
+                    Here the onCount function will run when
+                    <code class="callout">count</code> changes.
                 </p>
             </section>
         </div>
