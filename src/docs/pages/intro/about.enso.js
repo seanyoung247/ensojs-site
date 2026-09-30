@@ -79,7 +79,6 @@ export default Enso.component('about-enso-page', {
                     <li data-icon="🎨">Built-in helpers for attributes, props, styles, and templates
                     <li data-icon="🧩">No build step required for usage
                     <li data-icon="📦">ESM-first, no legacy module formats
-                    <li data-icon="🔌">Extensible template pipeline — define custom attribute handlers or parsing steps
                 </ul>
             </section>
 

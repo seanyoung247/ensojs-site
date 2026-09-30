@@ -62,13 +62,13 @@ export default Enso.component('first-enso-component-page', {
                 <h1 id="basic-component">A basic component</h1>
                 <p>
                     A minimal Enso component only needs a tag name and a template, defined using 
-                    the<code class="callout"> Enso.component() </code>function.
+                    the <code class="callout">Enso.component()</code> function.
                 </p>
                 <p>
                     The first argument is the tag name used to insert the component into the DOM.
                     Enso is built on the Web Components specification, which requires custom element
-                    names to contain a hyphen ('-'). For example,<code class="callout"> hello-world </code>is
-                    valid, but<code class="callout"> helloworld </code>is not.
+                    names to contain a hyphen ('-'). For example, <code class="callout">hello-world</code> is
+                    valid, but <code class="callout">helloworld</code> is not.
                 </p>
                 <p class="note">
                     enso- is often used in examples, but is merely a convention, not a
@@ -81,8 +81,8 @@ export default Enso.component('first-enso-component-page', {
                 <p>
                     The component's behaviour and properties are defined by the object literal
                     passed as the second argument. Here, the component's HTML is defined by
-                    the<code class="callout"> template </code>field using
-                    Enso's<code class="callout"> html </code>tagged template literal.
+                    the <code class="callout">template</code> field using
+                    Enso's <code class="callout">html</code> tagged template literal.
                 </p>
             </section>
 
@@ -100,22 +100,22 @@ export default Enso.component('first-enso-component-page', {
                 <enso-counter></enso-counter>
                 <p>
                     This example shows Enso's reactivity and event handling in
-                    action.<code class="callout"> @click </code>assigns click event 
+                    action. <code class="callout">@click</code> assigns click event 
                     handlers to the buttons, which increment and decrement the 
-                    watched<code class="callout"> count </code>attribute.
+                    watched <code class="callout">count</code> attribute.
                 </p>
                 <p>
                     Template expressions are written within handlebars: <span enso:ignore>{{ }}</span>.
                     The JavaScript expression inside is evaluated and its result inserted
-                    into the DOM as text. Here,<code class="callout"> @:count </code> is
-                    shorthand for the watched<code class="callout"> count </code>value.
-                    Because the expression depends on<code class="callout"> count, </code>
+                    into the DOM as text. Here, <code class="callout">@:count</code> is
+                    shorthand for the watched <code class="callout">count</code> value.
+                    Because the expression depends on <code class="callout">count</code>,
                     Enso will rerun the expression and automatically update the dom wtih 
-                    the result whenever<code class="callout"> count </code>changes.
+                    the result whenever <code class="callout">count</code> changes.
                 </p>
                 <p>
-                    Because<code class="callout"> count </code>is declared as an attribute
-                    using the<code class="callout"> attr() </code>function, its initial value
+                    Because <code class="callout">count</code> is declared as an attribute
+                    using the <code class="callout">attr()</code> function, its initial value
                     can also be supplied directly in HTML.
                 </p>
                 <enso-counter count="10"></enso-counter>
