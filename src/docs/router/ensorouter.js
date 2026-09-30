@@ -1,6 +1,7 @@
 
 import { comp } from 'ensojs/helpers';
 import page404 from "./404.enso";
+import page500 from "./500.enso";
 
 export class EnsoRouter extends EventTarget {
     #outlet;
@@ -47,14 +48,22 @@ export class EnsoRouter extends EventTarget {
 
         const loader = this.#pages[pageID];
 
-        const page =
-            (!loader)
-                ? page404
-                : (await loader()).default;
+        let component = null;
+        try {
+            const page = loader
+                ? (await loader()).default
+                : page404;
 
-        const component = comp(page)();
-        this.#outlet.replaceChildren(component);
+            component = comp(page)();
 
+            this.#outlet.replaceChildren(component);
+        } catch (error) {
+            console.error(`Failed to load page: ${pageID}`, error);
+            component = comp(page500)();
+
+            this.#outlet.replaceChildren(component);
+        }
+        
         this.dispatchEvent(new CustomEvent("page-loaded", {
             detail: component
         }));

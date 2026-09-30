@@ -29,6 +29,7 @@ export default Enso.component('enso-code-view', {
 
     script: {
         updated: watches(function() {
+            if (!this.code) return;
             this.refs.codePane.innerHTML = Prism.highlight(
                 this.code, 
                 Prism.languages[this.language],
