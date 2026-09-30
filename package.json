@@ -16,7 +16,7 @@
     "wrangler": "^4.94.0"
   },
   "dependencies": {
-    "ensojs": "^1.0.0-rc.20",
+    "ensojs": "^1.0.0-rc.22",
     "prismjs": "^1.30.0"
   },
   "allowScripts": {
