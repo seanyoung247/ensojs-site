@@ -192,7 +192,7 @@ export default Enso.component('nav-section', {
 
             .documentation {
                 position: absolute;
-                top: calc(100% + var(--space-md));
+                top: calc(100% + var(--space-xl));
                 left: max(var(--space-md), calc(50% - var(--docs-nav-offset)));
 
                 width: var(--docs-nav-width);
@@ -258,9 +258,7 @@ export default Enso.component('nav-section', {
     `,
     script: {
         closeNav() {
-            if (window.innerWidth < 768) {
-                this.refs.nav.close();
-            }
+            this.refs.nav.close();
         }
     }   
 });

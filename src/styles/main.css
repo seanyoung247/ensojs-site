@@ -2,15 +2,16 @@
 @import "./reset.css";
 @import "./theme.css";
 @import "./reactive.css";
-
+@import "./code.css";
 
 html, body {
     width: 100%;
-    height: 100lvh;
+    min-height: 100dvh;
 }
 
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;    
+    align-items: center;
+    height: 100dvh;
 }
