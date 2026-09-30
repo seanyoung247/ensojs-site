@@ -51,6 +51,8 @@ export class DocsRouter {
                 ? page404
                 : (await loader()).default;
 
-        this.#outlet.replaceChildren(page());
+        const component = page();
+        this.#outlet.replaceChildren(component);
+        return component;
     }
 }
