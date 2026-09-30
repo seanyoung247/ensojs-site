@@ -45,6 +45,7 @@ Enso.component("enso-app", {
 
         site-section {
             align-items: center;
+            scroll-margin-top: 80px;
         }
     `],
     template: html`

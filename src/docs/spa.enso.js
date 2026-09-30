@@ -1,7 +1,9 @@
 
 import Enso, { css, html, watches, lifecycle, prop, attr } from 'ensojs';
+
 import { captureNavigation, EnsoRouter } from './router';
 import { routes, pages as docs } from './pages/manifest';
+import { siteUrl } from '../urls';
 
 import Nav from "../sections/nav.enso";
 import "../components/treeview";
@@ -11,13 +13,14 @@ import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
 import Reset from "@styles/reset.css?inline";
 import Code from "@styles/code.css?inline";
-import { siteUrl } from '../urls';
+
 
 
 const spaBase = '/';
 
 Enso.enableDiagnostics();
 Enso.component("enso-spa", {
+    settings: { useShadow: false },
     watched: { 
         headings: prop([]),
         section: attr('')
@@ -42,6 +45,10 @@ Enso.component("enso-spa", {
         #outlet {
             padding: 0 var(--space-md);
             min-width: 0;
+        }
+
+        section, article {
+            scroll-margin-top: 80px;
         }
 
         @media (min-width: 768px) {
@@ -90,12 +97,12 @@ Enso.component("enso-spa", {
             ':section': '{{ @:section }}' 
         }) }
         <main id="main-content">
-            <section 
+            <div 
                 #ref="outlet" id="outlet"
                 class="constrained"
                 aria-label="Documentation content"
             >
-            </section>
+            </div>
         </main>
         ${ Footer.html({class:"constrained"}) }
     `,
