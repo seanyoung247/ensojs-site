@@ -60,17 +60,12 @@ Enso.component("enso-spa", {
 
                 justify-content: center;
             }
-
-            .left.spacer {
-                display: block;
-            }
-
             #outlet {
                 grid-column: 2;
             }
         }
 
-        @media (min-width: 1580px) {
+        @media (min-width: 1024px) {
             main {
                 display: grid;
                 grid-template-columns:
@@ -99,7 +94,6 @@ Enso.component("enso-spa", {
         <main id="main-content">
             <div 
                 #ref="outlet" id="outlet"
-                class="constrained"
                 aria-label="Documentation content"
             >
             </div>
