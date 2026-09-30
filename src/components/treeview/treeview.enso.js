@@ -22,12 +22,4 @@ Enso.component("enso-tree-view", {
             </li>
         </ul>
     `,
-
-    // script: {
-    //     onStart: watches(function() {
-    //         console.log(this.items.children?.length);
-    //     }, [lifecycle.mount], false)
-    // }
 });
-
-// ${ TreeItem.html({'.item': "{{ item }}"} ) }
