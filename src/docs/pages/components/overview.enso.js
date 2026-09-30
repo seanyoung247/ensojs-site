@@ -275,12 +275,12 @@ export default Enso.component('components-overview-page', {
         enso-slide-show {
             aspect-ratio: 2/1;
             border-radius: 10px;
-            margin: 1em 0;
+            margin: var(--space-md) 0;
 
             & figcaption {
                 position: absolute;
                 top: 0; left: 0; right: 0;
-                padding: 0.5em;
+                padding: var(--space-sm);
                 color: white;
                 background: linear-gradient(
                     180deg, 

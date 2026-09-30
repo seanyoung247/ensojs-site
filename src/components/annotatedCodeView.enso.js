@@ -32,7 +32,6 @@ Enso.component("annotated-code-view", {
             gap: 1em;
 
             & > li {
-                padding: 0.25em 0.5em;
                 border-radius: 999px;
                 background-color: var(--stroke-color);
                 
@@ -41,13 +40,11 @@ Enso.component("annotated-code-view", {
                 }
                 & > a {
                     text-decoration: none;
+                    padding: var(--space-xs) var(--space-sm);
                     color: var(--primary-text);
                 }
             }
         }
-       /* li:hover {
-            background-color: var(--hover-accent);
-        }*/
 
         @container (width > 800px) {
             .code-section {

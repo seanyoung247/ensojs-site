@@ -166,7 +166,7 @@ export default Enso.component('nav-section', {
                 min-width: 0;
                 width: auto;
                 margin: 0;
-                padding: 0;
+                padding: 0 0.5em;
 
                 backdrop-filter: none;
                 border-radius: 0;
