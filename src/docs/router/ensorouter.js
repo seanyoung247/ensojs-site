@@ -1,13 +1,14 @@
 
 import page404 from "./404.enso";
 
-export class DocsRouter {
+export class EnsoRouter extends EventTarget {
     #outlet;
     #pages;
     #defaultPage;
     #base;
 
     constructor(outlet, pages, options = {}) {
+        super();
         this.#outlet = outlet;
         this.#pages = pages;
         this.#defaultPage = options.defaultPage ?? 'intro';
@@ -53,6 +54,11 @@ export class DocsRouter {
 
         const component = page();
         this.#outlet.replaceChildren(component);
+
+        this.dispatchEvent(new CustomEvent("page-loaded", {
+            detail: component
+        }));
+
         return component;
     }
 }
