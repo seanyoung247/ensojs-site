@@ -33,6 +33,7 @@ const examples = {
 
 
 export default Enso.component('about-enso-page', {
+    settings: { useShadow: false },
     expose: { examples },
     styles: [css(Reset), css(DocStyles), css`
         ul.philosophy {
@@ -49,61 +50,62 @@ export default Enso.component('about-enso-page', {
         }
     `],
     template: html`
-        <section>
-            <h1 id="about">About</h1>
-            <p>Enso is a lightweight Web Component framework that simplifies development by removing boilerplate, providing intuitive declarative templates, and enabling clean component structure.</p>
-            <p>It aims to be modern, minimal, and forward focused: no build step, no virtual DOM, and no legacy baggage.</p>
-        </section>
+        <div class="document">
+            <section id="about">
+                <h1>About</h1>
+                <p>Enso is a lightweight Web Component framework that simplifies development by removing boilerplate, providing intuitive declarative templates, and enabling clean component structure.</p>
+                <p>It aims to be modern, minimal, and forward focused: no build step, no virtual DOM, and no legacy baggage.</p>
+            </section>
 
-        <section>
-            <h2 id="philosophy">Philosophy</h2>
-            <ul class="philosophy">
-                <li>Native-first. Build on browser standards: Custom Elements, Shadow DOM, template literals.</li>
-                <li>Minimal surface area. Small API, small mental overhead.</li>
-                <li>Declarative over imperative. Components describe what they are, not how to wire them.</li>
-                <li>No build step. Just write HTML, CSS, and JS.</li>
-                <li>Modern browser focus. No polyfills, no legacy module formats, no baggage.</li>
-                <li>Zero boilerplate. Refs, events, bindings, and reactivity should “just work.”</li>
-            </ul>
-        </section>
-        
-        <section>
-            <h2 id="features">Features</h2>
-            <ul class="features">
-                <li data-icon="✨">Tiny, modern, reactive core
-                <li data-icon="💡">Component-based architecture using native custom elements
-                <li data-icon="🔍">Intuitive templates with @:value 
-                <li data-icon="⚡">Reactive proxies with minimal overhead
-                <li data-icon="🎨">Built-in helpers for attributes, props, styles, and templates
-                <li data-icon="🧩">No build step required for usage
-                <li data-icon="📦">ESM-first, no legacy module formats
-                <li data-icon="🔌">Extensible template pipeline — define custom attribute handlers or parsing steps
-            </ul>
-        </section>
+            <section id="philosophy">
+                <h2>Philosophy</h2>
+                <ul class="philosophy">
+                    <li>Native-first. Build on browser standards: Custom Elements, Shadow DOM, template literals.</li>
+                    <li>Minimal surface area. Small API, small mental overhead.</li>
+                    <li>Declarative over imperative. Components describe what they are, not how to wire them.</li>
+                    <li>No build step. Just write HTML, CSS, and JS.</li>
+                    <li>Modern browser focus. No polyfills, no legacy module formats, no baggage.</li>
+                    <li>Zero boilerplate. Refs, events, bindings, and reactivity should “just work.”</li>
+                </ul>
+            </section>
+            
+            <section id="features">
+                <h2>Features</h2>
+                <ul class="features">
+                    <li data-icon="✨">Tiny, modern, reactive core
+                    <li data-icon="💡">Component-based architecture using native custom elements
+                    <li data-icon="🔍">Intuitive templates with @:value 
+                    <li data-icon="⚡">Reactive proxies with minimal overhead
+                    <li data-icon="🎨">Built-in helpers for attributes, props, styles, and templates
+                    <li data-icon="🧩">No build step required for usage
+                    <li data-icon="📦">ESM-first, no legacy module formats
+                    <li data-icon="🔌">Extensible template pipeline — define custom attribute handlers or parsing steps
+                </ul>
+            </section>
 
-        <section>
-            <h2 id="history">History</h2>
-            <p>Enso began life as a small utility class intended to reduce the repetitive boilerplate associated with writing Web Components. You simply extended from it, and added your own code.</p>
-            <enso-code-view 
-                .code="{{ examples.webComponent }}">
-            </enso-code-view>
-            <p>
-                As real-world components grew, new sources of repetitive boilerplate appeared. For instance, querying the DOM for child elements. To solve this, a quick and simple processing
-                step was added to the template parsing, to extract #ref="myRef" attributes, and insert them as fields on the component, for simple access via the class: this.myRef. But it soon
-                became apparent that there was still a great deal of boilerplate, attaching events and the @event="" attribute evolved to replace calls to this.myRef.addEventListener(...). 
-                As more features were added, Enso started to form.
-            </p>
-            <p class="spaced">From class based:</p>
-            <enso-code-view 
-                .code="{{ examples.ensoClass }}">
-            </enso-code-view>
-            <p>To declarative:</p>
-            <enso-code-view 
-                .code="{{ examples.ensoComponent }}">
-            </enso-code-view>
-            <p>Enso today continues that original spirit: remove friction, embrace clarity, let components express themselves naturally.</p>
-        </section>
-    
+            <section id="history">
+                <h2>History</h2>
+                <p>Enso began life as a small utility class intended to reduce the repetitive boilerplate associated with writing Web Components. You simply extended from it, and added your own code.</p>
+                <enso-code-view 
+                    .code="{{ examples.webComponent }}">
+                </enso-code-view>
+                <p>
+                    As real-world components grew, new sources of repetitive boilerplate appeared. For instance, querying the DOM for child elements. To solve this, a quick and simple processing
+                    step was added to the template parsing, to extract #ref="myRef" attributes, and insert them as fields on the component, for simple access via the class: this.myRef. But it soon
+                    became apparent that there was still a great deal of boilerplate, attaching events for instance, and the @event="" attribute evolved to replace calls to this.myRef.addEventListener(...). 
+                    As more features were added, Enso started to form.
+                </p>
+                <p class="spaced">From class based:</p>
+                <enso-code-view 
+                    .code="{{ examples.ensoClass }}">
+                </enso-code-view>
+                <p>To declarative:</p>
+                <enso-code-view 
+                    .code="{{ examples.ensoComponent }}">
+                </enso-code-view>
+                <p>Enso today continues that original spirit: remove friction, embrace clarity, let components express themselves naturally.</p>
+            </section>
+        </div>
     `,
     script: {
         getHeadings() {
