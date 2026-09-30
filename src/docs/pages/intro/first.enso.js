@@ -9,5 +9,14 @@ export default Enso.component('first-about-page', {
     
     `],
     template: html`
-    `
+    `,
+    
+    script: {
+        getHeadings() {
+            return [];
+        },
+        getSection() {
+            return "docs-getting-started";
+        }
+    }
 })
