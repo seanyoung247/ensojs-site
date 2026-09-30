@@ -1,5 +1,5 @@
 
-import { Enso, html, css, prop, attr, watches } from 'ensojs';
+import { Enso, html, css, prop, attr, watches, lifecycle } from 'ensojs';
 import Prism from 'prismjs';
 
 import Reset from '../styles/reset.css?inline';
@@ -15,19 +15,18 @@ export default Enso.component('enso-code-view', {
     styles: [css(Reset), css(Code)],
     template: html`
         <pre><code #ref="codePane"
-            class="code-pane">
-        </code></pre>
+            class="code-pane scroll-hint"
+            part="code-pane"
+        ></code></pre>
     `,
 
     script: {
-        highlight: watches(function() {
-            this.refs.codePane.innerHTML = (
-                Prism.highlight( this.code,
-                    Prism.languages[this.language],
-                    this.language
-                )
+        updated: watches(function() {
+            this.refs.codePane.innerHTML = Prism.highlight(
+                this.code, 
+                Prism.languages[this.language],
+                this.language
             );
-        }, ['code', 'language'])
+        }, [lifecycle.update], false),
     }
 });
-
