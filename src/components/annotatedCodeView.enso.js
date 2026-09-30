@@ -45,9 +45,9 @@ Enso.component("annotated-code-view", {
                 }
             }
         }
-        li:hover {
-                    background-color: var(--hover-accent);
-                }
+       /* li:hover {
+            background-color: var(--hover-accent);
+        }*/
 
         @container (width > 800px) {
             .code-section {
