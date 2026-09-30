@@ -13,7 +13,7 @@ const themeIndex = (themes, theme) => {
 Enso.component('theme-switch', {
     watched: {
         themes: prop([], true),
-        theme: attr(localStorage.getItem('enso-theme')),
+        theme: attr(''),
     },
     expose: { themeIndex },
     styles: [css(Reset), css(Tooltips), css`
@@ -91,11 +91,13 @@ Enso.component('theme-switch', {
     `,
     script: {
         onThemesChange: watches(function () {
-            this.applyTheme(this.watched.theme);
+            if (!this.theme || !this.themes.length) return;
+
+            this.applyTheme(this.theme);
         }, ['themes']),
 
         applyTheme(theme) {
-            const themes = this.watched.themes;
+            const themes = this.themes;
             // normalise
             const valid =
                 themes.some(t => t.name === theme)
@@ -104,13 +106,9 @@ Enso.component('theme-switch', {
             if (!valid) return;
             
             // update state if needed
-            if (this.watched.theme !== valid) {
-                this.watched.theme = valid;
+            if (this.theme !== valid) {
+                this.theme = valid;
             }
-
-            // side effects
-            document.body.setAttribute('data-theme', valid);
-            localStorage.setItem('enso-theme', valid);
 
             this.dispatchEvent(
                 new CustomEvent('theme-changed', {
@@ -125,3 +123,17 @@ Enso.component('theme-switch', {
         }
     }
 });
+
+
+export function getStored(key, fallback = null) {
+    return localStorage.getItem(key) ?? fallback;
+}
+
+export function setStored(key, value) {
+    localStorage.setItem(key, value);
+    return value;
+}
+
+export function removeStored(key) {
+    localStorage.removeItem(key);
+}

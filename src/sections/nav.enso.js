@@ -250,7 +250,8 @@ export default Enso.component('nav-section', {
                 <ul>
                     <li class="nav-item theme">
                         <span>Theme: </span>
-                        <enso-theme-switch #ref="themer"></enso-theme-switch>
+                        <enso-theme-switch #ref="themer">
+                        </enso-theme-switch>
                     </li>
                 </ul>
             </li>
