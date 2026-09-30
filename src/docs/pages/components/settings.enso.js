@@ -2,7 +2,6 @@
 import Enso, { css, html } from 'ensojs';
 
 import '@components/codeView.enso';
-import '@components/docsTable.enso';
 
 import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
