@@ -205,6 +205,9 @@ export default Enso.component('intro-about-page', {
                 { title: "Features", link: "#features" },
                 { title: "History", link: "#history" }
             ]
+        },
+        getSection() {
+            return "docs-getting-started";
         }
     }
 })
