@@ -1,5 +1,5 @@
 
-import Enso, { css, html, attr, watches } from 'ensojs';
+import { Enso, css, html, attr, watches } from 'ensojs';
 
 Enso.component('tiny-counter', {
     watched: { value: attr(0) },
@@ -16,7 +16,7 @@ Enso.component('tiny-counter', {
     script: {
         onChange: watches(function() {
             const event = new CustomEvent('changed', {
-                detail: this.watched.value
+                detail: this.value
             })
             this.dispatchEvent(event);
         }, ['value'])
