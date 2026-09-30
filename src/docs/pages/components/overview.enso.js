@@ -105,10 +105,10 @@ const sections = [
             "You can also import external stylesheets and HTML templates, " +
             "either with a build tool (Vite here) or using Enso's load() helper.",
         related: [
-            { title: "css", href: "" },
-            { title: "html", href: "" },
-            { title: "attr", href: "" },
-            { title: "prop", href: "" },
+            { title: "css", href: "reference-css" },
+            { title: "html", href: "reference-html" },
+            { title: "attr", href: "reference-attr" },
+            { title: "prop", href: "reference-prop" },
             { title: "load", href: "" },
         ],
         code: 
@@ -126,9 +126,9 @@ import Reset from "@styles/reset.css?inline";`
             "It takes a tag name and an object describing the component " +
             "and its behaviour.",
         related: [
-            { title: "component", href: "" },
-            { title: "define", href: "" },
-            { title: "register", href: "" }
+            { title: "component", href: "components-creation" },
+            { title: "define", href: "components-creation" },
+            { title: "register", href: "components-creation" }
         ],
         code:
 `
@@ -144,9 +144,9 @@ Enso.component('enso-slide-show', {
             "attr() creates an HTML attribute with Boolean, Number or String values.",
         related: [
             { title: "watched", href: "components-watched" },
-            { title: "prop", href: "" },
-            { title: "attr", href: ""},
-            { title: "computed", href: "" }
+            { title: "prop", href: "reference-prop" },
+            { title: "attr", href: "reference-attr"},
+            { title: "computed", href: "reference-computed" }
         ],
         code: 
 `   watched: {
@@ -180,7 +180,7 @@ Enso.component('enso-slide-show', {
             "allowing imported and inline styles to be composed together.",
         related: [
             { title: "styles", href: "components-styles" },
-            { title: "css", href: "" }
+            { title: "css", href: "reference-css" }
         ],
         code: 
 `    styles: [css(Reset), css(Slideshow), css\`
@@ -204,7 +204,7 @@ Enso.component('enso-slide-show', {
             "and structural directives such as *for.",
         related: [
             { title: "template", href: "components-templates" },
-            { title: "html", href: "" }
+            { title: "html", href: "reference-html" }
         ],
         code: 
 `    template: html\`
@@ -236,8 +236,8 @@ Enso.component('enso-slide-show', {
             "allowing native browser APIs to be used.",
         related: [
             { title: "script", href: "components-script" },
-            { title: "watches", href: "" },
-            { title: "lifecycle", href: "" }
+            { title: "watches", href: "reference-watches" },
+            { title: "lifecycle", href: "components-lifecycle" }
         ],
         code: 
 `    script: {

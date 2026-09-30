@@ -30,7 +30,7 @@ export default Enso.component('components-settings-page', {
 
     template: html`
         <div class="document">
-            <section id="component-settings">
+            <section id="component-creation">
                 <h1>Creation</h1>
                 <p>
                     Enso provides two ways to create components: immediate and
@@ -105,7 +105,7 @@ export default Enso.component('components-settings-page', {
     script: {
         getHeadings() {
             return [
-                { title: "Settings", link: "#component-settings" },
+                { title: "Creation", link: "#component-creation" },
             ];
         },
         getSection() {
