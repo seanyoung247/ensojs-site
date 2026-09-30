@@ -20,7 +20,7 @@ export default Enso.component('first-enso-component-page', {
             ];
         },
         getSection() {
-            return "docs-getting-started";
+            return "docs-components";
         }
     }
 });
