@@ -51,9 +51,11 @@ Enso.component('site-nav', {
             height: 0;
             transition: height 0.5s ease, scrollbar-width 1s;
         }
-        :host([open]) #menu {
-            height: 100dvh;
-            overflow-y: auto;
+        @media (max-width: 768px) {
+            :host([open]) #menu {
+                height: 100dvh;
+                overflow-y: auto;
+            }
         }
         @media (min-width: 768px) {
             :host {
