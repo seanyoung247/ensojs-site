@@ -13,7 +13,8 @@ const examples = {
 `const temp = "<p>Hello World</p>";
 html(temp);
 
-html\`<p>Hello World</p>\`;`
+const world = "World";
+html\`<p>Hello \${world}</p>\`;`
 };
 
 export default Enso.component('components-html-page', {
@@ -39,6 +40,12 @@ export default Enso.component('components-html-page', {
                     .code="examples.html"
                     language="javascript"
                 ></enso-code-view>
+                <p>
+                    For more on Enso Templates, see
+                    <a href="components-templates">
+                        Templates
+                    </a>
+                </p>
             </section>
         </div>
     `, 
