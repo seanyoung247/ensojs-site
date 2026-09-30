@@ -11,14 +11,15 @@ export default Enso.component('nav-section', {
     settings: { useShadow: false },
     watched:{
         headings: prop([]),
-        pages: prop([])
+        pages: prop([]),
+        docs: prop([])
     },
 
     styles: [css(BrushStroke), css`
         site-nav {
             position: fixed;
             z-index: 99;
-            top: 0;
+            top: 0; left: 0;
             width: 100%;
 
             overflow: scroll;
@@ -86,9 +87,72 @@ export default Enso.component('nav-section', {
                 border-top: 1px solid var(--stroke-color);
             }
         }
+
+        details.docs-section {
+            & > summary {
+                list-style: none;
+                cursor: pointer;
+                position: relative;
+                padding-left: 1em;
+                font-weight: bold;
+
+                &::-webkit-details-marker {
+                    display: none;
+                }
+
+                &::after {
+                    content: "+";
+                    display: inline-block;
+                    position: absolute;
+                    left: 0;
+                }
+
+                &:hover {
+                    color: var(--accent);
+                }
+            }
+            &[open] > summary::after {
+                content: "-";
+            }
+
+            & ul.docs-pages {
+                position: relative;
+                margin-left: 0.5em;
+
+                &:empty {
+                    display: none;
+                }
+                &::before {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 1em;
+                    border-left: 1px solid var(--stroke-color);
+                }
+                & > li {
+                    padding-left: 1em;
+                    & > a {
+                        position: relative;
+
+                        &::after {
+                            content: "";
+                            position: absolute;
+                            left: -1em;
+                            top: 50%;
+                            width: 1em;
+                            border-top: 1px solid var(--stroke-color);
+                        }
+                    }
+                }
+            }
+        }
+
+
         @media (min-width: 768px) {
             site-nav {
                 overscroll-behaviour: auto;
+                overflow: visible;
 
                 background: var(--code-back)
                     linear-gradient(var(--muted-text)) no-repeat bottom/100% 1px;
@@ -148,6 +212,25 @@ export default Enso.component('nav-section', {
                 <ul>
                     <li *for="page of @:pages" class="nav-item brush hover">
                         <a .href="{{ page.link }}">{{ page.title }}</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-section documentation" *if="@:docs.length > 0">
+                <h2>Documentation</h2>
+                <ul>
+                    <li *for="section of @:docs" class="nav-item">
+                        <details name="docs-page" class="docs-section">
+                            <summary>
+                                {{ section.title }}
+                            </summary>
+                            <ul class="docs-pages">
+                                <li *for="page of section.children" class="brush hover">
+                                    <a :href="{{ page.link }}">
+                                        {{ page.title }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
                     </li>
                 </ul>
             </li>
