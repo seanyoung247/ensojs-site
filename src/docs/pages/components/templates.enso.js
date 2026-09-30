@@ -78,11 +78,7 @@ const examples = {
 export default Enso.component('components-templates-page', {
     settings: { useShadow: false },
     expose: { examples },
-    styles: [css(Reset), css(DocStyles), css`
-        section.sub-section {
-            margin-top: var(--space-md);
-        }
-    `],
+    styles: [css(Reset), css(DocStyles)],
 
     template: html`
         <div class="document">

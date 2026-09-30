@@ -47,4 +47,8 @@
         border-radius: 0.25em;
         font-size: 0.75em;
     }
+
+    & section.sub-section {
+        margin-top: var(--space-md);
+    }
 }
