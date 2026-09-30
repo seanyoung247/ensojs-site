@@ -2,6 +2,7 @@
 import Enso, { css, html } from 'ensojs';
 
 import '@components/codeView.enso';
+import '@components/docsTable.enso';
 
 import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
@@ -49,7 +50,8 @@ export default Enso.component('components-settings-page', {
                             <td>useShadow</td>
                             <td>true</td>
                             <td>
-                                If true, the component uses Shadow DOM. When false,
+                                If <code class="callout">true</code>, the component
+                                uses Shadow DOM. When <code class="callout">false</code>,
                                 the component renders directly into its surrounding
                                 DOM.
                             </td>
@@ -65,6 +67,7 @@ export default Enso.component('components-settings-page', {
                         </tr>
                     </tbody>
                 </table>
+
                 <enso-code-view
                     .code="examples.settings"
                     language="javascript"
