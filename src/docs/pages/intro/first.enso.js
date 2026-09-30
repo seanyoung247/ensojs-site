@@ -50,7 +50,12 @@ Enso.component('enso-counter', {
 export default Enso.component('first-enso-component-page', {
     settings: { useShadow: false },
     expose: { examples },
-    styles: [css(Reset), css(DocStyles)],
+    styles: [css(Reset), css(DocStyles), css`
+        enso-counter {
+            display: block;
+            margin: 0.5em 0;
+        }
+    `],
     template: html`
         <div class="document">
             <section>
@@ -100,22 +105,24 @@ export default Enso.component('first-enso-component-page', {
                     watched<code class="callout"> count </code>attribute.
                 </p>
                 <p>
-                    Template expressions are written using <span enso:ignore>{{}}</span>.
+                    Template expressions are written within handlebars: <span enso:ignore>{{ }}</span>.
                     The JavaScript expression inside is evaluated and its result inserted
                     into the DOM as text. Here,<code class="callout"> @:count </code> is
                     shorthand for the watched<code class="callout"> count </code>value.
-                    Because the expression depends on count, Enso will automatically update 
-                    it whenever<code class="callout"> count </code>changes.
+                    Because the expression depends on<code class="callout"> count, </code>
+                    Enso will rerun the expression and automatically update the dom wtih 
+                    the result whenever<code class="callout"> count </code>changes.
                 </p>
+                <p>
+                    Because<code class="callout"> count </code>is declared as an attribute
+                    using the<code class="callout"> attr() </code>function, its initial value
+                    can also be supplied directly in HTML.
+                </p>
+                <enso-counter count="10"></enso-counter>
                 <enso-code-view
                     .code="{{ examples.attributes }}"
                     language="javascript"
                 ></enso-code-view>
-                <enso-counter count="10"></enso-counter>
-                <p>
-                    Because<code class="callout"> count </code>is an attribute, its initial
-                    value can also be supplied directly in HTML.
-                </p>
             </section>
         </div>
     `,
