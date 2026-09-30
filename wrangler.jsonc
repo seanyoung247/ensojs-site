@@ -12,6 +12,14 @@
 
   "assets": {
     "directory": "./dist",
-    "binding": "ASSETS"
-  }
+    "binding": "ASSETS",
+    "run_worker_first": false
+  },
+
+  "routes": [
+    {
+      "pattern": "docs.ensojs.dev",
+      "custom_domain": true
+    }
+  ]
 }
