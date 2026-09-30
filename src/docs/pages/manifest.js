@@ -6,32 +6,37 @@
  */
 
 export const pages = [
-    // Test section
+    // Getting Started Section
     {
-        title: "Test",
+        title: "Getting Started",
         children: [
             {
-                id: "test-page-1",
-                title: "Intro test",
-                link: "test-page-1",
-                loader: () => import('./intro.enso'),
-                children: [
-                    { title: "dummy heading 1", }
-                ]
-            }
+                id: "intro-about-page",
+                title: "About",
+                link: "intro-about-page",
+                loader: () => import('./intro/about.enso'),
+            },
+            {
+                id: "install-about-page",
+                title: "About",
+                link: "install-about-page",
+                loader: () => import('./intro/install.enso'),
+            },
+            {
+                id: "first-about-page",
+                title: "About",
+                link: "first-about-page",
+                loader: () => import('./intro/first.enso'),
+            },
         ]
     },
-    // Test 2 section
+    // Components Section
     {
-        title: "Test - 2",
-        children: [
-            {
-                id: "test-page-2",
-                title: "Test page 2",
-                link: "test-page-2",
-                loader: () => import('./testpage2.enso')
-            }
-        ]
+        title: "Components",
+    }
+    // Reference Section
+    {
+        title: "",
     }
 ];
 
