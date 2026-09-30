@@ -30,7 +30,7 @@ export default Enso.component('components-css-page', {
                     .params="['strings', '...values']"
                     returns="CSSStyleSheet"
                 ></enso-func-sig>
-                <p>
+                <p class="spaced">
                     The <code class="callout">css()</code> function accepts a string
                     or template literal and creates a 
                     <code class="callout">CSSStyleSheet</code> that can be adopted by
