@@ -17,7 +17,6 @@ export class EnsoRouter extends EventTarget {
  
     normalize(pathname) {
 
-        console.log(this.#base);
         if (this.#base !== '/' &&
             pathname.startsWith(this.#base)) {
 

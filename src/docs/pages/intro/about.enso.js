@@ -33,7 +33,6 @@ const examples = {
 
 
 export default Enso.component('intro-about-page', {
-    settings: { useShadow: false },
     expose: { examples },
     styles: [css(Reset), css(DocStyles), css`
         ul.philosophy {
@@ -94,14 +93,15 @@ export default Enso.component('intro-about-page', {
                 became apparent that there was still a great deal of boilerplate, attaching events and the @event="" attribute evolved to replace calls to this.myRef.addEventListener(...). 
                 As more features were added, Enso started to form.
             </p>
-            <p class="spaced">From:</p>
+            <p class="spaced">From class based:</p>
             <enso-code-view 
                 .code="{{ examples.ensoClass }}">
             </enso-code-view>
+            <p>To declarative:</p>
             <enso-code-view 
                 .code="{{ examples.ensoComponent }}">
             </enso-code-view>
-            <p class="spaced">Enso today continues that original spirit: remove friction, embrace clarity, let components express themselves naturally.</p>
+            <p>Enso today continues that original spirit: remove friction, embrace clarity, let components express themselves naturally.</p>
         </section>
     
     `,
