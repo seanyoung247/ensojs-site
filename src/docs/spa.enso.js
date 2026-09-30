@@ -16,6 +16,7 @@ import { siteUrl } from '../urls';
 
 const spaBase = '/';
 
+Enso.enableDiagnostics();
 Enso.component("enso-spa", {
     watched: { 
         headings: prop([]),
@@ -108,7 +109,7 @@ Enso.component("enso-spa", {
                 routes,
                 {
                     base: spaBase,
-                    defaultPage: 'intro-about-page'
+                    defaultPage: 'about-enso'
                 }
             );
 

@@ -12,21 +12,21 @@ export const pages = [
         title: "Getting Started",
         children: [
             {
-                id: "intro-about-page",
+                id: "about-enso",
                 title: "About",
-                link: "intro-about-page",
+                link: "about-enso",
                 loader: () => import('./intro/about.enso'),
             },
             {
-                id: "install-about-page",
+                id: "installing-enso",
                 title: "Installing",
-                link: "install-about-page",
+                link: "installing-enso",
                 loader: () => import('./intro/install.enso'),
             },
             {
-                id: "first-about-page",
+                id: "first-enso-component",
                 title: "Basic Component",
-                link: "first-about-page",
+                link: "first-enso-component",
                 loader: () => import('./intro/first.enso'),
             },
         ]
