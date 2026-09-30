@@ -22,7 +22,7 @@ Enso.register('enso-define', defined);
 };
 
 
-export default Enso.component('components-settings-page', {
+export default Enso.component('components-creation-page', {
     settings: { useShadow: false },
     expose: { examples },
 
