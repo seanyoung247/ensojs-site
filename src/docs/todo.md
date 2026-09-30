@@ -7,6 +7,7 @@ Getting Started
 
 Components
 ✓ Overview
+✓ Creation
 ✓ Templates
 ✓ Styles
 ✓ Watched
@@ -16,7 +17,7 @@ Components
 ✓ Lifecycle
 
 Reference
-□ html()
+✓ html()
 □ css()
 □ prop()
 □ attr()
@@ -32,4 +33,4 @@ Helpers
 □ range
 □ comp
 
-Progress: 11 / 24 pages
+Progress: 13 / 25 pages

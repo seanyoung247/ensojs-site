@@ -10,7 +10,7 @@ const examples = {
 
 }
 
-export default Enso.component('components-styles-page', {
+export default Enso.component('components-watches-page', {
     settings: { useShadow: false },
     expose: { examples },
     styles: [css(Reset), css(DocStyles)],

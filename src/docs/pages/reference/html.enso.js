@@ -2,6 +2,7 @@
 import Enso, { css, html } from 'ensojs';
 
 import '@components/codeView.enso';
+import '@components/docsSignature.enso';
 
 import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
@@ -15,7 +16,7 @@ html(temp);
 html\`<p>Hello World</p>\`;`
 };
 
-export default Enso.component('components-styles-page', {
+export default Enso.component('components-html-page', {
     settings: { useShadow: false },
     expose: { examples },
     styles: [css(Reset), css(DocStyles)],
@@ -24,10 +25,15 @@ export default Enso.component('components-styles-page', {
         <div class="document">
             <section id="reference-html">
                 <h1>html()</h1>
+                <enso-func-sig
+                    name="html" 
+                    .params="['strings', '...values']"
+                    returns="EnsoTemplate"
+                ></enso-func-sig>
                 <p>
                     The <code class="callout">html()</code> function accepts a string
-                    or template literal and creates an Enso template for ingestion by
-                    a component.
+                    or template literal and creates an Enso template for use in a
+                    component.
                 </p>
                 <enso-code-view
                     .code="examples.html"
