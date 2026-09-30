@@ -109,7 +109,7 @@ const sections = [
             { title: "html", href: "reference-html" },
             { title: "attr", href: "reference-attr" },
             { title: "prop", href: "reference-prop" },
-            { title: "load", href: "" },
+            { title: "load", href: "helpers-load" },
         ],
         code: 
 `import { Enso, css, html, attr, prop } from 'ensojs';
