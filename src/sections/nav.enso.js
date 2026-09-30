@@ -253,7 +253,10 @@ export default Enso.component('nav-section', {
                                     {{ section.title }}
                                 </summary>
                                 <ul class="docs-pages">
-                                    <li *for="page of section.children" class="brush hover">
+                                    <li *for="page of section.children"
+                                        class="brush hover"
+                                        @click="this.closeNav"
+                                    >
                                         <a :href="{{ page.link }}">
                                             {{ page.title }}
                                         </a>
