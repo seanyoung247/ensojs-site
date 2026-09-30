@@ -95,22 +95,95 @@ const slides = [
     }
 ];
 
-const examples = {
-    component:
-`
-import { Enso, css, html, attr, prop } from 'ensojs';
+
+const sections = [
+    {
+        id: "enso-imports",
+        title: "Enso Imports",
+        description:
+            "Enso's features are opt in via named imports. " + 
+            "You can also import external stylesheets and HTML templates, " +
+            "either with a build tool (Vite here) or using Enso's load() helper.",
+        related: [
+            { title: "css", href: "" },
+            { title: "html", href: "" },
+            { title: "attr", href: "" },
+            { title: "prop", href: "" },
+            { title: "load", href: "" },
+        ],
+        code: 
+`import { Enso, css, html, attr, prop } from 'ensojs';
 import { range } from 'ensojs/helpers';
 
 import Slideshow from "./slideshow.css?inline";
-import Reset from "@styles/reset.css?inline";
-
+import Reset from "@styles/reset.css?inline";`
+    },
+    {
+        id: "enso-components",
+        title: "Enso Components",
+        description: 
+            "Enso.component() defines and registers a custom element. " +
+            "It takes a tag name and an object describing the component " +
+            "and its behaviour.",
+        related: [
+            { title: "component", href: "" },
+            { title: "define", href: "" },
+            { title: "register", href: "" }
+        ],
+        code:
+`
 Enso.component('enso-slide-show', {
-    watched: {
+`
+    },
+    {
+        id: "enso-watched",
+        title: "Watched Properties",
+        description: 
+            "Watched values provide reactive component state. prop() creates a " +
+            "JavaScript property that can accept complex data such as objects. " +
+            "attr() creates an HTML attribute with Boolean, Number or String values.",
+        related: [
+            { title: "watched", href: "components-watched" },
+            { title: "prop", href: "" },
+            { title: "attr", href: ""},
+            { title: "computed", href: "" }
+        ],
+        code: 
+`   watched: {
         slides: prop([]),
         slide: attr(0, Number),
     },
-    expose: { range }, 
-    styles: [css(Reset), css(Slideshow), css\`
+`
+    },
+    {
+        id: "enso-expose",
+        title: "Exposed Values",
+        description:
+            "Expose makes values and objects available within the component's " +
+            "HTML template. Here, range is exposed so the template can generate " +
+            "one indicator for each slide.",
+        related: [
+            { title: "expose", href: "components-expose" }
+        ],
+        code: 
+`    expose: {
+        range
+    }, 
+`
+    },
+    {
+        id: "enso-styles",
+        title: "CSS Stylesheets",
+        description:
+            "An Enso component can have multiple stylesheets. " +
+            "css() can accept template literals or strings, " +
+            "allowing imported and inline styles to be composed together.",
+        related: [
+            { title: "styles", href: "components-styles" },
+            { title: "css", href: "" }
+        ],
+        code: 
+`    styles: [css(Reset), css(Slideshow), css\`
         :host {
             display: block;
             position: relative;
@@ -119,8 +192,22 @@ Enso.component('enso-slide-show', {
             height: 100%;
         }
     \`],
-
-    template: html\`
+`
+    },
+    {
+        id: "enso-templates",
+        title: "Reactive Templates",
+        description: 
+            "template is the only required field for a component. " +
+            "html defines the component's declarative template. " + 
+            "Enso extends HTML with reactive expressions, event bindings, " + 
+            "and structural directives such as *for.",
+        related: [
+            { title: "template", href: "components-templates" },
+            { title: "html", href: "" }
+        ],
+        code: 
+`    template: html\`
         <slot @slotchange="this.slotchanged"></slot>
         <button id="prev"
             @click="()=>this.setSelected(@:slide - 1)">
@@ -137,7 +224,23 @@ Enso.component('enso-slide-show', {
             ></li>
         </ul>
     \`,
-    script: {
+`
+    },
+    {
+        id: "enso-script",
+        title: "Custom Scripts",
+        description:
+            "script lets you add methods and fields to the component. " +
+            "Methods are run in the component's context, giving them " +
+            "direct acces to watched state and lifecycle hooks, and " * 
+            "allowing native browser APIs to be used.",
+        related: [
+            { title: "script", href: "components-script" },
+            { title: "watches", href: "" },
+            { title: "lifecycle", href: "" }
+        ],
+        code: 
+`    script: {
         _range: range(0),
 
         slotchanged(e) {
@@ -162,35 +265,17 @@ Enso.component('enso-slide-show', {
     }
 });
 `
-};
-
-const sections = [
-    {
-        id: "enso-imports",
-        title: "Enso Imports",
-        description: "These are Enso's imports. There are many like them, but these are Enso's",
-        code: 
-`import { Enso, css, html, attr, prop } from 'ensojs';
-import { range } from 'ensojs/helpers';
-
-import Slideshow from "./slideshow.css?inline";
-import Reset from "@styles/reset.css?inline";`
     },
-    {
-        id: "enso-components",
-        title: "Enso Components",
-        description: "Enso.component()",
-        code:
-`Enso.component('enso-slide-show', {`
-    }
 ];
 
 export default Enso.component('components-overview-page', {
     settings: { useShadow: false },
-    expose: { slides, examples, sections },
+    expose: { slides, sections },
     styles: [css(Reset), css(DocStyles), css`
         enso-slide-show {
             aspect-ratio: 2/1;
+            border-radius: 10px;
+            margin: 1em 0;
 
             & figcaption {
                 position: absolute;
@@ -212,19 +297,37 @@ export default Enso.component('components-overview-page', {
             height: 100%;
             object-fit: cover;
         }
+        div.overview-page.document {
+            max-width: 100%;
+        }
+        .slim {
+            max-width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        #codepen-slideshow-link {
+            display: block;
+
+        }
     `],
     
     template: html`
-        <div class="document">
-            <section id="enso-component-overview">
+        <div class="overview-page document">
+            <section id="enso-component-overview" class="slim">
                 <h1>Enso Components</h1>
+                <p>
+                    Enso components combine reactive state, declarative templates, style
+                    encapsulation, and custom javascript behaviour within native custom
+                    element Web Components.
+                </p>
+            </section>
+            <section id="slideshow-overview">
+                <h2 class="slim">Slideshow</h2>
+                <p class="slim">
+                    This example slideshow demonstrates many of Enso's component features.
+                </p>
 
-                <annotated-code-view
-                    .sections="{{ sections }}"
-                    language="javascript"
-                ></annotated-code-view>
-
-                <enso-slide-show>
+                <enso-slide-show class="slim">
                     <figure *for="slide of slides">
                         <img :src="{{ slide.img }}" />
                         <figcaption>
@@ -233,14 +336,28 @@ export default Enso.component('components-overview-page', {
                         </figcaption>
                     </figure>
                 </enso-slide-show>
+
+                <annotated-code-view
+                    .sections="{{ sections }}"
+                    language="javascript"
+                ></annotated-code-view>
+
             </section>
+            <section class="slim">
+                <a id="codepen-slideshow-link" class="button"
+                    href="https://codepen.io/editor/seanyoung247/pen/01a0bf8e-57df-7c5d-90e2-065f2c195033"
+                >
+                    Try the slideshow on CodePen &#x2192;
+                </a>
+            <section>
         </div>
     `,
 
     script: {
         getHeadings() {
             return [
-                { title: "Enso Components", link: "#enso-components-overview" },
+                { title: "Enso Components", link: "#enso-component-overview" },
+                { title: "Slideshow", link: "#slideshow-overview" }
             ];
         },
         getSection() {
