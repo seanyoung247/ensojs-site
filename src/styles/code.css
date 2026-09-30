@@ -105,6 +105,7 @@ body[data-theme="dark"] {
     --enso-event-color: var(--enso-event-color-dark);
 }
 
+/* Prism/highlighting */
 .token { white-space: pre; }
 .token.keyword      { color: var(--keyword-color); }
 .token.function     { color: var(--function-color); }
@@ -114,6 +115,9 @@ body[data-theme="dark"] {
 .token.punctuation  { color: var(--punctuation-color); }
 .token.comment      { color: var(--comment-color); font-style: italic; }
 .token.attribute    { color: var(--function-color); }
+.token.attr-name    { color: var(--function-color); }
+.token.attr-value   { color: var(--string-color); }
+.token.tag          { color: var(--property-color); }
 
 /* Enso */
 .token.directive,
