@@ -17,7 +17,7 @@ const rng4 = range(0,1,0.25); // 0, 0.25, 0.5, 0.75`,
     iteration:
 `const rng = range(5);
 for (const i of rng) {
-    console.log(i); // 0,1,2,3,4
+    console.log(i); // 0, 1, 2, 3, 4
 }`,
     methods:
 `const rng = range(1,6);         // 1, 2, 3, 4, 5
@@ -51,7 +51,7 @@ export default Enso.component('helpers--page', {
                     ]"
                 ></docs-table>
                 <p class="spaced">
-                    The <code class="callout">range</code> function constructs and returns a 
+                    The <code class="callout">range()</code> function constructs and returns a 
                     <code class="callout">Range</code> object with the given start, stop, and step
                     values. The stop value is exclusive.
                 </p>
@@ -75,12 +75,15 @@ export default Enso.component('helpers--page', {
                         language="javascript"
                     ></enso-code-view>
                     <p class="spaced">
+                        The <code class="callout">Range</code> class is immutable. Once created, its start, stop
+                        and step values cannot be altered.
+                    <p>
                         The <code class="callout">Range</code> class has the following read-only properties:
                     </p>
                     <docs-table 
                         .headers="['Property', 'Type', 'Description']"
                         .rows="[
-                            ['start', 'number', 'The first value in the Range.'],
+                            ['start', 'number', 'The start value of the Range.'],
                             ['stop', 'number', 'The exclusive end of the Range.'],
                             ['size', 'number', 'The number of values in the Range.'],
                             ['stepSize','number','The difference between two values in the Range.'],
