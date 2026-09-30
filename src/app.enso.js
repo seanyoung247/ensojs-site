@@ -1,13 +1,21 @@
 
-import Enso, { css, html } from 'ensojs';
+import { Enso, css, html } from 'ensojs';
+import { comp } from 'ensojs/helpers';
 
 // Sections
-import Nav from "./sections/nav.enso";
-import header from "./sections/header.enso";
-import Example from "./sections/example.enso";
-import WhyEnso from "./sections/why.enso";
-import Overview from "./sections/overview.enso";
-import Footer from "./sections/footer.enso";
+import NavComp from "./sections/nav.enso";
+import HeaderComp from "./sections/header.enso";
+import ExampleComp from "./sections/example.enso";
+import WhyEnsoComp from "./sections/why.enso";
+import OverviewComp from "./sections/overview.enso";
+import FooterComp from "./sections/footer.enso";
+
+const Nav = comp(NavComp);
+const Header = comp(HeaderComp);
+const Example = comp(ExampleComp);
+const WhyEnso = comp(WhyEnsoComp);
+const Overview = comp(OverviewComp);
+const Footer = comp(FooterComp);
 
 // Styles
 import CodeStyles from "@styles/code.css?inline";
@@ -17,8 +25,6 @@ import { docsUrl } from './urls';
 
 
 Enso.enableDiagnostics();
-
-
 Enso.component("enso-app", {
     settings: { useShadow: false },
     styles: [css(CodeStyles), css(Reactive), css`
@@ -60,7 +66,7 @@ Enso.component("enso-app", {
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
             ]`
         }) }
-        ${ header.html({class:"constrained"}) }
+        ${ Header.html({class:"constrained"}) }
         ${ Example.html({class:"constrained"}) }
         ${ WhyEnso.html({class:"constrained"}) }
         ${ Overview.html({class:"constrained"}) }
