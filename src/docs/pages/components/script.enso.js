@@ -7,9 +7,8 @@ import Reset from "@styles/reset.css?inline";
 import DocStyles from "@styles/documentation.css?inline";
 
 
-export default Enso.component('first-enso-component-page', {
+export default Enso.component('components-script-page', {
     settings: { useShadow: false },
-    expose: { examples },
     styles: [css(Reset), css(DocStyles)],
     template: html``,  
     script: {
