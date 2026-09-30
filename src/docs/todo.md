@@ -21,9 +21,9 @@ Reference
 ✓ css()
 ✓ prop()
 ✓ attr()
-□ computed()
+✓ computed()
 □ watches()
-□ watchers
+✓ watchers
 
 Helpers
 □ cssObj
@@ -32,4 +32,4 @@ Helpers
 □ range
 □ comp
 
-Progress: 16 / 24 pages
+Progress: 18 / 24 pages
