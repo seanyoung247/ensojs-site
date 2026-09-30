@@ -18,13 +18,13 @@ export const pages = [
             },
             {
                 id: "install-about-page",
-                title: "About",
+                title: "Installing",
                 link: "install-about-page",
                 loader: () => import('./intro/install.enso'),
             },
             {
                 id: "first-about-page",
-                title: "About",
+                title: "Basic Component",
                 link: "first-about-page",
                 loader: () => import('./intro/first.enso'),
             },
@@ -33,11 +33,12 @@ export const pages = [
     // Components Section
     {
         title: "Components",
-    }
+    },
     // Reference Section
     {
-        title: "",
-    }
+        title: "Reference",
+    },
+
 ];
 
 
