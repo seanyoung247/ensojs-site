@@ -2,6 +2,8 @@
 import Enso, { css, html } from 'ensojs';
 // Components
 import "@components/icons/icon.enso";
+// Utils
+import { docsUrl } from '../urls';
 // Styles
 import Reset from "@styles/reset.css?inline";
 import Footer from "./footer.css?inline";
@@ -21,7 +23,7 @@ export default Enso.component('site-footer', {
             </span>
             <span class="links">
                 Native Web Components
-                <a href="#">Docs</a>
+                <a href="${docsUrl}">Docs</a>
                 <a href="https://github.com/seanyoung247/ensoJS">Github</a>
             </span>
             <span class="copyright">

@@ -11,10 +11,10 @@ import Reactive from '@styles/reactive.css?inline';
 import Theme from '@styles/theme.css?inline';
 import Reset from "@styles/reset.css?inline";
 import Code from "@styles/code.css?inline";
+import { siteUrl } from '../urls';
 
-const spaBase = (
-    `${new URL('./', import.meta.url).pathname}/`
-).replace(/\/+$/, '/');
+
+const spaBase = '/';
 
 Enso.component("enso-spa", {
     watched: { 
@@ -82,7 +82,7 @@ Enso.component("enso-spa", {
             class: "constrained",
             '.headings': `{{ @:headings }}`,
             '.pages': `[
-                { title: 'EnsoJS', link: '/' },
+                { title: 'EnsoJS', link: '${siteUrl}' },
                 { title: 'GitHub', link: 'https://github.com/seanyoung247/ensoJS' }
             ]`,
             '.docs': '{{ docs }}',
