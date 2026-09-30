@@ -43,6 +43,12 @@ export const pages = [
                 loader: () => import('./components/overview.enso'),
             },
             {
+                id: "components-creation",
+                title: "Creation",
+                link: "components-creation",
+                loader: () => import('./components/creation.enso'),
+            },
+            {
                 id: "components-templates",
                 title: "Templates",
                 link: "components-templates",
