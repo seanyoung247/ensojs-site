@@ -1,5 +1,5 @@
 
-import Enso, { prop, css, html, attr, watches, lifecycle } from 'ensojs';
+import Enso, { prop, css, html, attr, watches } from 'ensojs';
 
 import Reset from "../styles/reset.css?inline";
 import Tooltips from "../styles/tooltip.css?inline";
