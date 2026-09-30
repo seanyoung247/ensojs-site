@@ -118,17 +118,10 @@ export default Enso.component('nav-section', {
             & ul.docs-pages {
                 position: relative;
                 margin-left: 0.5em;
+                border-left: 1px solid var(--muted-text);
 
                 &:empty {
                     display: none;
-                }
-                &::before {
-                    content: "";
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    bottom: 1em;
-                    border-left: 1px solid var(--stroke-color);
                 }
                 & > li {
                     padding-left: 1em;
@@ -141,7 +134,7 @@ export default Enso.component('nav-section', {
                             left: -1em;
                             top: 50%;
                             width: 1em;
-                            border-top: 1px solid var(--stroke-color);
+                            border-top: 1px solid var(--muted-text);
                         }
                     }
                 }
@@ -194,6 +187,19 @@ export default Enso.component('nav-section', {
                 & a { padding: 0; }
                 & + & { border-top: none; }
                 &.theme { gap: var(--space-md); }
+            }
+
+            .documentation {
+                position: absolute;
+                top: calc(100% + var(--space-md));
+                left: max(var(--space-md), calc(50% - var(--docs-nav-offset)));
+
+                width: var(--docs-nav-width);
+                overflow-y: auto;
+
+                & > ul {
+                    flex-direction: column;
+                }
             }
         }
     `],

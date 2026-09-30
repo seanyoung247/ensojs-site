@@ -27,11 +27,48 @@ Enso.component("enso-spa", {
             width: 100%;
         }
         main {
-            padding: 3rem 0.5rem 0.5rem;
-            display: flex;
-            align-items: center;
-            flex-flow: column nowrap;
+            display: grid;
+
             color: var(--primary-text);
+            padding: 3rem 0.5rem 0.5rem;
+            
+        }
+        #outlet {
+            padding: 0 var(--space-md);
+            min-width: 0;
+        }
+
+        @media (min-width: 768px) {
+            main {
+                display: grid;
+                grid-template-columns:
+                    var(--docs-nav-width)
+                    minmax(0, var(--max-content));
+
+                justify-content: center;
+            }
+
+            .left.spacer {
+                display: block;
+            }
+
+            #outlet {
+                grid-column: 2;
+            }
+        }
+
+        @media (min-width: 1580px) {
+            main {
+                display: grid;
+                grid-template-columns:
+                    minmax(0, var(--docs-nav-width))
+                    minmax(0, var(--max-content))
+                    minmax(0, var(--docs-nav-width));
+
+                justify-content: center;
+            color: var(--primary-text);
+                padding: var(--space-xl) var(--space-md) var(--space-md);
+            }
         }
     `],
 
@@ -45,16 +82,13 @@ Enso.component("enso-spa", {
             ]`,
             '.docs': '{{ docs }}'
         }) }
-
         <main id="main-content">
-            <div class="left spacer"></div>
             <section 
                 #ref="outlet" id="outlet"
                 class="constrained"
                 aria-label="Documentation content"
             >
             </section>
-            <div class="right spacer"></div>
         </main>
         ${ Footer.html({class:"constrained"}) }
     `,
