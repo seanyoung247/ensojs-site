@@ -10,8 +10,8 @@ Components
 ✓ Templates
 ✓ Styles
 ✓ Watched
-□ Expose
-□ Script
+✓ Expose
+✓ Script
 □ Settings
 □ Lifecycle
 
@@ -26,4 +26,10 @@ Reference
 □ setWatched()
 □ lifecycle
 
-Progress: 7 / 19 pages
+Helpers
+□ cssObj
+□ classList
+□ load
+□ range
+
+Progress: 9 / 23 pages
