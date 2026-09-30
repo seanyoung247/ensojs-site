@@ -90,8 +90,63 @@ export const pages = [
     {
         id: "docs-reference-section",
         title: "Reference",
-        children: [] 
+        children: [
+            {
+                id: "reference-html",
+                title: "html()",
+                link: "reference-html",
+                loader: ()=> import('./reference/html.enso')
+            },
+            {
+                id: "reference-css",
+                title: "css()",
+                link: "reference-css",
+                loader: ()=> import('./reference/css.enso')
+            },
+            {
+                id: "reference-prop",
+                title: "prop()",
+                link: "reference-prop",
+                loader: ()=> import('./reference/prop.enso')
+            },
+            {
+                id: "reference-attr",
+                title: "attr()",
+                link: "reference-attr",
+                loader: ()=> import('./reference/attr.enso')
+            },
+            {
+                id: "reference-computed",
+                title: "computed()",
+                link: "reference-computed",
+                loader: ()=> import('./reference/computed.enso')
+            },
+            {
+                id: "reference-watches",
+                title: "watches()",
+                link: "reference-watches",
+                loader: ()=> import('./reference/watches.enso')
+            },
+            {
+                id: "reference-getwatched",
+                title: "getWatched()",
+                link: "reference-getwatched",
+                loader: ()=> import('./reference/getwatched.enso')
+            },
+            {
+                id: "reference-setwatched",
+                title: "setWatched()",
+                link: "reference-setwatched",
+                loader: ()=> import('./reference/setwatched.enso')
+            },
+        ] 
     },
+    // Helpers Section
+    {
+        id: "docs-helpers-section",
+        title: "Helpers",
+        children: []
+    }
 
 ];
 
