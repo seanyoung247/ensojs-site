@@ -37,7 +37,7 @@ export default Enso.component('components-attr-page', {
                     .headers="['Parameter', 'Type', 'Description']"
                     .rows="[
                         ['value', 'null || string || number || boolean', 'Initial and default value of the watched property. Defaults to null.'],
-                        ['type', 'Function', 'Defines the type of the attribute. Can be String, Boolean, or Number']
+                        ['type', 'Function', 'Defines the type of the attribute. Can be String, Boolean, or Number. Defaults to String.']
                     ]"
                 ></docs-table>
 
