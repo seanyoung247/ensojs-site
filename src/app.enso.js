@@ -24,7 +24,6 @@ import "@styles/main.css";
 import { docsUrl } from './urls';
 
 
-Enso.enableDiagnostics();
 Enso.component("enso-app", {
     settings: { useShadow: false },
     styles: [css(CodeStyles), css(Reactive), css`

@@ -1,4 +1,4 @@
-import Enso, { css, html } from 'ensojs';
+import Enso, { css, html, prop } from 'ensojs';
 
 import '@components/codeView.enso';
 import '@components/docsSignature.enso';
@@ -15,6 +15,7 @@ css(style);
 const color = "red";
 css\`div { color: \${color} }\`;`
 };
+
 
 export default Enso.component('components-css-page', {
     settings: { useShadow: false },
@@ -40,7 +41,6 @@ export default Enso.component('components-css-page', {
                     .code="examples.css"
                     language="javascript"
                 ></enso-code-view>
-
             </section>
         </div>
     `, 

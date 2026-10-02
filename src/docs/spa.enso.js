@@ -19,7 +19,7 @@ const Footer = comp(FooterComp)
 
 const spaBase = '/';
 
-Enso.enableDiagnostics();
+
 Enso.component("enso-spa", {
     settings: { useShadow: false },
     watched: { 
