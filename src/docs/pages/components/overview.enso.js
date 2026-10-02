@@ -103,7 +103,7 @@ const sections = [
         description:
             "Enso's features are opt in via named imports. " + 
             "You can also import external stylesheets and HTML templates, " +
-            "either with a build tool (Vite here) or using Enso's load() helper.",
+            "either with a build tool like vite or using Enso's load() helper.",
         related: [
             { title: "css", href: "reference-css" },
             { title: "html", href: "reference-html" },
@@ -115,8 +115,8 @@ const sections = [
 `import { Enso, css, html, attr, prop } from 'ensojs';
 import { range } from 'ensojs/helpers';
 
-import Slideshow from "./slideshow.css?inline";
-import Reset from "@styles/reset.css?inline";`
+const Slideshow = await load(import.meta.url, "./slideshow.css?inline");
+const Reset = await load(import.meta.url, "..styles/reset.css?inline");`
     },
     {
         id: "enso-components",
