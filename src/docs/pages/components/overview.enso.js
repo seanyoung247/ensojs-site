@@ -113,10 +113,12 @@ const sections = [
         ],
         code: 
 `import { Enso, css, html, attr, prop } from 'ensojs';
-import { range } from 'ensojs/helpers';
+import { load, range } from 'ensojs/helpers';
 
-const Slideshow = await load(import.meta.url, "./slideshow.css?inline");
-const Reset = await load(import.meta.url, "..styles/reset.css?inline");`
+const [ Slideshow, Reset ] = await load( import.meta.url, [
+    "./slideshow.css?inline",
+    "..styles/reset.css?inline"
+]);`
     },
     {
         id: "enso-components",
