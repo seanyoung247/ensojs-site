@@ -1,5 +1,5 @@
 
-import Enso, { html, css, prop, attr, watches, lifecycle } from 'ensojs';
+import { Enso, html, css, prop, attr, watches, lifecycle } from 'ensojs';
 import { range } from 'ensojs/helpers';
 
 import './stackListView.enso';

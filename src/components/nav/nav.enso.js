@@ -1,5 +1,5 @@
 
-import Enso, { css, html, attr, watches } from 'ensojs';
+import { Enso, css, html, attr, watches } from 'ensojs';
 import './navbtn.enso';
 
 import Reset from "@styles/reset.css?inline";

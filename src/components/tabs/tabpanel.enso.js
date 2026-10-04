@@ -1,4 +1,4 @@
-import Enso, { html, css, watches, lifecycle } from 'ensojs';
+import { Enso, html, css, watches, lifecycle } from 'ensojs';
 import Reset from './reset.css?inline';
 
 

@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import { Enso, css, html } from 'ensojs';
 import Reset from "@styles/reset.css?inline";
 
 export default Enso.component('enso-500', {

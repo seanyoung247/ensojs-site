@@ -1,4 +1,4 @@
-import Enso, { html, css, } from 'ensojs';
+import { Enso, html, css, } from 'ensojs';
 import Reset from '@styles/reset.css?inline';
 
 

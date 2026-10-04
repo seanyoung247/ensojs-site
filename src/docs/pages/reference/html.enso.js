@@ -1,5 +1,5 @@
 
-import Enso, { css, html } from 'ensojs';
+import { Enso, css, html } from 'ensojs';
 
 import '@components/codeView.enso';
 import '@components/docsSignature.enso';

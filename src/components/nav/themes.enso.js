@@ -1,6 +1,6 @@
 
 
-import Enso, { html } from 'ensojs';
+import { Enso, html } from 'ensojs';
 import { getStored, setStored } from "@components/themeSwitch.enso";
 
 // Images

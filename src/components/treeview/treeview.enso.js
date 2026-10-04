@@ -1,6 +1,6 @@
 
-import Enso, { css, html, prop, watches, lifecycle } from 'ensojs';
-import TreeItem from "./treeitem.enso";
+import { Enso, css, html, prop } from 'ensojs';
+import "./treeitem.enso";
 
 
 Enso.component("enso-tree-view", {

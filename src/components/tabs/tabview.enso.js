@@ -1,5 +1,5 @@
 
-import Enso, { html, css, prop, attr, watches } from 'ensojs';
+import { Enso, html, css, prop, attr, watches } from 'ensojs';
 import Styles from './tabview.css?inline';
 
 

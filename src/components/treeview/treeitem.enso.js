@@ -1,5 +1,5 @@
 
-import Enso, { css, html, prop } from 'ensojs';
+import { Enso, css, html, prop } from 'ensojs';
 
 
 export default Enso.component("enso-tree-item", {

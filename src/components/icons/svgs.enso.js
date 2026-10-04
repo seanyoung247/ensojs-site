@@ -1,5 +1,5 @@
 
-import Enso, { css, html, attr } from 'ensojs';
+import { Enso, css, html, attr } from 'ensojs';
 
 
 Enso.component('svg-icons', {

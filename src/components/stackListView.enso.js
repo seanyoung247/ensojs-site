@@ -1,5 +1,5 @@
 
-import Enso, { html, css } from 'ensojs';
+import { Enso, html, css } from 'ensojs';
 
 import './icons/arrow.enso';
 
