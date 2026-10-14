@@ -37,21 +37,35 @@ import { Enso, html, css, prop } from './enso.js';
 `import { Enso, html, css, prop } from 'ensojs';`
 };
 
+const manualExamples = {
+    import:
+`import { Enso, html, css, prop } from './vendor/ensojs/ensojs.es.js';`,
+    importMap:
+`<script type="importmap">
+{
+    "imports": {
+        "ensojs": "./vendor/ensojs/ensojs.es.js"
+    }
+}
+</script>`,
+    import2:
+`import { Enso, html, css, prop } from 'ensojs';`
+};
+
 export default Enso.component('installing-enso-page', {
     settings: { useShadow: false },
-    expose: { npmExamples, cdnExamples },
+    expose: { npmExamples, cdnExamples, manualExamples },
     styles: [css(Reset), css(DocStyles), css`
     
     `],
     template: html`
         <div class="document">
-            <section>
-                <h1 id="installing">Installing</h1>
+            <section id="installing">
+                <h1>Installing</h1>
                 <p>
-                    Enso can be added to your project either by installing it from
-                    npm or importing it directly from a CDN. Enso does not require
-                    a build step, but works equally well in projects that use build
-                    tools such as Vite.
+                    Enso can be added to your project through npm, a CDN, or a manual 
+                    download. Enso does not require a build step, but works equally well
+                    in projects that use build tools such as Vite.
                 </p>
                 <p>
                     For projects using a package manager, npm is the recommended
@@ -60,8 +74,8 @@ export default Enso.component('installing-enso-page', {
                 </p>
             </section>
 
-            <section>
-                <h2 id="npm">npm</h2>
+            <section id="npm">
+                <h2>npm</h2>
 
                 <p>
                     Install Enso from npm using your preferred package manager:
@@ -82,8 +96,8 @@ export default Enso.component('installing-enso-page', {
                 ></enso-code-view>
             </section>
 
-            <section>
-                <h2 id="cdn">CDN</h2>
+            <section id="cdn">
+                <h2>CDN</h2>
 
                 <p>
                     Enso can also be imported directly from jsDelivr without installing any packages:
@@ -117,6 +131,37 @@ export default Enso.component('installing-enso-page', {
                     Import maps are generally preferred, as they allow components to use the same imports whether Enso is installed from npm or loaded from a CDN.
                 </p>
             </section>
+            <section id="manual">
+                <h2>Manual installation</h2>
+                <p>
+                    You can also install EnsoJS manually from the Github release.
+                <p>
+                <p>
+                    Download the EnsoJS ZIP (for instance ensojs.v1.x.x.zip) archive from the latest GitHub
+                    <a href="https://github.com/seanyoung247/ensoJS/releases">release</a>, extract
+                    it, and copy the JavaScript files into your project. For example, into vendor/ensojs/.
+                </p>
+                <p>
+                    Keep the files together so their relative imports continue to work. The .map
+                    files are optional and support debugging.
+                </p>
+                <p>Import Enso using its local path:</p>
+                <enso-code-view
+                    .code="{{ manualExamples.import }}"
+                    language="javascript"
+                ></enso-code-view>
+                <p>
+                    Or, as above, use an import map:
+                </p>
+                <enso-code-view
+                    .code="{{ manualExamples.importMap }}"
+                    language="javascript"
+                ></enso-code-view>
+                <enso-code-view
+                    .code="{{ manualExamples.import2 }}"
+                    language="javascript"
+                ></enso-code-view>
+            </section>
         </div>
     `,
     
@@ -125,7 +170,8 @@ export default Enso.component('installing-enso-page', {
             return [
                 { title: "Installing", link: "#installing" },
                 { title: "NPM", link: "#npm" },
-                { title: "CDN", link: "#cdn" }
+                { title: "CDN", link: "#cdn" },
+                { title: "Manual", link: "#manual"}
             ];
         },
         getSection() {
