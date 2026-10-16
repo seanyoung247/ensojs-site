@@ -116,8 +116,8 @@ const sections = [
 import { load, range } from 'ensojs/helpers';
 
 const [ Slideshow, Reset ] = await load( import.meta.url, [
-    "./slideshow.css?inline",
-    "..styles/reset.css?inline"
+    "./slideshow.css",
+    "..styles/reset.css"
 ]);`
     },
     {
