@@ -49,8 +49,8 @@ export default Enso.component('components-prop-page', {
                     ]"
                 ></docs-table>
                 <p class="spaced">
-                    The <code class="callout">prop()</code> function takes a default value,
-                    and a boolean flag: deep. Returns a property configuration object for use
+                    The <code class="callout">prop()</code> function takes a default value
+                    and a boolean flag: deep. It returns a property configuration object for use
                     by the component's reactivity system. If the default value is an object or
                     array and the flag is true, deep reactivity will be used for the watched
                     property.

@@ -120,7 +120,7 @@ export default Enso.component('components-templates-page', {
                     <p>
                         Interpolated results are generally strings, but boolean results are preserved where they have
                         meaning to the template parser. This allows Enso to handle boolean attributes correctly. 
-                        For example a <code class="callout">false</code> value bound to
+                        For example, a <code class="callout">false</code> value bound to
                         <code class="callout">:disabled</code> removes the <code class="callout">disabled</code>
                         attribute rather than rendering <code class="callout">disabled="false"</code>.
                     </p>

@@ -33,7 +33,7 @@ export default Enso.component('components-settings-page', {
                 <h1>Settings</h1>
                 <p>
                     The <code class="callout">settings</code> field controls how
-                    Enso creates and renders a component. Currently there are two
+                    Enso creates and renders a component. Currently, there are two
                     options:
                 </p>
                 <table class="docs-table">
@@ -73,7 +73,7 @@ export default Enso.component('components-settings-page', {
                 ></enso-code-view>
                 <p>
                     Most components shouldn't need to change their settings. If you opt out of
-                    Shadow DOM with <code class="callout">useShadow: false</code> you lose
+                    Shadow DOM with <code class="callout">useShadow: false</code>, you lose
                     style encapsulation. Your component's styles can affect elements outside
                     the component, and external styles can affect your component. I'd recommend
                     leaving useShadow at its default unless you have a specific reason to

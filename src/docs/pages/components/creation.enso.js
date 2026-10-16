@@ -59,10 +59,10 @@ export default Enso.component('components-creation-page', {
                 <section>
                     <h2>Deferred Registration</h2>
                     <p>
-                        Deferred registration splits definition and registration in
-                        to two discrete steps, using the
-                        <code class="callout">Enso.define()</code> function to define
-                        the component, and <code class="callout">Enso.register()</code>
+                        Deferred registration splits definition and registration into two
+                        discrete steps, using the <code class="callout">Enso.define()</code>
+                        function to define the component, and
+                        <code class="callout">Enso.register()</code>
                         to register the component in the browser.
                     </p>
                     <enso-func-sig

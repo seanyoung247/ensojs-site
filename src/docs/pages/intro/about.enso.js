@@ -53,8 +53,9 @@ export default Enso.component('about-enso-page', {
         <div class="document">
             <section id="about">
                 <h1>About</h1>
-                <p>Enso is a lightweight Web Component framework that simplifies development by removing boilerplate, providing intuitive declarative templates, and enabling clean component structure.</p>
-                <p>It aims to be modern, minimal, and forward focused: no build step, no virtual DOM, and no legacy baggage.</p>
+                <p>Enso is a lightweight Web Component framework that simplifies development by removing boilerplate, 
+                    providing intuitive declarative templates, and enabling clean component structure.</p>
+                <p>It aims to be modern, minimal, and forward-focused: no build step, no virtual DOM, and no legacy baggage.</p>
             </section>
 
             <section id="philosophy">
@@ -84,15 +85,12 @@ export default Enso.component('about-enso-page', {
 
             <section id="history">
                 <h2>History</h2>
-                <p>Enso began life as a small utility class intended to reduce the repetitive boilerplate associated with writing Web Components. You simply extended from it, and added your own code.</p>
+                <p>Enso began life as a small utility class intended to reduce the repetitive boilerplate associated with writing Web Components. You simply extended from it and added your own code.</p>
                 <enso-code-view 
                     .code="{{ examples.webComponent }}">
                 </enso-code-view>
                 <p>
-                    As real-world components grew, new sources of repetitive boilerplate appeared. For instance, querying the DOM for child elements. To solve this, a quick and simple processing
-                    step was added to the template parsing, to extract #ref="myRef" attributes, and insert them as fields on the component, for simple access via the class: this.myRef. But it soon
-                    became apparent that there was still a great deal of boilerplate, attaching events for instance, and the @event="" attribute evolved to replace calls to this.myRef.addEventListener(...). 
-                    As more features were added, Enso started to form.
+                    As real-world components grew, new sources of repetitive boilerplate appeared. For instance, querying the DOM for child elements. To solve this, a quick and simple processing step was added to the template parsing to extract #ref="myRef" attributes and insert them as fields on the component, for simple access via the class: this.myRef. But it soon became apparent that there was still a great deal of boilerplate, attaching events, for instance, and the @event="" attribute evolved to replace calls to this.myRef.addEventListener(...). As more features were added, Enso started to form.
                 </p>
                 <p class="spaced">From class based:</p>
                 <enso-code-view 

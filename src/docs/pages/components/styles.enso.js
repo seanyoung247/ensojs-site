@@ -64,7 +64,7 @@ export default Enso.component('components-styles-page', {
                     overhead while retaining style encapsulation when using Shadow DOM.
                 </p>
                 <p>
-                    For single stylesheets the styles field accepts a single Enso stylesheet
+                    For single stylesheets, the styles field accepts a single Enso stylesheet
                     object created using the <code class="callout">css()</code> function.
                     When supplying multiple stylesheets, the styles field accepts an array
                     of Enso stylesheet objects.

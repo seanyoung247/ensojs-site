@@ -46,7 +46,7 @@ export default Enso.component('components-watches-page', {
                 </p>
                 <p>
                     It takes a watcher function (see <a href="/reference-watchers">watchers</a>) that is called when
-                    one of its listed watched properties changes or a listed lifecycle hooks runs. By default, the watcher
+                    one of its listed watched properties changes or a listed lifecycle hook runs. By default, the watcher
                     function is only registered with the reactivity system. When <code class="callout">keep</code> is
                     <code class="callout">true</code>, it is also added to the component under the name given to it in
                     <code class="callout">script</code>.

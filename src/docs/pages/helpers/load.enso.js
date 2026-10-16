@@ -69,7 +69,7 @@ export default Enso.component('helpers-load-page', {
                 </p>
                 <p>
                     The basic form takes a base URL, such as <code class="callout">import.meta.url</code>,
-                    followed by one or more file paths relative to that URL. The files are loaded in parallel
+                    followed by one or more file paths relative to that URL. The files are loaded in parallel,
                     and the returned promise resolves to an array containing their contents in argument order.
                 </p>
                 <enso-code-view
@@ -85,7 +85,7 @@ export default Enso.component('helpers-load-page', {
                     <p>
                         The <code class="callout">as</code> function receives the loaded file contents as a
                         string and may return any value, allowing <code class="callout">load()</code> to support
-                        arbitrary transformations. As such you can extend <code class="callout">load()</code>
+                        arbitrary transformations. As such, you can extend <code class="callout">load()</code>
                         with your own data types.
                     </p>
                     <enso-code-view

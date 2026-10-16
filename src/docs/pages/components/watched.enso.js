@@ -48,7 +48,7 @@ export default Enso.component('components-watched-page', {
                 <h1>Watched Properties</h1>
                 <p>
                     Watched properties define a component's reactive state. Enso detects changes to
-                    watched properties and notifies their dependants. Bindings that reference a
+                    watched properties and notifies their dependents. Bindings that reference a
                     changed property are then re-evaluated, updating the component where necessary.
                 </p>
                 <p>
@@ -99,7 +99,7 @@ export default Enso.component('components-watched-page', {
                         language="javascript"
                     ></enso-code-view>
                     <p>
-                        Pass true as the second argument to enable deep reactivity for objects and array.
+                        Pass true as the second argument to enable deep reactivity for objects and arrays.
                         By default, properties are shallow: assigning a new value triggers an update, but
                         modifying their nested contents does not.
                     </p>
@@ -110,10 +110,10 @@ export default Enso.component('components-watched-page', {
                 >
                     <h2>Computed</h2>
                     <p>
-                        Like properties, computed can take any JavaScript type. Unlike properties they can 
-                        not be written to directly. Instead you provide a list of watched property dependencies
+                        Like properties, computed can take any JavaScript type. Unlike properties, they can 
+                        not be written to directly. Instead, you provide a list of watched property dependencies
                         and an update function. When any of the dependencies are altered, the update function
-                        is called and its return value is used to update the computed property.
+                        is called, and its return value is used to update the computed property.
                     </p>
                     <enso-code-view
                         .code="examples.computed"

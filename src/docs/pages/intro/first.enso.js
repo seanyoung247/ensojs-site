@@ -110,7 +110,7 @@ export default Enso.component('first-enso-component-page', {
                     into the DOM as text. Here, <code class="callout">@:count</code> is
                     shorthand for the watched <code class="callout">count</code> value.
                     Because the expression depends on <code class="callout">count</code>,
-                    Enso will rerun the expression and automatically update the dom wtih 
+                    Enso will rerun the expression and automatically update the DOM wtih 
                     the result whenever <code class="callout">count</code> changes.
                 </p>
                 <p>

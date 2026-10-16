@@ -134,10 +134,10 @@ export default Enso.component('installing-enso-page', {
             <section id="manual">
                 <h2>Manual installation</h2>
                 <p>
-                    You can also install EnsoJS manually from the Github release.
+                    You can also install EnsoJS manually from the GitHub release.
                 <p>
                 <p>
-                    Download the EnsoJS ZIP (for instance ensojs.v1.x.x.zip) archive from the latest GitHub
+                    Download the EnsoJS ZIP (for instance, ensojs.v1.x.x.zip) archive from the latest GitHub
                     <a href="https://github.com/seanyoung247/ensoJS/releases">release</a>, extract
                     it, and copy the JavaScript files into your project. For example, into vendor/ensojs/.
                 </p>

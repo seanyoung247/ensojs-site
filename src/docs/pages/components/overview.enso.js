@@ -103,7 +103,7 @@ const sections = [
         description:
             "Enso's features are opt in via named imports. " + 
             "You can also import external stylesheets and HTML templates, " +
-            "either with a build tool like vite or using Enso's load() helper.",
+            "either with a build tool like Vite or using Enso's load() helper.",
         related: [
             { title: "css", href: "reference-css" },
             { title: "html", href: "reference-html" },
@@ -201,7 +201,7 @@ Enso.component('enso-slide-show', {
         title: "Reactive Templates",
         description: 
             "template is the only required field for a component. " +
-            "html defines the component's declarative template. " + 
+            "HTML defines the component's declarative template. " + 
             "Enso extends HTML with reactive expressions, event bindings, " + 
             "and structural directives such as *for.",
         related: [
@@ -234,7 +234,7 @@ Enso.component('enso-slide-show', {
         description:
             "script lets you add methods and fields to the component. " +
             "Methods are run in the component's context, giving them " +
-            "direct acces to watched state and lifecycle hooks, and " + 
+            "direct access to watched state and lifecycle hooks, and " + 
             "allowing native browser APIs to be used.",
         related: [
             { title: "script", href: "components-script" },

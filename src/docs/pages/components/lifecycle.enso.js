@@ -72,7 +72,7 @@ export default Enso.component('components-lifecycle-page', {
             <section id="component-lifecycle">
                 <h1>Lifecycle</h1>
                 <p>
-                    The Enso component lifecycle is fairly straightforward,
+                    The Enso component lifecycle is fairly straightforward
                     and largely built around a normal element's lifecycle.
                 </p>
                 <p>
@@ -124,7 +124,7 @@ export default Enso.component('components-lifecycle-page', {
                     </p>
                     <p>
                         The <code class="callout">update</code> lifecycle hook runs at
-                        the end of the update process. At this point the component's
+                        the end of the update process. At this point, the component's
                         HTML will be updated, but the browser will not have painted yet.
                         This makes the <code class="callout">update</code> hook a good
                         time to make manual DOM changes if you need to.
