@@ -234,7 +234,7 @@ Enso.component('enso-slide-show', {
         description:
             "script lets you add methods and fields to the component. " +
             "Methods are run in the component's context, giving them " +
-            "direct acces to watched state and lifecycle hooks, and " * 
+            "direct acces to watched state and lifecycle hooks, and " + 
             "allowing native browser APIs to be used.",
         related: [
             { title: "script", href: "components-script" },
